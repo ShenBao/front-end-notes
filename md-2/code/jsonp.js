@@ -1,104 +1,3 @@
-# 通信
-
-目标：
-
-- 什么是同源策略及限制
-- 前后端如何通信
-- 如何创建ajax
-- 跨域通信的几种方式
-
-
-同源策略：同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
-
-同源: 协议、域名、端口都相同
-
-限制：
-- Cookie、LocalStorage、IndexDB无法读取
-- DOM无法获得
-- AJAX不能发送
-
-
-前后端如何通信:
-- Ajax
-- WebSocket
-- CORS
-
-
-如何创建ajax
-- XMLHttpRequest对象的工作流程
-- 兼容性处理
-- 事件的触发条件
-- 事件的顺序顺序
-
-
-跨域通信的几种方式
-- JSONP
-- HASH
-- PostMessage（H5新增的）
-- WebSocket
-- CORS
-
-
-```js
-/**
-* 跨域通信的几种方法
-*/
-
-// jsonp工作原理，参考jsonp.js
-
-
-// 利用hash，场景是当前页面 A 通过iframe或frame嵌入了跨域的页面 B
-// 在A中伪代码如下：
-var B = document.getElementsByTagName('iframe');
-B.src = B.src + '#' + 'data';
-// 在B中的伪代码如下
-window.onhashchange = function () {
-    var data = window.location.hash;
-};
-
-// postMessage
-// 窗口A(http:A.com)向跨域的窗口B(http:B.com)发送信息
-Bwindow.postMessage('data', 'http://B.com');
-// 在窗口B中监听
-Awindow.addEventListener('message', function (event) {
-    console.log(event.origin);
-    console.log(event.source);
-    console.log(event.data);
-}, false);
-
-// Websocket【参考资料】http://www.ruanyifeng.com/blog/2017/05/websocket.html
-
-var ws = new WebSocket('wss://echo.websocket.org');
-
-ws.onopen = function (evt) {
-    console.log('Connection open ...');
-    ws.send('Hello WebSockets!');
-};
-
-ws.onmessage = function (evt) {
-    console.log('Received Message: ', evt.data);
-    ws.close();
-};
-
-ws.onclose = function (evt) {
-    console.log('Connection closed.');
-};
-
-// CORS【参考资料】http://www.ruanyifeng.com/blog/2016/04/cors.html
-// url（必选），options（可选）
-fetch('/some/url/', {
-    method: 'get',
-}).then(function (response) {
-
-}).catch(function (err) {
-    // 出错了，等价于 then 的第二个参数，但这样更好用更直观
-});
-```
-
-
-```js
-jsonp.js
-
 /**
  * 功能类库
  */
@@ -254,7 +153,7 @@ util.json = function (options) {
                 var res;
                 if (opt.success && opt.success instanceof Function) {
                     res = xhr.responseText;
-                    if (typeof res ==== 'string') {
+                    if (typeof res === 'string') {
                         res = JSON.parse(res);
                         opt.success.call(xhr, res);
                     }
@@ -291,7 +190,7 @@ util.crc32 = function (url) {
             c = ((c & 1) ? (-306674912 ^ (c >>> 1)) : (c >>> 1));
             table[n] = c;
         }
-        return typeof Int32Array !=== 'undefined' ? new Int32Array(table) : table;
+        return typeof Int32Array !== 'undefined' ? new Int32Array(table) : table;
     })();
     var crc32_str = function (str) {
         var C = -1;
@@ -327,5 +226,3 @@ util.crc32 = function (url) {
 };
 
 export default util;
-
-```

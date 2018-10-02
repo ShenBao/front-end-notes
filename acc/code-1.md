@@ -2,11 +2,6 @@
 
 queryURLParmeter 方法，将url参数解析成对象键值对的方式
 
-
-- 字符串拆分
-- 正则解析
-- 写到字符串原型中
-
 ```js
 // 一：字符串分割
 function queryURLParameter(url) {
@@ -53,6 +48,7 @@ String.prototype.myQueryURLParameter = function () {
 
 console.log(url.myQueryURLParameter());
 ```
+
 
 ```js
 var a = 4;
@@ -161,7 +157,6 @@ for (let i = 0; l; i++) {
 ```
 
 ```js
-
 var  fullName = 'language';
 var obj = {
     fullName: 'js',
@@ -178,7 +173,6 @@ console.log(test());
 
 // undefined
 // language
-
 ```
 
 

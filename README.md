@@ -38,7 +38,7 @@
 - [介绍](./md-3/01.md)
 - [模块化、ES6、Promise](./md-3/02.md)
 - [原型、实际应用、如何扩展](./md-3/03.md)
-- [异步、单线程、event-loop、异步方案、Promise的标准、async、wait的使用(ES7)](./md-3/04.md)
+- [异步、单线程、event-loop、异步方案、Promise的标准、async、wait的使用](./md-3/04.md)
 - [VDOM、核心函数、diff算法](./md-3/05.md)
 - [MVVM、VUe响应式、模板解析](./md-3/06.md)
 - [组件化、JSX、VDOM、setState](./md-3/07.md)

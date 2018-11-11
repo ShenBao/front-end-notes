@@ -18,7 +18,7 @@
 - 目前js解决异步的方案有哪些
 - 如果只有jq如何解决异步
 - Promise的标准
-- async、wait的使用(ES7)
+- async、wait的使用
 
 [Vdom](./05.md)：
 - 什么是Vdom，为何要用vdom

@@ -126,4 +126,3 @@ jsonp('http://cdn.com/t/gettime?callback=callbackFn')
         }
     );
 ```
-

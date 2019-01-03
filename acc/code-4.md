@@ -1,8 +1,12 @@
+
+js 动态跳转至某个HTML页面
+
+```js
 /**
  * js 动态跳转至某个HTML页面
- * @param {String} url 
- * @param {Object} params 
- * @param {String} method 
+ * @param {String} url
+ * @param {Object} params
+ * @param {String} method
  * @returns {Element}
  */
 function myFrom(url, params, method) {
@@ -20,3 +24,10 @@ function myFrom(url, params, method) {
     temp.submit();
     return temp;
 }
+```
+
+
+
+
+
+

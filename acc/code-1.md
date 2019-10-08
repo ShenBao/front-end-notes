@@ -81,9 +81,9 @@ console.log(a);
 // undefined
 ```
 
-js的非严格模式下：函数的实参集合与形参变量存在“映射”关系，不管其中一个谁改变了另一个也会发生变化
+js 的非严格模式下：函数的实参集合与形参变量存在“映射”关系，不管其中一个谁改变了另一个也会发生变化
 
-js的严格模式下，arguments 和形参变量关系被掐断，互不干扰
+js 的严格模式下，arguments 和形参变量关系被掐断，互不干扰
 
 
 
@@ -261,20 +261,18 @@ document.parentNode 和 document.parentnode 区别
 
 undefined：
 1. 变量提升：只声明未定义默认值 undefined
-2. 严格模式下：没有明确的执行主体，this就是undefined
-3. 对象没有这个属性名，属性值就是undefined
-4. 函数定义形参不传值，默认为undefined
-5. 函数没有返回值: 默认返回的就是undefined
+2. 严格模式下：没有明确的执行主体，this 就是 undefined
+3. 对象没有这个属性名，属性值就是 undefined
+4. 函数定义形参不传值，默认为 undefined
+5. 函数没有返回值: 默认返回的就是 undefined
 
 null：
-1. 手动设置变量的值或对象的属性值为null(此时不赋值，后面再赋值)
-2. js的dom元素获取中，如果没有获取到指定的元素对象，结构一般都是null
-3. Object.prototype.__proto__ 的值是null
-4. 正则捕获的时候，没有捕获到结果，默认值是null
-5. 
+1. 手动设置变量的值或对象的属性值为 null (此时不赋值，后面再赋值)
+2. js 的 dom 元素获取中，如果没有获取到指定的元素对象，结构一般都是 null
+3. Object.prototype.__proto__ 的值是 null
+4. 正则捕获的时候，没有捕获到结果，默认值是 null
 
 
 避免函数重命名的问题
 - 闭包
 - 单例模式
-

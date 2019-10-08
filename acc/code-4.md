@@ -1,5 +1,5 @@
 
-js 动态跳转至某个HTML页面
+js 动态跳转至某个 HTML 页面
 
 ```js
 /**
@@ -25,9 +25,4 @@ function myFrom(url, params, method) {
     return temp;
 }
 ```
-
-
-
-
-
 

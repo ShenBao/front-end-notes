@@ -1,4 +1,4 @@
-# code-1
+# code-a
 
 queryURLParmeter 方法，将url参数解析成对象键值对的方式
 
@@ -253,11 +253,9 @@ let resultarr = [...new Set(arr)];
 console.log(resultarr); //[1,2,3]
 ```
 
-
 document.parentNode 和 document.parentnode 区别
 
 前者父节点不存在，古为 null ,后者没有此属性，所有为undefined
-
 
 undefined：
 1. 变量提升：只声明未定义默认值 undefined

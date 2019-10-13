@@ -1,3 +1,4 @@
+# code-d
 
 js 动态跳转至某个 HTML 页面
 
@@ -25,4 +26,3 @@ function myFrom(url, params, method) {
     return temp;
 }
 ```
-

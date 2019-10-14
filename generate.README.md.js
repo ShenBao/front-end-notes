@@ -1,9 +1,21 @@
+var fileName = 'README.md';
+var repName = 'front-end-notes';
+var basePath = `https://github.com/ShenBao/${repName}/blob/master`;
+basePath = '';
+
+var desc = `
+前端学习笔记
+`;
+
+var endDesc = `
+## 更多链接
+
+- [GitHub 主页](https://github.com/ShenBao)
+- [博客地址](https://shenbao.github.io)
+`;
+
 var fs = require ('fs');
 var path = require ('path');
-
-var repName = 'front-end-notes';
-var basePath = 'https://github.com/ShenBao/front-end-notes/blob/master';
-basePath = '';
 
 function readFileList (dir, filesList = []) {
   const files = fs.readdirSync (dir);
@@ -31,7 +43,6 @@ function readFileList (dir, filesList = []) {
     } else {
       var extname = path.extname (item);
       if (extname == '.md' && item != 'README.md') {
-        // var name = item.replace('.md', '').replace(/[0-9]/ig,'').replace('.','').replace(/\s*/g, '')
         var name = item.replace ('.md', '');
         var arr = name.split ('.');
         if (/^[0-9]+[\s\S]*$/.test (item)) {
@@ -49,6 +60,7 @@ function readFileList (dir, filesList = []) {
   });
   return filesList;
 }
+
 var filesList = [];
 readFileList (__dirname, filesList);
 
@@ -69,16 +81,24 @@ filesList.forEach ((item, index) => {
   console.log (`[${name}](${basePath}${path})`);
 });
 
-fs.writeFileSync ('./README.txt', `# ${repName}\n`);
+if (!basePath.startsWith ('http')) {
+  str += endDesc;
+}
+
+var content = `# ${repName}\n`;
+if (!basePath.startsWith ('http')) {
+  content += desc;
+}
+fs.writeFileSync (`./${fileName}`, content);
 fs.writeFile (
-  './README.txt',
+  `./${fileName}`,
   str,
   {flag: 'a', encoding: 'utf-8', mode: '0666'},
   function (err) {
     if (err) {
-      console.log ('error');
+      console.log ('\n======== error ========');
       throw err;
     }
-    console.log ('success');
+    console.log ('\n======== success ========');
   }
 );

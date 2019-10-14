@@ -1,11 +1,6 @@
 # front-end-notes
 
-## [md-0：acc](%2Fmd-0%EF%BC%9Aacc%2FREADME.md)
-
-1. [code-a](%2Fmd-0%EF%BC%9Aacc%2Fcode-a.md)
-1. [code-b](%2Fmd-0%EF%BC%9Aacc%2Fcode-b.md)
-1. [code-c](%2Fmd-0%EF%BC%9Aacc%2Fcode-c.md)
-1. [code-d](%2Fmd-0%EF%BC%9Aacc%2Fcode-d.md)
+前端学习笔记
 
 ## [md-1：前端 JavaScript 基础知识](%2Fmd-1%EF%BC%9A%E5%89%8D%E7%AB%AF%20JavaScript%20%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%2FREADME.md)
 
@@ -91,3 +86,8 @@
 1. [社会工程学和信息泄露](%2Fmd-6%EF%BC%9AWeb%20%E5%89%8D%E5%90%8E%E7%AB%AF%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E4%B8%8E%E9%98%B2%E5%BE%A1%E6%8A%80%E5%B7%A7%2F11.%20%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%92%8C%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2.md)
 1. [其他安全问题](%2Fmd-6%EF%BC%9AWeb%20%E5%89%8D%E5%90%8E%E7%AB%AF%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E4%B8%8E%E9%98%B2%E5%BE%A1%E6%8A%80%E5%B7%A7%2F12.%20%20%E5%85%B6%E4%BB%96%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98.md)
 1. [总结](%2Fmd-6%EF%BC%9AWeb%20%E5%89%8D%E5%90%8E%E7%AB%AF%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E4%B8%8E%E9%98%B2%E5%BE%A1%E6%8A%80%E5%B7%A7%2F13.%20%E6%80%BB%E7%BB%93.md)
+
+## 更多链接
+
+- [GitHub 主页](https://github.com/ShenBao)
+- [博客地址](https://shenbao.github.io)

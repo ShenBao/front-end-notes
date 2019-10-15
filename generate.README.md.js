@@ -8,10 +8,11 @@ var desc = `
 `;
 
 var endDesc = `
-## 更多链接
+## More links
 
-- [GitHub 主页](https://github.com/ShenBao)
-- [博客地址](https://shenbao.github.io)
+- [GitHub Home](https://github.com/ShenBao)
+- [Blog Home](https://shenbao.github.io)
+- [About Me](https://shenbao.github.io/about/)
 `;
 
 var fs = require ('fs');
@@ -25,6 +26,7 @@ function readFileList (dir, filesList = []) {
     if (stat.isDirectory ()) {
       var nextPath = path.join (dir, item);
       if (
+        nextPath.includes ('md-0') ||
         nextPath.includes ('code') ||
         nextPath.includes ('img') ||
         nextPath.includes ('.git')

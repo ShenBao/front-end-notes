@@ -1,15 +1,7 @@
 # md-6：Web 前后端漏洞分析与防御技巧
 
-1. [web安全](./%2F01.%20web%20%E5%AE%89%E5%85%A8.md)
-1. [环境准备](./%2F02.%20%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87.md)
-1. [XSS](./%2F03.%20XSS.md)
-1. [CSRF](./%2F04.%20CSRF.md)
-1. [Cookies问题](./%2F05.%20Cookies%20%E9%97%AE%E9%A2%98.md)
-1. [点击劫持](./%2F06.%20%E7%82%B9%E5%87%BB%E5%8A%AB%E6%8C%81.md)
-1. [传输安全](./%2F07.%20%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8.md)
-1. [密码安全](./%2F08.%20%E5%AF%86%E7%A0%81%E5%AE%89%E5%85%A8.md)
-1. [接入层注入问题](./%2F09.%20%E6%8E%A5%E5%85%A5%E5%B1%82%E6%B3%A8%E5%85%A5%E9%97%AE%E9%A2%98.md)
-1. [接入层上传问题](./%2F10.%20%E6%8E%A5%E5%85%A5%E5%B1%82%E4%B8%8A%E4%BC%A0%E9%97%AE%E9%A2%98.md)
-1. [社会工程学和信息泄露](./%2F11.%20%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%92%8C%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2.md)
-1. [其他安全问题](./%2F12.%20%20%E5%85%B6%E4%BB%96%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98.md)
-1. [总结](./%2F13.%20%E6%80%BB%E7%BB%93.md)
+## More links
+
+- [GitHub Home](https://github.com/ShenBao)
+- [Blog Home](https://shenbao.github.io)
+- [About Me](https://shenbao.github.io/about/)

@@ -8,3 +8,9 @@
 1. [事件、ajax、跨域、存储](./%2F06.%20%E4%BA%8B%E4%BB%B6%E3%80%81ajax%E3%80%81%E8%B7%A8%E5%9F%9F%E3%80%81%E5%AD%98%E5%82%A8.md)
 1. [开发环境、模块化、上线和回滚](./%2F07.%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E3%80%81%E6%A8%A1%E5%9D%97%E5%8C%96%E3%80%81%E4%B8%8A%E7%BA%BF%E5%92%8C%E5%9B%9E%E6%BB%9A.md)
 1. [运行环境、性能优化、安全性](./%2F08.%20%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E3%80%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E3%80%81%E5%AE%89%E5%85%A8%E6%80%A7.md)
+
+## More links
+
+- [GitHub Home](https://github.com/ShenBao)
+- [Blog Home](https://shenbao.github.io)
+- [About Me](https://shenbao.github.io/about/)

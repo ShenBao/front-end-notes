@@ -48,3 +48,9 @@
 1. [总结](./%2F09.%20%E6%80%BB%E7%BB%93.md)
 - 如何写博客
 - 如何开源
+
+## More links
+
+- [GitHub Home](https://github.com/ShenBao)
+- [Blog Home](https://shenbao.github.io)
+- [About Me](https://shenbao.github.io/about/)

@@ -1,0 +1,19 @@
+{
+  "name": "front-end-notes",
+  "version": "1.0.0",
+  "description": "front-end-notes、前端学习笔记",
+  "main": "generate.README.md.js",
+  "scripts": {
+    "build": "node generate.README.md.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShenBao/front-end-notes.git"
+  },
+  "author": "ShenBao <shenbaoone@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShenBao/front-end-notes/issues"
+  },
+  "homepage": "https://github.com/ShenBao/front-end-notes#readme"
+}

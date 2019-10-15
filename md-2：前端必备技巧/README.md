@@ -17,3 +17,9 @@
 1. [错误监控](./%2F14.%20%E9%94%99%E8%AF%AF%E7%9B%91%E6%8E%A7.md)
 1. [业务能力](./%2F15.%20%E4%B8%9A%E5%8A%A1%E8%83%BD%E5%8A%9B.md)
 1. [职业竞争力](./%2F16.%20%E8%81%8C%E4%B8%9A%E7%AB%9E%E4%BA%89%E5%8A%9B.md)
+
+## More links
+
+- [GitHub Home](https://github.com/ShenBao)
+- [Blog Home](https://shenbao.github.io)
+- [About Me](https://shenbao.github.io/about/)

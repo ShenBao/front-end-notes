@@ -1,5 +1,4 @@
-# md-7：前端 JavaScript 基础
-
+# md-7：前端必备基础
 
 ## More links
 

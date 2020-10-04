@@ -1,102 +1,3 @@
-# 通信
-
-目标：
-
-- 什么是同源策略及限制
-- 前后端如何通信
-- 如何创建 Ajax
-- 跨域通信的几种方式
-
-同源策略：同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。
-
-同源：协议、域名、端口都相同
-
-限制：
-
-- Cookie、LocalStorage、IndexDB 无法读取
-- DOM 无法获得
-- Ajax 不能发送
-
-前后端如何通信:
-
-- Ajax
-- WebSocket
-- CORS
-
-如何创建 Ajax：
-
-- XMLHttpRequest 对象的工作流程
-- 兼容性处理
-- 事件的触发条件
-- 事件的触发顺序
-
-跨域通信的几种方式：
-
-- JSONP
-- HASH
-- PostMessage（H5 新增的）
-- WebSocket
-- CORS
-
-```js
-/**
-* 跨域通信的几种方法
-*/
-
-// jsonp 工作原理，参考 jsonp.js
-
-
-// 利用  hash，场景是当前页面 A 通过  iframe 或  frame 嵌入了跨域的页面 B
-// 在 A 中伪代码如下：
-var B = document.getElementsByTagName('iframe');
-B.src = B.src + '#' + 'data';
-// 在B中的伪代码如下
-window.onhashchange = function () {
-    var data = window.location.hash;
-};
-
-// postMessage
-// 窗口A(http:A.com)向跨域的窗口B(http:B.com)发送信息
-Bwindow.postMessage('data', 'http://B.com');
-// 在窗口B中监听
-Awindow.addEventListener('message', function (event) {
-    console.log(event.origin);
-    console.log(event.source);
-    console.log(event.data);
-}, false);
-
-// Websocket【参考资料】http://www.ruanyifeng.com/blog/2017/05/websocket.html
-
-var ws = new WebSocket('wss://echo.websocket.org');
-
-ws.onopen = function (evt) {
-    console.log('Connection open ...');
-    ws.send('Hello WebSockets!');
-};
-
-ws.onmessage = function (evt) {
-    console.log('Received Message: ', evt.data);
-    ws.close();
-};
-
-ws.onclose = function (evt) {
-    console.log('Connection closed.');
-};
-
-// CORS【参考资料】 http://www.ruanyifeng.com/blog/2016/04/cors.html
-// url（必选），options（可选）
-fetch('/some/url/', {
-    method: 'get',
-}).then(function (response) {
-
-}).catch(function (err) {
-    // 出错了，等价于 then 的第二个参数，但这样更好用更直观
-});
-```
-
-```js
-jsonp.js
-
 /**
  * 功能类库
  */
@@ -131,8 +32,8 @@ util.isFunction = function (source) {
 };
 
 /**
- * [isIE 判断是不是 ie]
- * @return {Boolean} [如果是 ie 返回版本号，不是则返回 false]
+ * [isIE 判断是不是ie]
+ * @return {Boolean} [如果是ie返回版本号，不是则返回false]
  */
 util.isIE = function () {
     var myNav = navigator.userAgent.toLowerCase();
@@ -154,7 +55,7 @@ util.extend = function (dst, obj) {
 };
 
 /**
- * [function 获取一个随机的 5 位字符串]
+ * [function 获取一个随机的5位字符串]
  * @param  {[type]} prefix [description]
  * @return {[type]}        [description]
  */
@@ -163,7 +64,7 @@ util.getName = function (prefix) {
 };
 
 /**
- * [function 在页面中注入 js 脚本]
+ * [function 在页面中注入js脚本]
  * @param  {[type]} url     [description]
  * @param  {[type]} charset [description]
  * @return {[type]}         [description]
@@ -196,7 +97,7 @@ util.jsonp = function (url, onsuccess, onerror, charset) {
     script.onload = script.onreadystatechange = function () {
         if (!script.readyState || /loaded|complete/.test(script.readyState)) {
             script.onload = script.onreadystatechange = null;
-            // 移除该 script 的 DOM 对象
+            // 移除该script的 DOM 对象
             if (script.parentNode) {
                 script.parentNode.removeChild(script);
             }
@@ -213,7 +114,7 @@ util.jsonp = function (url, onsuccess, onerror, charset) {
 };
 
 /**
- * [json 实现 ajax 的 json]
+ * [json 实现ajax的json]
  * @param  {[type]} options [description]
  * @return {[type]}         [description]
  */
@@ -252,7 +153,7 @@ util.json = function (options) {
                 var res;
                 if (opt.success && opt.success instanceof Function) {
                     res = xhr.responseText;
-                    if (typeof res ==== 'string') {
+                    if (typeof res === 'string') {
                         res = JSON.parse(res);
                         opt.success.call(xhr, res);
                     }
@@ -267,7 +168,7 @@ util.json = function (options) {
 };
 
 /**
- * [function crc32 加密]
+ * [function crc32加密]
  * @param  {[type]} str [description]
  * @return {[type]}     [description]
  */
@@ -289,7 +190,7 @@ util.crc32 = function (url) {
             c = ((c & 1) ? (-306674912 ^ (c >>> 1)) : (c >>> 1));
             table[n] = c;
         }
-        return typeof Int32Array !=== 'undefined' ? new Int32Array(table) : table;
+        return typeof Int32Array !== 'undefined' ? new Int32Array(table) : table;
     })();
     var crc32_str = function (str) {
         var C = -1;
@@ -325,4 +226,3 @@ util.crc32 = function (url) {
 };
 
 export default util;
-```

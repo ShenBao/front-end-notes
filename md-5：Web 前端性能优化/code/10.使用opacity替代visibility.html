@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用opacity替代visibility</title>
+    <style>
+        /* visibility */
+        /* #rect {
+            width: 100px;
+            height:100px;
+            background: blue;
+            visibility: visible;
+        } */
+
+        /* opacity */
+        /*  使用 transform: translateZ(0)  可以把 #rect 这个DOM节点单独新建一个新图层*/
+        #rect {
+            width: 100px;
+            height:100px;
+            background: blue;
+            opacity: 1;
+            transform: translateZ(0); 
+            will-change: transform;
+        }
+    </style>
+</head>
+<body>
+    <!-- 使用opacity替代visibility
+        原因：visibility 只会触发重绘（Paint），不会触发回流（Layout）。
+            但 opacity 不会重绘，更不会触发回流
+        visibility: Recalculate Style (0.34 ms) + Update Layer Tree (0.32 ms) + Paint(0.16 ms) + Composite Layers (0.31 ms)
+                    = 1.13 ms
+                    可以看出，visibility只触发了重绘（Paint），没有回流（Layout）过程。
+        opacity:              
+     -->
+     <div id="rect"></div>
+     <script>
+        //  visibility
+        //  setTimeout(()=>{
+        //      document.getElementById("rect").style.visibility = "hidden";
+        //  },2000)
+
+        // opacity
+         setTimeout(()=>{
+             document.getElementById("rect").style.opacity = "0";
+         },2000)
+     </script>
+</body>
+</html>

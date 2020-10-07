@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>懒加载的实现</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 懒加载
+        * 当我们的图片进入可视区域，去请求资源
+
+        * 需要去监听 scroll 事件， 在 scroll 事件的回调中，去判断图片是否进入可视区域
+
+        可视区域： 
+        1. 整个手机屏幕的高度
+        2. 当前图片的上边缘的 top 的情况
+
+        当图片上边缘top的高度 <  整个手机屏幕的高度 时，就进入可视区域。
+
+        * 当img 进入可视区域后，设置 img 的 src 为 data-original 中的值
+        * data-* 属性是 html5中的新属性，用来嵌入自定义数据
+    -->
+    <div class="wrapper">
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i4/36102699/TB2QfUVc0LO8KJjSZFxXXaGEVXa_!!36102699.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i3/2640662546/TB2bLbcX1UXBuNjt_XBXXXeDXXa_!!2640662546.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i1/1014474161/TB13.rSJVXXXXbKXFXXXXXXXXXX_!!0-item_pic.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i1/1031642079/O1CN011REDsGeSO2LgDoj_!!1031642079.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i4/415008212/TB2LXl3jXXXXXXaXFXXXXXXXXXX_!!415008212.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i1/711281013/TB2SgD9DVGWBuNjy0FbXXb4sXXa_!!711281013.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i3/2946082841/TB1si0midrJ8KJjSspaXXXuKpXa_!!0-item_pic.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i1/750447093/O1CN01SkVxrq22GdsHogJVm_!!750447093.png_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i2/772094587/TB2jRrvj_cCL1FjSZFPXXXZgpXa_!!772094587.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i1/2900072463/TB2AFQ7wohnpuFjSZFpXXcpuXXa_!!2900072463.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i3/366149475/TB2Hf2si2NZWeJjSZFpXXXjBFXa_!!366149475.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i2/21311178/TB2aQ0fqwRkpuFjy1zeXXc.6FXa_!!21311178.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i1/2709816667/O1CN01sTK8WY1z7X8GxNbNv_!!0-item_pic.jpg_500x500q90.jpg_.webp"/> 
+        <img src="" lazyload="true" data-original="https://gw.alicdn.com/bao/uploaded/i3/354689984/O1CN01wREbWE2Ncit0Q4Ye1_!!0-item_pic.jpg_500x500q90.jpg_.webp"/> 
+    </div>
+    <script src="lazy.js"></script>
+</body>
+</html>

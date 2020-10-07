@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用translate替代top</title>
+    <style>
+        /* top */
+        /* #rect {
+            width: 100px;
+            height:100px;
+            background: blue;
+            position: relative;
+            top: 0;
+        } */
+
+        /* translate */
+        #rect {
+            width: 100px;
+            height:100px;
+            background: blue;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        使用 translate 替代 top：
+        原因： top会触发回流， 但是translate不会。
+        top: Recalculate Style (0.44ms) + Layout(0.4ms) + Update Layer Tree(0.57ms) + Paint(0.16ms) + Composite Layers(1.41ms)
+             = 0.44 + 0.4 + 0.57 + 0.16 + 1.41 = 2.97 ms
+             由此可以看出，top 会触发回流（Layout）,而回流必定会触发重绘（Paint）
+
+        translate: Recalculate Style (0.36ms) + Update Layer Tree(0.39ms) + Composite Layers(0.29ms)
+             = 0.36 + 0.39 + 0.29 = 1.04 ms
+        
+        对比可以看出，使用translate，缺少了 Layout（回流）和 Paint（重绘）这个过程，从而提升了渲染性能。     
+
+        应用场景：
+            浮窗的top变化 ----- translate
+     -->
+     <div id="rect"></div>
+     <script>
+        //  top
+        //  setTimeout(()=>{
+        //      document.getElementById("rect").style.top = "100px";
+        //  },2000)
+
+        // translate
+         setTimeout(()=>{
+             document.getElementById("rect").style.transform = "translateY(100px)";
+         },2000)
+     </script>
+</body>
+</html>

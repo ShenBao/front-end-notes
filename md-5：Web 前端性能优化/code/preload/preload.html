@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>预加载</title>
+</head>
+<body>
+    <!-- 预加载的实现方式
+        1. 直接使用 img 标签,并设置 style的 display: none,就可以把图片预先加载下来.
+        2. 使用 Image 对象
+            var image = new Image();
+            image.src="https://gw.alicdn.com/bao/uploaded/i4/36102699/TB2QfUVc0LO8KJjSZFxXXaGEVXa_!!36102699.jpg_500x500q90.jpg_.webp";
+        3. 使用XMLHttpRequest对象
+            * 缺点:存在跨域问题
+        4. preloadJS库:  preload.js    
+            * 推荐使用，比较方便
+    -->
+    <img src="https://gw.alicdn.com/bao/uploaded/i4/36102699/TB2QfUVc0LO8KJjSZFxXXaGEVXa_!!36102699.jpg_500x500q90.jpg_.webp" style="display: none;"/>
+
+</body>
+</html>

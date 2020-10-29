@@ -1,0 +1,52 @@
+# oz-2：前端性能优化
+
+- Web 性能优化介绍
+- Web 性能指标
+  - RAIL 性能模型
+  - 基于用户体验的性能指标
+  - Web Vitals
+- Web 性能测试
+  - 使用灯塔 Lighthouse 测试性能
+  - 使用 WebPageTest 测试性能
+  - 使用 Chrome DevTools 测试性能
+  - 性能测量 APIs
+  - 性能监控
+- 前端页面的生命周期
+- 请求和响应优化
+  - NDS 解析
+  - HTTP 长连接
+  - HTTP 2
+  - 避免重定向
+  - 压缩传输的数据资源
+  - HTTP 缓存
+  - Service Worker
+  - CDN 缓存
+  - Push 缓存
+  - 使用服务端渲染
+  - 使用预渲染
+- 渲染优化
+  - 关键渲染路径优化
+  - JS 执行优化
+  - 计算样式优化
+  - 页面布局与重绘优化
+  - 合成处理
+- 资源加载优化
+  - 图片延迟加载
+  - 视频加载
+  - 路由懒加载
+  - 资源优先级
+- 图片优化
+  - 图片基础
+  - 图像格式
+  - 图像使用建议
+- 构建优化
+  - 压缩与合并
+  - 使用 webpack 进行资源构建
+  - webpack 优化性能
+- 特定场景优化
+
+## More links
+
+- [GitHub Home](https://github.com/ShenBao)
+- [Blog Home](https://shenbao.github.io)
+- [About Me](https://shenbao.github.io/about/)

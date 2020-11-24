@@ -1,0 +1,5 @@
+@each $style in (primary $color-text-primary, secondary $color-text-secondary, tertiary $color-text-tertiary, quaternary $color-text-quaternary) {
+  [font-#{nth($style, 1)}] {
+    color: #{nth($style, 2)};
+  }
+}

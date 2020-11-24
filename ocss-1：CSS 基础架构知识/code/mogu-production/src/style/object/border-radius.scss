@@ -1,0 +1,10 @@
+@for $i from 1 through 10 {
+  [radius#{$i}] { 
+    border-radius: #{$i}Px;
+    overflow: hidden;
+  }
+}
+
+[circle] {
+  border-radius: 100rem;
+}

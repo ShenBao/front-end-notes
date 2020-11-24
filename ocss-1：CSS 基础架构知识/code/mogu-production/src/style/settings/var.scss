@@ -1,0 +1,22 @@
+/* Color
+----------------------- */
+$color-primary: #FF5777;
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+$color-text-primary: #333333;
+$color-text-secondary: #666666;
+$color-text-tertiary: $color-white;
+$color-text-quaternary: $color-primary;
+
+$border-color-base: #E5E5E5;
+
+$background-color-primary: #F1F1F1;
+$background-color-secondary: $color-white;
+$background-color-tertiary: $color-primary;
+
+/* Border
+----------------------- */
+$border-width-base: 1Px !default;
+$border-style-base: solid !default;
+$border-base: $border-width-base $border-style-base $border-color-base !default;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .block {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position:absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+      }
+      .bottom_block {
+          width: 200px;
+          height: 200px;
+          background: rgb(75, 131, 240);
+          animation: bottom 1s 0.3s linear both infinite;
+
+    }
+      .up_block {
+        width: 100px;
+          height: 100px;
+          background: rgb(233, 52, 240);
+          animation: up 1s 0.3s linear both infinite;
+      }
+    @keyframes bottom {
+        0% {transform: scale(1, 1) translate(0, 0);}
+        15% {transform: scale(1.13, 0.87) translate(0, 0);}
+        30% {transform: scale(0.92, 1.08) translate(0, -40px);}
+        45% {transform: scale(1.05, 0.95) translate(0, 0);}
+        60% {transform: scale(0.98, 1.02) translate(0, -20px);}
+        75% {transform: scale(1, 1) translate(0, 0);}
+        100% {transform: scale(1, 1) translate(0, 0);}
+    }
+    @keyframes up {
+        0% {transform: scale(1, 1) translate(0, 0);}
+        15% {transform: scale(1, 1) translate(0, 19px);}
+        30% {transform: scale(0.98, 1.02) translate(0, -54px);}
+        45% {transform: scale(0.96, 1.04) translate(0, -70px);}
+        60% {transform: scale(0.98, 1.02) translate(0, -54px);}
+        75% {transform: scale(1.02, 0.98) translate(0, 0);}
+        90% {transform: scale(0.99, 1.01) translate(0, -5px);}
+        100% {transform: scale(1, 1) translate(0, 0);}
+    }
+    </style>
+  </head>
+  <body>
+    <div class="block">
+        <div class="up_block"></div>
+        <div class="bottom_block"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+/*声明 WebFont*/
+@font-face {
+  font-family: 'tuzi';
+  src: url('./font/tuzi.eot');
+  src:
+    url('./font/tuzi.eot?#font-spider') format('embedded-opentype'),
+    url('./font/tuzi.woff') format('woff'),
+    url('./font/tuzi.ttf') format('truetype'),
+    url('./font/tuzi.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*使用选择器指定字体*/
+body {
+  font-family: 'tuzi';
+}

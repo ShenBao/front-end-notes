@@ -1,0 +1,35 @@
+{
+  "name": "mogujie",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bourbon": "^7.0.0",
+    "core-js": "^3.6.5",
+    "lib-flexible": "^0.3.2",
+    "mockjs": "^1.1.0",
+    "normalize.css": "^8.0.1",
+    "vant": "^3.0.0-beta.4",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-rc.2",
+    "vuex-persistedstate": "^4.0.0-beta.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "compass-mixins": "^0.12.10",
+    "postcss-plugin-px2rem": "^0.8.1",
+    "postcss-px-to-viewport": "^1.1.1",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "svg-sprite-loader": "^5.0.0",
+    "vue-loader-v16": "^16.0.0-beta.5.4"
+  }
+}

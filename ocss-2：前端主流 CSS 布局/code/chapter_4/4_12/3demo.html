@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width:500px;
+            height:500px;
+            background:skyblue;
+            display: flex;
+            align-items: flex-start;
+        }
+        .main div{
+            background:pink;
+            /* flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0%; */
+            /* flex:1; */
+
+           /*  flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: 0%; */
+           /*  flex:0; */
+
+           /* flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: auto; */
+           /* flex:auto; */
+
+           /* flex-grow: 1;
+           flex-shrink: 0;
+           flex-basis: 50%; */
+           flex:1 0 50%;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div>测试文字</div>
+    </div>
+</body>
+</html>

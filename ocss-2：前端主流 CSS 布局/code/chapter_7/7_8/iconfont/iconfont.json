@@ -1,0 +1,30 @@
+{
+  "id": "2565852",
+  "name": "ghost",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3428018",
+      "name": "折叠",
+      "font_class": "zhedie",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "168044",
+      "name": "文件夹",
+      "font_class": "wenjianjia",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "8642437",
+      "name": "右箭头",
+      "font_class": "arrow-left",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}

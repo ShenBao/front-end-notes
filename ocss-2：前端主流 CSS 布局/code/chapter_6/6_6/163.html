@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        html{
+            font-size:26.666667vw;
+        }
+        body{
+            font-size: 0.16rem;
+        }
+        a{
+            color: #34372e;
+        }
+        .head{
+            height: 0.43rem;
+            background: #ef1b1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.1rem;
+        }
+        .head i {
+            font-size: 0.18rem;
+        }
+        .head-user, .head-email{
+            width: 25%;
+            font-size: 0.14rem;
+        }
+        .head-email{
+            text-align: right;
+        }
+        .head-logo{
+            width: 50%;
+            text-align: center;
+        }
+        .head-logo img{
+            height: 0.21rem;
+        }
+
+        .nav{
+            height: 0.46rem;
+            border-bottom: 0.005rem #ededed solid;
+            padding:0 0.1rem;
+            display: flex;
+            align-items: center; 
+            font-size: 0.18rem;
+        }
+        .nav li{
+            flex-grow: 1;
+            text-align: center;
+            position: relative;
+        }
+        .nav li.active a{
+            color: #ef191b;
+        }
+        .nav li.active::after{
+            content: "";
+            position: absolute;
+            left:50%;
+            bottom:-0.12rem;
+            margin-left: -0.07rem;
+            width: 0.15rem;
+            height: 0.02rem;
+            background: #ef191b;
+        }
+        .nav-sub{
+            padding: 0.11rem 0.1rem 0.07rem 0.1rem;
+            background: #f8f8f8;
+            position: relative;
+        }
+        .nav-sub-list{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-rows: 0.35rem;
+        }
+        .nav-sub__closed{
+            height: 0.7rem;
+            overflow: hidden;
+        }
+        .nav-sub__closed + .nav-sub-arrow{
+            transform: rotate(0);
+        }
+        .nav-sub-arrow{
+            position: absolute;
+            right: 0.1rem;
+            bottom: 0.2rem;
+            transform: rotate(180deg);
+        }
+        .news{
+            padding: 0 0.1rem;
+        }
+        .news-title{
+            font-size: 0.18rem;
+            line-height: 0.66rem;
+        }
+        .news-item{
+            margin-bottom: 0.25rem;
+        }
+        .news-item-title{
+            width: 2.95rem;
+            line-height: 0.22rem;
+            font-size: 0.17rem;
+            margin-bottom: 0.08rem;
+            font-weight: 400;
+        }
+        .news-item-info{
+            font-size: 0.12rem;
+            color: #b3b4b6;
+        }
+        .news-item-img img{
+            width: 100%;
+            margin-top: 0.05rem;
+            margin-bottom: 0.09rem;
+        }
+
+        .news2-item{
+            border-top: 0.005rem #f6f7f9 solid;
+            padding: 0.1rem;
+            display: flex;
+        }
+        .news2-item-content{
+            flex-grow: 1;
+            margin-right: 0.15rem;
+        }
+        .news2-item-title{
+            line-height: 0.22rem;
+            font-size: 0.17rem;
+            margin-bottom: 0.08rem;
+            font-weight: 400;
+        }
+        .news2-item-info{
+            font-size: 0.12rem;
+            color: #b3b4b6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news2-item-img{
+            width: 1.17rem;
+        }
+        .news2-item-img img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+        .app{
+            color: #fb1515;
+            border:0.005rem #fbbab8 solid;
+            border-radius: 1rem;
+            padding:0.02rem 0.05rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="head-user">
+            <i class="iconfont icon-yonghu"></i>
+        </div>
+        <div class="head-logo">
+            <img src="./img/logo.png" alt="">
+        </div>
+        <div class="head-email">
+            <i class="iconfont icon-youxiang"></i>
+            邮箱
+            <i class="iconfont icon-jiantou"></i>
+        </div>
+    </div>
+    <ul class="nav">
+        <li class="active">
+            <a href="#">要闻</a>
+        </li>
+        <li>
+            <a href="#">推荐</a>
+        </li>
+        <li>
+            <a href="#">原创</a>
+        </li>
+        <li>
+            <a href="#">热点</a>
+        </li>
+    </ul>
+    <div class="nav-sub">
+        <ul class="nav-sub-list">
+            <li>
+                <a href="#">新闻</a>
+            </li>
+            <li>
+                <a href="#">抗疫</a>
+            </li>
+            <li>
+                <a href="#">娱乐</a>
+            </li>
+            <li>
+                <a href="#">体育</a>
+            </li>
+            <li>
+                <a href="#">财经</a>
+            </li>
+            <li>
+                <a href="#">新闻</a>
+            </li>
+            <li>
+                <a href="#">抗疫</a>
+            </li>
+            <li>
+                <a href="#">娱乐</a>
+            </li>
+            <li>
+                <a href="#">体育</a>
+            </li>
+            <li>
+                <a href="#">财经</a>
+            </li>
+            <li>
+                <a href="#">新闻</a>
+            </li>
+            <li>
+                <a href="#">抗疫</a>
+            </li>
+            <li>
+                <a href="#">娱乐</a>
+            </li>
+            <li>
+                <a href="#">体育</a>
+            </li>
+            <li>
+                <a href="#">财经</a>
+            </li>
+        </ul>
+        <div class="nav-sub-arrow">
+            <i class="iconfont icon-down-arrow"></i>
+        </div>
+    </div>
+    <div class="news">
+        <h2 class="news-title">今日要闻</h2>
+        <div class="news-item">
+            <h3 class="news-item-title">测试文字测试文字</h3>
+            <p class="news-item-info">央视网 1小时前 879跟帖</p>
+        </div>
+        <div class="news-item">
+            <h3 class="news-item-title">测试文字测试文字</h3>
+            <p class="news-item-info">央视网 1小时前 879跟帖</p>
+        </div>
+        <div class="news-item">
+            <h3 class="news-item-title">测试文字测试文字测试文字测试文字测试文字测试文字</h3>
+            <div class="news-item-img"><img src="./img/news.jpg" alt=""></div>
+            <p class="news-item-info">央视网 1小时前 879跟帖</p>
+        </div>
+    </div>
+    <div class="news2">
+        <div class="news2-item">
+            <div class="news2-item-content">
+                <h3 class="news2-item-title">测试文字测试文字</h3>
+                <p class="news2-item-info">
+                    <span>上游新闻 2287跟贴</span>
+                    <span class="app">打开APP</span>
+                </p>
+            </div>
+            <div class="news2-item-img">
+                <img src="./img/news2.jpg" alt="">
+            </div>
+        </div>
+        <div class="news2-item">
+            <div class="news2-item-content">
+                <h3 class="news2-item-title">测试文字测试文字</h3>
+                <p class="news2-item-info">
+                    <span>上游新闻 2287跟贴</span>
+                    <span class="app">打开APP</span>
+                </p>
+            </div>
+            <div class="news2-item-img">
+                <img src="./img/news3.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

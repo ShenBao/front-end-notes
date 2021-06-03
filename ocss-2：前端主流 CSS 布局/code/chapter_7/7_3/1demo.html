@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* .box{
+            width:100px;
+            height:100px;
+            background:blue;
+        }
+
+        @media (min-width: 700px) {
+            .box{
+                background: pink;
+            }
+        } */
+
+        /* .box{
+            width:100px;
+            height:100px;
+            background:blue;
+        }
+        */
+        /* 如何多条件的时候，min-width编写顺序：从小到大进行适配 */
+        /* min-width方式：移动优先的原则，先编写移动端设备，然后响应式过渡到PC端 */
+        /* @media (min-width: 700px) {
+            .box{
+                background: pink;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .box{
+                background: green;
+            }
+        } */
+
+
+        /* 如何从PC端响应式过渡到移动端？ max-width , 从大到小区编写 */
+
+        .box{
+            width:100px;
+            height:100px;
+            background:blue;
+        }
+
+        @media (max-width: 1000px) {
+            .box{
+                background: pink;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .box{
+                background: green;
+            }
+        } 
+
+        
+
+    </style>
+</head>
+<body>
+    <div class="box">aaaaaa</div>
+</body>
+</html>

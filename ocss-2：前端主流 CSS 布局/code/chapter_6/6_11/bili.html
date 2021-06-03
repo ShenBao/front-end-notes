@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        a{
+            color: #4c514d;
+        }
+        .head{
+            height: 11.733vw;
+            display: flex;
+            align-items: center;
+            padding: 0 2.667vw;
+        }
+        .head-logo{
+            margin-left: 2.133vw;
+            margin-right: auto;
+        }
+        .head-logo i{
+            font-size: 7.467vw;
+            color: #f47296;
+        }
+        .head-search i{
+            font-size: 5.867vw;
+            color: #c9c9c9;
+        }
+        .head-login{
+            margin-left: 5.333vw;
+            background: #e8e8e8;
+            font-size: 3.2vw;
+            border-radius: 50%;
+            padding: 1.867vw;   
+        }
+        .head-login a{
+            color: #f47296;
+        }
+        .head-app{
+            margin-right: 0.533vw;
+            margin-left: 5.333vw;
+            background: #f47296;
+            border-radius: 1.067vw;
+            padding: 1.333vw 2.667vw;
+        }
+        .head-app a{
+            color: #fffefc;
+        }
+
+        .nav{
+            height: 10.667vw;
+            border-bottom: 0.133vw solid #f3f3f3; 
+            padding: 0 2.667vw;
+            position: relative;
+        }
+        .nav-list{
+            height:100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .nav-list li{
+            width: 10.667vw;
+            margin-right:5.333vw;
+            flex-shrink: 0;
+            text-align: center;
+            position: relative;
+        }
+        .nav-list li.active a{
+            color: #f47296;
+        }
+        .nav-list li.active::after{
+            content: "";
+            position: absolute;
+            width: 11.733vw;
+            height: 0.533vw;
+            background: #f47296;
+            bottom: -2.667vw;
+            left: -0.533vw;
+        }
+        .nav-arrow{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 10.667vw;
+            height:100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video{
+            padding: 2.133vw 2.667vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 2.667vw;
+        }
+        .video-item-pic{
+            display: grid;
+        }
+        .video-item-pic img{
+            grid-area: 1/1/1/1;
+            width:100%;
+            height:100%;
+            object-fit: cover;
+            border-radius: 0.8vw;
+        }
+        .video-item-pic span{
+            grid-area: 1/1/1/1;
+            align-self: flex-end;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0.533vw;
+        }
+        .video-item-pic i{
+            margin-right: 1.333vw;
+        }
+        .video-item-title{
+            margin-top: 1.867vw;
+            margin-bottom: 4vw;
+            font-size: 3.2vw;
+            line-height: 4.267vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="head-logo">
+            <i class="iconfont icon-BILIBILI_LOGO"></i>
+        </div>
+        <div class="head-search">
+            <i class="iconfont icon-fangdajing"></i>
+        </div>
+        <div class="head-login">
+            <a href="#">登录</a>
+        </div>
+        <div class="head-app">
+            <a href="#">下载 App</a>
+        </div>
+    </div>
+    <div class="nav">
+        <ul class="nav-list">
+            <li class="active">
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">动画</a>
+            </li>
+            <li>
+                <a href="#">番剧</a>
+            </li>
+            <li>
+                <a href="#">国创</a>
+            </li>
+            <li>
+                <a href="#">音乐</a>
+            </li>
+            <li>
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="#">动画</a>
+            </li>
+            <li>
+                <a href="#">番剧</a>
+            </li>
+            <li>
+                <a href="#">国创</a>
+            </li>
+            <li>
+                <a href="#">音乐</a>
+            </li>
+        </ul>
+        <div class="nav-arrow">
+            <i class="iconfont icon-arrow-bottom"></i>
+        </div>
+    </div>
+    <ul class="video">
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video1.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video2.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video3.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video1.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video1.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题测试标题测试标题测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video1.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video3.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+        <li class="video-item">
+            <div class="video-item-pic">
+                <img src="./img/video2.jpg" alt="">
+                <span>
+                    <span>
+                        <i class="iconfont icon-703bofang-fangxing-xianxing"></i>
+                        73.7万
+                    </span>
+                    <span>
+                        <i class="iconfont icon-xinxi"></i>
+                        5591
+                    </span>
+                </span>
+            </div>
+            <h3 class="video-item-title">
+                <a href="#">测试标题测试标题</a>
+            </h3>
+        </li>
+    </ul>
+</body>
+</html>

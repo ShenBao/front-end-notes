@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        :root{
+            --container: 100%;
+        }
+        body{
+            background: #ebebeb;
+        }
+        a{
+            color: #505050;
+        }
+        .head{
+            height: 190px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .head-logo{
+            width: 200px;
+        }
+        .nav{
+            border-top: 1px #ebebeb solid;
+            border-bottom: 2px #e1e1e1 solid;
+            background: white;
+            padding: 0 15px;
+        }
+        .nav-bar{
+            height: 56px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-bar i{
+            cursor: pointer;
+        }
+        .nav-list{
+            display: none;
+        }
+        .nav-list li{
+            height: 56px;
+            line-height: 56px;
+            position: relative;
+            padding:0 21px;
+        }
+        .nav-list li.active::after{
+            content: "";
+            position: absolute;
+            left:0;
+            bottom:0;
+            width: 100%;
+            height: 2px;
+            background: #e67e22;
+        }
+        .nav-toggle{
+            display: none;
+        }
+        .nav-toggle:checked + .nav-list{
+            display: block;
+        }
+
+        .main{
+            padding: 0 15px;
+            width: var(--container);
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .main-article{
+            margin-top: 35px;
+            background: white;
+            padding: 35px;
+            line-height: 1.5;
+        }
+        .main-article h2{
+            font-size: 35px;
+            text-align: center;
+            font-weight: 400;
+        }
+        .main-article div{
+            text-align: center;
+            color: #959595;
+        }
+        .main-article p{
+            margin-top:25px;
+            font-size:18px;
+        }
+        .main-article button{
+            border:none;
+            background: #e67e22;
+            color: white;
+            padding:10px;
+            cursor: pointer;
+            margin: 30px 0;
+        }
+        .main-article section{
+            border-top:1px #ebebeb solid;
+            padding-top:20px;
+        }
+        .main-article section i{
+            margin-right: 10px;
+        }
+
+        .main-aside{
+            background: white;
+            padding:35px;
+            margin-top:35px;
+        }
+        .main-aside h3{
+            font-size: 20px;
+            font-weight: 400;
+            padding-bottom: 10px;
+            border-bottom: 1px #cccccc solid;
+            position: relative;
+        }
+        .main-aside h3::after{
+            content:"";
+            position: absolute;
+            left:0;
+            bottom:-1px;
+            width: 90px;
+            height: 1px;
+            background: #e67e22;
+
+        }
+
+        .main-aside p{
+            margin-top:30px;
+        }
+
+        .main-aside button{
+            border:none;
+            background: #e67e22;
+            color: white;
+            padding:10px;
+            cursor: pointer;
+            margin-top: 30px;
+            width: 100%;
+        }
+        .main-aside div {
+            margin-top: 20px;
+        }
+        .main-aside div a{
+            border:1px #ebebeb solid;
+            display: inline-block;
+            margin:11px 7px 0 0;
+            padding:5px 10px;
+        }
+
+        .foot{
+            margin-top: 35px;
+            padding-top:35px;
+            background: #202020;
+            overflow: hidden;
+        }
+        .foot-wrapper{
+            width: var(--container);
+            margin: 0 auto;
+        }
+        .foot-item{
+            padding:0 30px;
+            margin-bottom: 30px;
+        }
+        .foot-item h3{
+            color: white;
+            font-size: 22px;
+            font-weight: 400;
+            padding-bottom: 10px;
+            border-bottom: 1px #cccccc solid;
+            position: relative;
+        }
+        .foot-item h3::after{
+            content:"";
+            position: absolute;
+            left:0;
+            bottom:-1px;
+            width: 90px;
+            height: 1px;
+            background: #e67e22;
+        }
+        .foot-item div{
+            margin-top: 20px;
+        }
+        .foot-item div a{
+            margin:10px;
+            display: inline-block;
+            color: #959595;
+        }
+
+        .copyright{
+            background: #111111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            color: #555555;
+        }
+
+        .row{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+        .row>[class*="col"]{
+            grid-area: auto/auto/auto/span 12;
+        }
+        .row .col-1{
+            grid-area: auto/auto/auto/span 1;
+        }
+        .row .col-2{
+            grid-area: auto/auto/auto/span 2;
+        }
+        .row .col-3{
+            grid-area: auto/auto/auto/span 3;
+        }
+        .row .col-4{
+            grid-area: auto/auto/auto/span 4;
+        }
+        .row .col-5{
+            grid-area: auto/auto/auto/span 5;
+        }
+        .row .col-6{
+            grid-area: auto/auto/auto/span 6;
+        }
+        .row .col-7{
+            grid-area: auto/auto/auto/span 7;
+        }
+        .row .col-8{
+            grid-area: auto/auto/auto/span 8;
+        }
+        .row .col-9{
+            grid-area: auto/auto/auto/span 9;
+        }
+        .row .col-10{
+            grid-area: auto/auto/auto/span 10;
+        }
+        .row .col-11{
+            grid-area: auto/auto/auto/span 11;
+        }
+        .row .col-12{
+            grid-area: auto/auto/auto/span 12;
+        }
+
+        @media (min-width: 576px){
+            .row .col-sm-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-sm-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-sm-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-sm-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-sm-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-sm-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-sm-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-sm-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-sm-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-sm-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-sm-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-sm-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 768px){
+
+            .nav-bar{
+                display: none;
+            }
+            .nav-list{
+                display: flex !important;
+                justify-content: center;
+                justify-items: center;
+            }
+
+            .row .col-md-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-md-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-md-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-md-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-md-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-md-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-md-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-md-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-md-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-md-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-md-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-md-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 992px){
+            :root{
+                --container: 940px;
+            }
+
+            .row>[class*="col"]{
+                padding: 0 15px;
+            }
+
+            .row .col-lg-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-lg-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-lg-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-lg-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-lg-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-lg-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-lg-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-lg-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-lg-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-lg-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-lg-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-lg-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 1200px){
+
+            :root{
+                --container: 1160px;
+            }
+
+            .row>[class*="col"]{
+                padding: 0 15px;
+            }
+
+            .row .col-xl-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-xl-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-xl-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-xl-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-xl-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-xl-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-xl-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-xl-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-xl-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-xl-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-xl-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-xl-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 1400px){
+            .row .col-xxl-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-xxl-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-xxl-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-xxl-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-xxl-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-xxl-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-xxl-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-xxl-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-xxl-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-xxl-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-xxl-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-xxl-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <img class="head-logo" src="./img/ghost-logo.png" alt="">
+    </div>
+    <div class="nav">
+        <div class="nav-bar">
+            <label for="nav-toggle">
+                <i class="iconfont icon-zhedie"></i>
+            </label>
+        </div>
+        <input id="nav-toggle" class="nav-toggle" type="checkbox">
+        <ul class="nav-list">
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">论坛</a></li>
+            <li><a href="#">快捷手册</a></li>
+            <li><a href="#">中文文档</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </div>
+    <div class="main row">
+        <div class="col-lg-8">
+            <div class="main-article">
+                <h2>
+                    全新的 Ghost 文档上线
+                </h2>
+                <div>
+                    <span>作者：王赛</span> • <span>2018年11月20日</span>
+                </div>
+                <p>
+                    我们的整个 Ghost 文档 已经全新改版了！并且添加了一些新的补充，包括使用教程和功能集成。 新文档的目标是帮助更多人有效地安装并管理他们发布的内容，并且最大限度地发挥 Ghost 作为一个开源发布平台的灵活性。文档的设计和结构已经修订完毕，我们的改进包括 Ghost 安装和设
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    <i class="iconfont icon-wenjianjia"></i>
+                    <a href="#">Android</a>，
+                    <a href="#">客户端</a>
+                </section>
+            </div>
+            <div class="main-article">
+                <h2>
+                    全新的 Ghost 文档上线
+                </h2>
+                <div>
+                    <span>作者：王赛</span> • <span>2018年11月20日</span>
+                </div>
+                <p>
+                    我们的整个 Ghost 文档 已经全新改版了！并且添加了一些新的补充，包括使用教程和功能集成。 新文档的目标是帮助更多人有效地安装并管理他们发布的内容，并且最大限度地发挥 Ghost 作为一个开源发布平台的灵活性。文档的设计和结构已经修订完毕，我们的改进包括 Ghost 安装和设
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    <i class="iconfont icon-wenjianjia"></i>
+                    <a href="#">Android</a>，
+                    <a href="#">客户端</a>
+                </section>
+            </div>
+            <div class="main-article">
+                <h2>
+                    全新的 Ghost 文档上线
+                </h2>
+                <div>
+                    <span>作者：王赛</span> • <span>2018年11月20日</span>
+                </div>
+                <p>
+                    我们的整个 Ghost 文档 已经全新改版了！并且添加了一些新的补充，包括使用教程和功能集成。 新文档的目标是帮助更多人有效地安装并管理他们发布的内容，并且最大限度地发挥 Ghost 作为一个开源发布平台的灵活性。文档的设计和结构已经修订完毕，我们的改进包括 Ghost 安装和设
+                </p>
+                <button>阅读全文</button>
+                <section>
+                    <i class="iconfont icon-wenjianjia"></i>
+                    <a href="#">Android</a>，
+                    <a href="#">客户端</a>
+                </section>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="main-aside">
+                <h3>声明</h3>
+                <p>Ghost 中文版不再继续维护，请去官方下载。</p>
+            </div>
+            <div class="main-aside">
+                <h3>下载</h3>
+                <button>Ghost最新版</button>
+            </div>
+            <div class="main-aside">
+                <h3>标签云</h3>
+                <div>
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                    <a href="#">jQuery</a>
+                    <a href="#">Ghost 0.7 版本</a>
+                    <a href="#">开源</a>
+                    <a href="#">助手函数</a>
+                    <a href="#">客户端</a>
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                    <a href="#">jQuery</a>
+                    <a href="#">Ghost 0.7 版本</a>
+                    <a href="#">开源</a>
+                    <a href="#">助手函数</a>
+                    <a href="#">客户端</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <div class="foot-wrapper row">
+            <div class="foot-item col-lg-4">
+                <h3>友链</h3>
+                <div>
+                    <a href="#">Bootstrap中文网</a>
+                    <a href="#">React</a>
+                    <a href="#">Vue.js</a>
+                    <a href="#">Svelte</a>
+                    <a href="#">Preact</a>
+                    <a href="#">Babel</a>
+                    <a href="#">Webpack</a>
+                    <a href="#">Rollup.js</a>
+                    <a href="#">Bootstrap中文网</a>
+                    <a href="#">React</a>
+                    <a href="#">Vue.js</a>
+                    <a href="#">Svelte</a>
+                    <a href="#">Preact</a>
+                    <a href="#">Babel</a>
+                    <a href="#">Webpack</a>
+                    <a href="#">Rollup.js</a>
+                </div>
+            </div>
+            <div class="foot-item col-lg-4">
+                <h3>标签云</h3>
+                <div>
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                    <a href="#">jQuery</a>
+                    <a href="#">Ghost 0.7 版本</a>
+                    <a href="#">开源</a>
+                    <a href="#">助手函数</a>
+                    <a href="#">客户端</a>
+                    <a href="#">客户端</a>
+                    <a href="#">Android</a>
+                    <a href="#">jQuery</a>
+                    <a href="#">Ghost 0.7 版本</a>
+                    <a href="#">开源</a>
+                    <a href="#">助手函数</a>
+                    <a href="#">客户端</a>
+                </div>
+            </div>
+            <div class="foot-item col-lg-4">
+                <h3>合作伙伴</h3>
+                <div>
+                    <a href="#">腾讯</a>
+                    <a href="#">阿里巴巴</a>
+                    <a href="#">百度</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Ghost中文网 | 京ICP备11008151号-11 | 京公网安备11010802014853</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,664 @@
+@charset "utf-8";
+
+/* --------------------重置样式-------------------------------- */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+button,
+input,
+textarea,
+th,
+td {
+    margin : 0;
+    padding: 0
+}
+
+/*设置默认字体*/
+body {
+    font-size  : 14px;
+    font-style : normal;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, helvetica neue, Arial, noto sans, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol, noto color emoji;
+}
+
+/*字体太小用户体检不好，让small恢复12px*/
+small {
+    font-size: 12px
+}
+
+h1 {
+    font-size: 18px
+}
+
+h2 {
+    font-size: 16px
+}
+
+h3 {
+    font-size: 14px
+}
+
+h4,
+h5,
+h6 {
+    font-size: 100%
+}
+
+ul,
+ol {
+    list-style: none
+}
+
+a {
+    text-decoration : none;
+    background-color: transparent
+}
+
+a:hover,
+a:active {
+    outline-width  : 0;
+    text-decoration: none
+}
+
+/*重置表格*/
+table {
+    border-collapse: collapse;
+    border-spacing : 0
+}
+
+/*重置hr*/
+hr {
+    border: 0;
+    height: 1px
+}
+
+/*图形图片*/
+img {
+    border-style: none
+}
+
+img:not([src]) {
+    display: none
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+/*下面的操作是针对于html5页面布局准备的，不支持ie6~8以及其他低版本的浏览器*/
+html {
+    /*禁用系统默认菜单*/
+    -webkit-touch-callout   : none;
+    /*关闭iphone & Android的浏览器纵向和横向模式中自动调整字体大小的功能*/
+    -webkit-text-size-adjust: 100%
+}
+
+input,
+textarea,
+button,
+a {
+    /*表单或者a标签在手机点击时会出现边框或彩色的背景区域，意思是去除点击背景框*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+/*重置html5元素的默认样式*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+    display: block
+}
+
+audio,
+canvas,
+progress,
+video {
+    display: inline-block
+}
+
+audio:not([controls]),
+video:not([controls]) {
+    display: none;
+    height : 0
+}
+
+progress {
+    vertical-align: baseline
+}
+
+mark {
+    background-color: #ff0;
+    color           : #000
+}
+
+sub,
+sup {
+    position      : relative;
+    font-size     : 75%;
+    line-height   : 0;
+    vertical-align: baseline
+}
+
+sub {
+    bottom: -0.25em
+}
+
+sup {
+    top: -0.5em
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    outline  : 0
+}
+
+button,
+input {
+    overflow: visible
+}
+
+button,
+select {
+    text-transform: none
+}
+
+textarea {
+    overflow: auto
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding     : 0
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    padding   : 0
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset    : -2px
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+::-webkit-input-placeholder {
+    color  : inherit;
+    opacity: .54
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font              : inherit
+}
+
+/*-----------------通用方法-----------------------*/
+
+:root {
+    --theme: #1890ff;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+/*-----------------通用布局(g-)-----------------------*/
+
+.g-ant {
+    display: flex;
+}
+
+.g-ant__sider {
+    flex-shrink: 0;
+    background : #00152a;
+    width      : 208px;
+    min-height : 100vh;
+    position: relative;
+    z-index: 3;
+}
+
+.g-ant-sider__wrap {
+    height        : 100%;
+    display       : flex;
+    flex-direction: column;
+}
+
+.g-ant-sider__wrap--fixed {
+    position: fixed;
+    left    : 0;
+    top     : 0;
+    width   : inherit;
+    overflow: hidden;
+}
+
+.g-ant__sider--closed {
+    width   : 48px;
+    overflow: hidden;
+}
+
+.g-ant-sider__head {
+    flex-shrink: 0;
+}
+
+.g-ant-sider__main {
+    flex-grow: 1;
+    overflow : hidden auto;
+}
+
+.g-ant-sider__main::-webkit-scrollbar {
+    width : 6px;
+    height: 6px;
+}
+
+.g-ant-sider__main::-webkit-scrollbar-thumb {
+    background   : #51606d;
+    border-radius: 3px;
+}
+
+.g-ant-sider__main::-webkit-scrollbar-track {
+    background   : #263849;
+    border-radius: 3px;
+}
+
+.g-ant-sider__foot {
+    flex-shrink: 0;
+}
+
+.g-ant__main {
+    flex-grow     : 1;
+    display       : flex;
+    flex-direction: column;
+    background    : #f1f2f6;
+}
+
+.g-ant-main__head {
+    height         : 48px;
+    background     : white;
+    flex-shrink    : 0;
+    display        : flex;
+    justify-content: flex-end;
+    align-items    : center;
+    box-shadow     : 0 1px 4px #ccc;
+    column-gap     : 20px;
+    padding        : 0 20px;
+}
+
+.g-ant-main__head--fixed {
+    position: fixed;
+    left    : 0;
+    right   : 0;
+    z-index : 2;
+}
+
+.g-ant-main__head--fixed:not(.hide) + .g-ant-main__main{
+    margin-top: 48px;
+}
+
+.g-ant-main__head>span {
+    margin-left: -15px;
+}
+
+.g-ant-main__main {
+    flex-grow: 1;
+}
+
+.g-ant-main__foot {
+    margin-top   : 70px;
+    margin-bottom: 30px;
+    line-height  : 30px;
+    text-align   : center;
+    color        : #868782;
+}
+
+.g-ant-main__foot a {
+    color : inherit;
+    margin: 0 20px;
+}
+
+
+
+/*-----------------通用模块(m-)-----------------------*/
+
+.m-logo {
+    display    : flex;
+    align-items: center;
+    padding    : 16px;
+    color      : white;
+}
+
+.m-logo>img {
+    width: 32px;
+}
+
+.m-logo>h1 {
+    font-weight: 600;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.m-logo2{
+    display    : none;
+    align-items: center;
+    margin-right: auto;
+}
+.m-logo2>img {
+    width: 32px;
+}
+.m-logo2>.u-bar{
+    color: inherit;
+}
+
+.g-ant__sider--closed .m-logo {
+    padding: 16px 8px;
+}
+
+.m-menu {
+    color : #8c959e;
+    cursor: pointer;
+}
+
+.m-menu__title {
+    height     : 44px;
+    display    : flex;
+    align-items: center;
+    column-gap : 10px;
+    padding    : 0 15px;
+}
+
+.m-menu__title>span {
+    margin-right: auto;
+}
+
+.m-menu__sub {
+    display: none;
+}
+
+.m-menu__sub>li {
+    padding-left: 45px;
+    height      : 40px;
+    line-height : 40px;
+}
+
+.m-menu--selected .m-menu__title {
+    color: white;
+}
+
+.m-menu--selected .m-menu__sub {
+    display: block;
+}
+
+.m-menu__sub--selected {
+    background: var(--theme);
+    color     : white;
+}
+
+.g-ant__sider--closed .m-menu__title {
+    transform: scale(1.5);
+}
+
+.g-ant__sider--closed .m-menu__sub {
+    display: none;
+}
+
+
+.m-card {
+    width         : 100%;
+    height        : 100%;
+    background    : white;
+    display       : flex;
+    flex-direction: column;
+    border-radius : 2px;
+    font-size     : 16px;
+}
+
+.m-card__title {
+    flex-shrink  : 0;
+    height       : 57px;
+    border-bottom: 1px #f1f1f1 solid;
+    display      : flex;
+    align-items  : center;
+    padding-left : 20px;
+}
+
+.m-card__body {
+    flex-grow: 1;
+    padding  : 20px;
+}
+
+
+.m-setting {
+    width     : 300px;
+    height    : 100vh;
+    background: white;
+    position  : fixed;
+    right     : -300px;
+    top       : 0;
+    padding   : 0 15px;
+    box-sizing: border-box;
+    z-index   : 10;
+}
+
+.m-setting--open {
+    right: 0;
+}
+
+.m-setting--open+.u-mask {
+    display: block;
+}
+
+.m-setting__bar {
+    width          : 48px;
+    height         : 48px;
+    background     : var(--theme);
+    border-radius  : 2px;
+    position       : absolute;
+    left           : -48px;
+    top            : calc(50% - 24px);
+    color          : white;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    cursor         : pointer;
+}
+
+.m-setting__bar>i {
+    font-size: 22px;
+}
+
+.m-setting__item {
+    margin: 50px 0;
+}
+
+.m-setting-item__theme {
+    display        : flex;
+    justify-content: space-between;
+    margin         : 30px 0;
+}
+
+.m-setting-item__toggle>li {
+    display        : flex;
+    justify-content: space-between;
+    margin         : 30px 0;
+}
+
+/*-----------------通用元件(u-)-----------------------*/
+
+.u-bar {
+    font-size: 18px;
+    color    : white;
+    display  : block;
+    padding  : 15px;
+    cursor   : pointer;
+}
+
+.u-foxiaolan,
+.u-bomu,
+.u-huoshan,
+.u-rimu,
+.u-mingqing,
+.u-jiguanglv,
+.u-jikelan,
+.u-jiangzi {
+    width        : 20px;
+    height       : 20px;
+    color        : white;
+    border-radius: 2px;
+    cursor       : pointer;
+    line-height  : 20px;
+    text-align   : center;
+}
+
+.u-foxiaolan {
+    background: #188efc;
+}
+
+.u-bomu {
+    background: #f5212d;
+}
+
+.u-huoshan {
+    background: #fe531f;
+}
+
+.u-rimu {
+    background: #fbae14;
+}
+
+.u-mingqing {
+    background: #14c2c3;
+}
+
+.u-jiguanglv {
+    background: #53c41a;
+}
+
+.u-jikelan {
+    background: #2f54eb;
+}
+
+.u-jiangzi {
+    background: #722ed1;
+}
+
+.u-divider {
+    width     : 100%;
+    height    : 1px;
+    background: #f0f0f0;
+    margin    : 25px 0;
+}
+
+.u-switch {
+    width        : 28px;
+    height       : 16px;
+    border-radius: 100px;
+    background   : var(--theme);
+    cursor       : pointer;
+}
+
+.u-switch--closed {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.u-switch--closed .u-switch__handle {
+    left: 14px;
+}
+
+.u-switch__handle {
+    width        : 12px;
+    height       : 12px;
+    background   : white;
+    border-radius: 50%;
+    position     : relative;
+    left         : 2px;
+    top          : 2px;
+}
+
+.u-mask {
+    display   : none;
+    width     : 100vw;
+    height    : 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    position  : fixed;
+    left      : 0;
+    top       : 0;
+    z-index   : 5;
+}
+
+/*-----------------响应式系统-----------------------*/
+
+@media(max-width:1400px){}
+@media(max-width:1200px){}
+@media(max-width:992px){
+    .m-logo2{
+        display: flex;
+    }
+    .g-ant__sider{
+        display: none;
+        position: fixed;
+        left:0;
+        top:0;
+        z-index: 6;
+    } 
+
+    .g-ant__sider:is(.show) + .u-mask{
+        display: block;
+    }
+    
+}
+@media(max-width:768px){}
+@media(max-width:576px){}

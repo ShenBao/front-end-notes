@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .row{
+            background:skyblue;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 50px;
+            grid-auto-rows: 50px;
+        }
+        .row div{
+            background:pink;
+            border:1px black solid;
+            grid-area: auto/auto/auto/span 12;
+        }
+        .row .col-1{
+            grid-area: auto/auto/auto/span 1;
+        }
+        .row .col-2{
+            grid-area: auto/auto/auto/span 2;
+        }
+        .row .col-3{
+            grid-area: auto/auto/auto/span 3;
+        }
+        .row .col-4{
+            grid-area: auto/auto/auto/span 4;
+        }
+        .row .col-5{
+            grid-area: auto/auto/auto/span 5;
+        }
+        .row .col-6{
+            grid-area: auto/auto/auto/span 6;
+        }
+        .row .col-7{
+            grid-area: auto/auto/auto/span 7;
+        }
+        .row .col-8{
+            grid-area: auto/auto/auto/span 8;
+        }
+        .row .col-9{
+            grid-area: auto/auto/auto/span 9;
+        }
+        .row .col-10{
+            grid-area: auto/auto/auto/span 10;
+        }
+        .row .col-11{
+            grid-area: auto/auto/auto/span 11;
+        }
+        .row .col-12{
+            grid-area: auto/auto/auto/span 12;
+        }
+
+        @media (min-width: 576px){
+            .row .col-sm-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-sm-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-sm-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-sm-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-sm-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-sm-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-sm-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-sm-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-sm-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-sm-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-sm-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-sm-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 768px){
+            .row .col-md-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-md-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-md-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-md-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-md-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-md-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-md-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-md-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-md-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-md-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-md-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-md-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 992px){
+            .row .col-lg-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-lg-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-lg-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-lg-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-lg-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-lg-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-lg-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-lg-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-lg-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-lg-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-lg-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-lg-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 1200px){
+            .row .col-xl-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-xl-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-xl-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-xl-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-xl-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-xl-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-xl-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-xl-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-xl-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-xl-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-xl-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-xl-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+
+        @media (min-width: 1400px){
+            .row .col-xxl-1{
+                grid-area: auto/auto/auto/span 1;
+            }
+            .row .col-xxl-2{
+                grid-area: auto/auto/auto/span 2;
+            }
+            .row .col-xxl-3{
+                grid-area: auto/auto/auto/span 3;
+            }
+            .row .col-xxl-4{
+                grid-area: auto/auto/auto/span 4;
+            }
+            .row .col-xxl-5{
+                grid-area: auto/auto/auto/span 5;
+            }
+            .row .col-xxl-6{
+                grid-area: auto/auto/auto/span 6;
+            }
+            .row .col-xxl-7{
+                grid-area: auto/auto/auto/span 7;
+            }
+            .row .col-xxl-8{
+                grid-area: auto/auto/auto/span 8;
+            }
+            .row .col-xxl-9{
+                grid-area: auto/auto/auto/span 9;
+            }
+            .row .col-xxl-10{
+                grid-area: auto/auto/auto/span 10;
+            }
+            .row .col-xxl-11{
+                grid-area: auto/auto/auto/span 11;
+            }
+            .row .col-xxl-12{
+                grid-area: auto/auto/auto/span 12;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="row">
+        <div class="col-3">col-3</div>
+        <div class="col-3">col-3</div>
+        <div class="col-3">col-3</div>
+        <div class="col-3">col-3</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">col-sm-3</div>
+        <div class="col-sm-3">col-sm-3</div>
+        <div class="col-sm-3">col-sm-3</div>
+        <div class="col-sm-3">col-sm-3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">col-md-3</div>
+        <div class="col-md-3">col-md-3</div>
+        <div class="col-md-3">col-md-3</div>
+        <div class="col-md-3">col-md-3</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">col-lg-3</div>
+        <div class="col-lg-3">col-lg-3</div>
+        <div class="col-lg-3">col-lg-3</div>
+        <div class="col-lg-3">col-lg-3</div>
+    </div>
+    <div class="row">
+        <div class="col-xl-3">col-xl-3</div>
+        <div class="col-xl-3">col-xl-3</div>
+        <div class="col-xl-3">col-xl-3</div>
+        <div class="col-xl-3">col-xl-3</div>
+    </div>
+    <div class="row">
+        <div class="col-xxl-3">col-xxl-3</div>
+        <div class="col-xxl-3">col-xxl-3</div>
+        <div class="col-xxl-3">col-xxl-3</div>
+        <div class="col-xxl-3">col-xxl-3</div>
+    </div> -->
+
+    <div class="row">
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+        <div class="col-xxl-3 col-lg-4 col-sm-6">col</div>
+    </div>
+</body>
+</html>

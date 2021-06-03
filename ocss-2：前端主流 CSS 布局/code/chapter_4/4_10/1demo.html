@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            width: 500px;
+            height: 300px;
+            background: skyblue;
+            display: flex;
+        }
+
+        .main div {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            /* flex-grow: 0;   默认的 */
+            /* 如果比例值为1，就占满剩余的所有空间 */
+            /* 400 * 0.5 -> 200 + 100 -> 300 */
+            /* flex-grow: 0.5; */
+            /* 当比例值大于等于1的时候，都会占满整个空间 */
+            flex-grow : 2;
+        }
+
+        .main2{
+            width: 500px;
+            height: 300px;
+            background: skyblue;
+            display: flex;
+        }
+        .main2 div:nth-of-type(1){
+            width:200px;
+            height:100px;
+            background:pink;
+            flex-grow: 0.2;
+        }
+        .main2 div:nth-of-type(2){
+            width:100px;
+            height:100px;
+            background:pink;
+            flex-grow: 0.1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="main">
+        <div>1</div>
+    </div> -->
+    <div class="main2">
+        <div>1</div>
+        <div>2</div>
+    </div>
+</body>
+
+</html>

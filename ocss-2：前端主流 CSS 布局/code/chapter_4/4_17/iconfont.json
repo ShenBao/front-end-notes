@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8333085",
+      "name": "swiper後退",
+      "font_class": "swiperhoutui",
+      "unicode": "e68e",
+      "unicode_decimal": 59022
+    },
+    {
+      "icon_id": "8333090",
+      "name": "swiper前進",
+      "font_class": "swiperqianjin",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main{
+            width:500px;
+            height:200px;
+            background:skyblue;
+            display: flex;
+        }
+        .main div{
+            width:600px;
+            height:100px;
+            background:pink;
+            /* flex-shrink : 1; 自动收缩，跟容器大小相同 */
+
+           /*  flex-shrink: 0; */
+           flex-shrink: 0.5;
+        }
+
+        .main2{
+            width:500px;
+            height:200px;
+            background:skyblue;
+            display: flex;
+        }
+        .main2 div:nth-of-type(1){
+            width:300px;
+            height:100px;
+            background:pink;
+            flex-shrink: 0.2;
+        }
+        .main2 div:nth-of-type(2){
+            width:400px;
+            height:100px;
+            background:pink;
+            flex-shrink: 0.1;
+        }
+
+        /* 300 + 400 - 500 -> 200 */
+
+        /* 300 - 3/7 * 200   
+        400 - 4/7 * 200 */
+
+        /* 300 - 6/10 * 200
+        400 - 4/10 * 200 */
+
+
+    </style>
+</head>
+<body>
+    <!-- <div class="main">
+        <div>1</div>
+    </div> -->
+
+    <div class="main2">
+        <div>1</div>
+        <div>2</div>
+    </div>
+</body>
+</html>

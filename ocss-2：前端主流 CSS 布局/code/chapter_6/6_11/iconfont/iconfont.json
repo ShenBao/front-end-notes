@@ -1,0 +1,44 @@
+{
+  "id": "2565642",
+  "name": "bili",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1540260",
+      "name": "向下箭头",
+      "font_class": "arrow-bottom",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "6581090",
+      "name": "信息",
+      "font_class": "xinxi",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "8546046",
+      "name": "放大镜",
+      "font_class": "fangdajing",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "18263599",
+      "name": "703 播放-方形-线性",
+      "font_class": "703bofang-fangxing-xianxing",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "19791936",
+      "name": "bilibili",
+      "font_class": "BILIBILI_LOGO",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    }
+  ]
+}

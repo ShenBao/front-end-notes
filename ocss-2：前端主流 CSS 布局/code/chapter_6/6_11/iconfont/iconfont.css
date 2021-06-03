@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2565642 */
+  src: url('iconfont.woff2?t=1621749037141') format('woff2'),
+       url('iconfont.woff?t=1621749037141') format('woff'),
+       url('iconfont.ttf?t=1621749037141') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-bottom:before {
+  content: "\e605";
+}
+
+.icon-xinxi:before {
+  content: "\e649";
+}
+
+.icon-fangdajing:before {
+  content: "\e63f";
+}
+
+.icon-703bofang-fangxing-xianxing:before {
+  content: "\e600";
+}
+
+.icon-BILIBILI_LOGO:before {
+  content: "\e606";
+}
+

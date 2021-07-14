@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var arr = [32,4,67,82,21,11];
+			
+			///轮数
+			for(var i = 0; i<arr.length-1;i++){
+				//次数
+				for(var j = 0;j<arr.length-1-i;j++){
+					
+					//判断前一个大于后一个数时进行交换
+					if(arr[j]>arr[j+1]){
+						//借助第三方变量交换两个变量的值
+						var temp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp;
+					}
+				}
+			}
+			console.log(arr);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 8rem;
+            height: 8rem;
+            background: deeppink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script type="text/javascript">
+    //获取屏幕宽度
+    var width = document.documentElement.clientWidth;
+
+    //获取html
+    var htmlNode = document.querySelector('html');
+
+    //设置html字体大小
+    htmlNode.style.fontSize = width / 16 + 'px';
+
+</script>
+
+</html>

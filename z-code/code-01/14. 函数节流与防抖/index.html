@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数节流与防抖</title>
+</head>
+
+<body>
+
+    <script>
+        // 什么是函数节流？什么是函数防抖？
+
+        // 函数节流：一个函数执行一次后，只有大于设定的执行周期后才会执行第二次
+
+        // 时间戳版： （利用：现在执行时间 - 上一次执行时间 > 延迟时间 实现）
+        function throttle(func, delay) {
+            //上次执行时间 
+            let previous = 0;
+            return function () {
+                //现在的时间 
+                let now = Date.now();
+                let context = this;
+                let args = arguments;
+                //第一次触发now - 0 肯定大于delay 立即执行 并使previous = now 
+                //以后每delay执行一次 
+                if (now - previous > delay) {
+                    func.apply(context, args);
+                    previous = now;
+                }
+            }
+        }
+        // 定时器版: （利用重复设置 timer 实现）
+        function throttle(func, delay) {
+            let timer;
+            return function () {
+                let context = this;
+                let args = arguments;
+                if (!timer) {
+                    timer = setTimeout(() => {
+                        timer = null;
+                        func.apply(context, args)
+                    }, delay)
+                }
+            }
+        }
+
+        // 双剑合璧版:
+        /** 
+        * @desc 函数节流 
+        * @param func 函数 
+        * @param delay 延迟执行毫秒数 
+        * @param type 1 表时间戳版，2 表定时器版 
+        */
+        function throttle3(fn, delay, type = 1) {
+            let pre = null
+            let timer = null
+            if (type === 1) {
+                pre = 0
+            }
+            return function () {
+                let context = this
+                let args = arguments
+                if (type === 1) {
+                    let now = new Date().getTime()
+                    if (now - pre > delay) {
+                        fn.call(context, args)
+                        pre = now
+                    }
+                } else {
+                    if (!timer) {
+                        timer = setTimeout(() => {
+                            timer = null
+                            fn.call(context, args)
+                        }, delay)
+                    }
+                }
+            }
+        }
+
+
+
+        // 防抖函数：一个需要频繁触发的函数，在规定时间内，只让最后一次生效，前面的不生效
+
+        // 立即执行
+        function debounce(func, delay) {
+            let timer;
+            return function () {
+                let context = this;
+                let args = arguments;
+                //是否立即执行的开关 
+                //如果 timer 不存在 callNow 是 true 
+                let callNow = !timer;
+                timer ? clearTimeout(timer) : null;
+                timer = setTimeout(() => {  //注意给 timer 赋值 不能光 setTimeout
+                    timer = null;
+                }, delay)
+                //callNow 是 true 立即执行（第一次点击立即执行） 
+                callNow ? func.apply(context, args) : null;
+            }
+        }
+
+        // 非立即执行版 
+
+        function debounce(func, delay) {
+            let timer;
+            return function () {
+                let context = this;
+                let args = arguments;
+                //如果 timer 存在，先清除定时器（其实就是每次执行都清除定时器，判断是否存在只是为了严谨） 
+                timer ? clearTimeout(timer) : null;
+                timer = setTimeout(() => {
+                    //是为了让 debounce 函数最终返回的函数 this 指向不变以及依旧能接受到 e 参数。 
+                    //不使用 apply 绑定 this func执行时this是window 
+                    func.apply(context, args)
+                }, delay);
+            }
+        }
+
+
+        // 组合版
+
+        /** 
+        * @desc 函数防抖
+        * @param func 函数
+        * @param delay 延迟执行毫秒数
+        * @param immediate true 表立即执行，false 表非立即执行
+        */
+        function debounce(func, delay, immediate) {
+            let timer;
+            return function () {
+                let context = this;
+                let args = arguments;
+                //每次执行都清除定时器，判断是否存在只是为了严谨 #不管哪一种都要清除定时器#
+                timer ? clearTimeout(timer) : null;
+                if (immediate) {
+                    var callNow = !timer;
+                    timer = setTimeout(() => {
+                        timer = null;
+                    }, delay)
+                    if (callNow) func.apply(context, args)
+                } else {
+                    timer = setTimeout(function () {
+                        func.apply(context, args)
+                    }, delay);
+                }
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

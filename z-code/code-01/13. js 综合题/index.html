@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js 综合题</title>
+</head>
+
+<body>
+    <script>
+        function Foo() {
+            getName = function () { console.log(1); };
+            return this;
+        }
+        Foo.getName = function () { console.log(2); };
+        Foo.prototype.getName = function () { console.log(3); };
+        var getName = function () { console.log(4); };
+        function getName() { console.log(5); }
+
+        // 上面的代码，提升转换后
+        // function Foo() {
+        //     getName = function () { console.log(1); };
+        //     return this;
+        // }
+        // var getName;
+        // function getName() { console.log(5); }
+        // Foo.getName = function () { console.log(2); };
+        // Foo.prototype.getName = function () { console.log(3); };
+        // getName = function () { console.log(4); };
+
+        // 请写出下列的输出结果
+        Foo.getName(); // 2
+        getName(); // 4
+        Foo.getName(); // (Foo()).getName() --> window.getName()  1
+        getName(); // 1
+        new Foo.getName(); // new (Foo.getName)() ---> new (function () { console.log(2); })()   2
+        new Foo().getName(); // (new Foo()).getName() ---> foo.getName()   3
+        new new Foo().getName(); // new ((new Foo()).getName)()   3
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨域</title>
+</head>
+
+<body>
+
+    <script>
+
+        // 什么是跨域？解决跨域的办法有哪些？
+
+        // 1. 同源策略
+        //     - 是浏览器的安全策略
+        //     - 协议名、域名、端口号必须完全一致
+        // 2. 跨域：
+        //     违背同源策略就会产生跨域
+        // 3. 解决跨域
+        //     jsonp
+        //     cors
+        //     服务器代理
+
+
+        // 创建 script 标签
+        var script = document.createElement('script')
+
+        // 设置回调函数
+        function getData(data) {
+            // 数据回来就会被触发的函数
+            console.log(data);
+        }
+
+        // 设置 src
+        script.src = 'https://domain:port/path?callback=getData'
+        // 让 script 生效
+        document.head.appendChild(script)
+
+    </script>
+
+</body>
+
+</html>

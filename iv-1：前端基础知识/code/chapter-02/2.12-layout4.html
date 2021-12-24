@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS实现三栏布局-定位布局</title>
+	<style type="text/css">
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .box {
+      position: relative;
+    }
+
+    div {
+      height: 100px;
+      position: absolute;
+    }
+
+    .left {
+      left: 0px;
+      width: 100px;
+      background: red;
+    }
+    
+    .center {
+      left: 100px;
+      right: 100px;
+      background: green;
+    }
+
+    .right {
+      right: 0px;
+      width: 100px;
+      background: blue;
+    }
+
+	</style>
+</head>
+<body>
+  <div class="box">
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div>  
+  </div>
+</body>
+</html>

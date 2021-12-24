@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css-box</title>
+  <style>
+    .standard-box {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 10px;
+    }
+    .ie-box {
+      width: 200px;
+      height: 100px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 10px;
+      /* 开启盒子内减模式,触发IE盒模型 */
+      box-sizing: border-box;
+    }
+  
+  </style>
+</head>
+<body>
+  <section class="standard-box">
+    标准盒模型
+  </section>
+  <section class="ie-box">
+    替代(IE)盒模型
+  </section>
+</body>
+</html>

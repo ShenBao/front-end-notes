@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> BFC-demo </title>
+    <style>
+      .container {
+        background: red;
+        /* 解除注释创建BFC */
+        /* display: inline-block; */
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        margin: 100px;
+        background: blue;
+        float: left;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+</body>
+</html>

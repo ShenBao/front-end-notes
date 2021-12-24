@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左边定宽右边自适 + grid 布局</title>
+  <style>
+    .box-wrapper {
+      width: 600px;
+      height: 400px;
+      border:1px solid #000;
+      display: grid;
+      /* 声明列的宽度 */
+      grid-template-columns: 200px auto;
+    }
+
+    .left-box {
+      background: red;
+    }
+  
+    .right-box {
+      background: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="box-wrapper">
+    <div class="left-box">
+      left-box 
+    </div>
+    <div class="right-box">
+      right-box
+    </div>
+  </div>
+</body>
+</html>

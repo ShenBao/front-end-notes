@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css绝对居中- (不定宽高) 绝对定位 + transform</title>
+  <style>
+
+    .box-wrapper {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+      /* 关键因素 */
+      position: relative;
+    }
+
+    .box {
+      background: yellow;
+      /* 关键因素 */
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  
+  </style>
+</head>
+<body>
+  <div class="box-wrapper">
+    <div class="box">   
+      绝对定位+transform
+    </div>
+  </div>
+</body>
+</html>

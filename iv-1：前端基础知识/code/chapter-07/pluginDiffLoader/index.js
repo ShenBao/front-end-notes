@@ -1,0 +1,4 @@
+const render = ()=>{
+  return 'freemen';
+}
+

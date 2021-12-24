@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> class 和 function 的区别 </title>
+</head>
+<body>
+  <script>  
+    // 相同点:
+    // * 都可以用作构造函数 
+    // function Persion(){
+    //   this.fullName = "freemen";
+    // }
+    // class Persion{
+    //   constructor(){
+    //     this.fullName = "freemen";
+    //   }
+    // }
+    // const object = new Persion
+    // console.log(`object`, object)
+    // 不同点:
+    // * class 不可以使用 call apply bind 的方式来改变他的执行上下文   
+    // function sayName(){
+    //   console.log(`this.fullName`, this.fullName)
+    // }
+    class Persion {
+      constructor(){
+        this.fullName = "freemen";
+      }
+    }
+    const obj = {
+      fullName: "freemen"
+    }
+
+    Persion.call(obj)
+    // class 和 function 的区别
+    // 相同点： 都可以用作构造函数
+    // 不同点： class 不可以使用 call apply bind 的方式来改变他的执行上下文   
+  </script>
+</body>
+</html>

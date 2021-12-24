@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS实现三栏布局-grid布局</title>
+	<style type="text/css">
+
+    /* 优化前写法 */
+    .box{
+      width: 0.2em;  
+      height: 20.0em;
+      padding: 0px; 
+    }
+    /* 优化后写法 */
+    .box{
+      width: .2em;
+      height: 20em;
+      padding:0
+    }
+    
+   
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .box {
+      display: grid;
+      grid-template-columns: 100px 1fr 100px;
+    }
+
+    div {
+      height: 100px;
+    }
+
+    .left {
+      background: red;
+    }
+
+    .center {
+      background: green;
+    }
+
+    .right {
+      background: blue;
+    }
+	</style>
+</head>
+<body>
+  <div class="box">
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div>  
+  </div>
+</body>
+</html>

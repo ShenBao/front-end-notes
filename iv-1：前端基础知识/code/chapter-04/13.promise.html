@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+<body>
+  <script>
+    // Promise.reject  返回一个Promise实例 -> rejected
+    // new Promise(function(resolve, reject){
+    //    console.log(`loading start...`)
+    //    let fullName = "freemen";
+    //    if(fullName==="Vinko") {
+    //       resolve(1);
+    //    }else{
+    //       reject('promise error')
+    //    }
+    // }).then(res=>{
+    //   console.log(`res`, res)
+    // },rejected=>{
+    //   console.log(`rejected`, rejected)
+    // })
+    Promise.reject('promise error').then(null,rejected=>{
+      console.log(`rejected`, rejected)
+    })
+  </script>
+</body>
+</html>

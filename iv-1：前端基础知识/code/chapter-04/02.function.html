@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+</head>
+<body>
+
+    <script>
+        // const obj = {
+        //     fullName: "Test-Name",
+        //     sayName: function() {
+        //         console.log(this.fullName);
+        //     }
+        // }
+        // obj.sayName()
+
+        // window.fullName = "window.fullName"
+        // const obj = {
+        //     fullName: "Test-Name",
+        //     sayName: () => {
+        //         console.log(this.fullName);
+        //     }
+        // }
+        // obj.sayName()
+
+        // function sayName() {
+        //     console.log(this.fullName);
+        // }
+        // const obj = {
+        //     fullName: "Test-Name",
+        // }
+        // sayName.call(obj);
+
+        // const sayName = () => {
+        //     console.log(this.fullName);
+        // }
+        // const obj = {
+        //     fullName: "Test-Name",
+        // }
+        // sayName.call(obj);
+
+        // function Persion() {
+        //     this.fullName = "name";
+        // }
+        // const Persion = () => {
+        //     this.fullName = "name";
+        // }
+        // const obj = new Persion;
+        // console.log(obj);
+
+        const sayName = (...args) => {
+            console.log('args:', args);
+        };
+        sayName('a', 'b', 'c');
+    </script>
+    
+</body>
+</html>

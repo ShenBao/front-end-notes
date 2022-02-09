@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>node element</title>
+</head>
+<body>
+    <p id="p1"><b>node</b> vs <em>element</em><!--注释--></p>
+
+    <script>
+        const p1 = document.getElementById('p1')
+        console.log(p1.childNodes)
+
+        // class Node {}
+
+        // // document
+        // class Document extends Node {}
+        // class DocumentFragment extends Node {}
+        
+        // // 文本和注释
+        // class CharacterData extends Node {}
+        // class Comment extends CharacterData {}
+        // class Text extends CharacterData {}
+
+        // // elem
+        // class Element extends Node {}
+        // class HTMLElement extends Element {}
+        // class HTMLDivElement extends HTMLElement {}
+        // class HTMLInputElement extends HTMLElement {}
+        // // ...
+    </script>
+</body>
+</html>

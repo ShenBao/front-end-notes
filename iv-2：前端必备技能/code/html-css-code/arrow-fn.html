@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow fn</title>
+</head>
+<body>
+    <p>Arrow fn demo</p>
+
+    <script>
+        // // const fn1 = () => {
+        // //     console.log('arguments', arguments)
+        // // }
+        // function fn1() {
+        //     console.log('arguments', arguments)
+        // }
+        // fn1(100, 200)
+
+        // // const fn2 = () => {
+        // //     console.log('this', this)
+        // // }
+        // function fn2() {
+        //     console.log('this', this)
+        // }
+        // fn2.call({x: 100})
+
+        // const fn3 = (a, b) => b === undefined ? b => a * b : a * b
+
+        // const obj = {
+        //     name: '尘墨',
+        //     getName: () => {
+        //         return this.name
+        //     }
+        // }
+
+        // const Foo = (name, city) => {
+        //     this.name = name
+        //     this.city = city
+        // }
+        // const f = new Foo('尘墨', '北京')
+
+
+        // Vue 组件本质上是一个 JS 对象
+        // React 组件（非 Hooks）它本质上是一个 ES6 class
+        class Foo {
+            constructor(name, city) {
+                this.name = name
+                this.city = city
+            }
+            getName = () => {
+                return this.name
+            }
+        }
+        const f = new Foo('尘墨', '北京')
+        console.log( f.getName() )
+    </script>
+</body>
+</html>

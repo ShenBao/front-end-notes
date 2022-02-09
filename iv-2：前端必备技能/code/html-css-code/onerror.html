@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>on error</title>
+</head>
+<body>
+    <p>on error</p>
+
+    <script>
+        window.onerror = function (msg, source, line, column, error) {
+            console.info('onerror1-----', msg, source, line, column, error)
+        }
+        // window.addEventListener('error', event => {
+        //     console.log('onerror2------', event) // 错误信息都在 event 里
+        // })
+
+        const x = 10
+        x()
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestAnimationFrame</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 50px;
+            border: 3px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <p>requestAnimationFrame</p>
+
+    <button id="btn1">change</button>
+    <div id="box"></div>
+
+    <script>
+        const box = document.getElementById('box')
+        
+        document.getElementById('btn1').addEventListener('click', () => {
+            let curWidth = 100
+            const maxWidth = 400
+
+            function addWidth() {
+                curWidth = curWidth + 3
+                box.style.width = `${curWidth}px`
+                if (curWidth < maxWidth) {
+                    window.requestAnimationFrame(addWidth) // 时间不用自己控制
+                }
+            }
+            addWidth()
+        })
+    </script>
+</body>
+</html>

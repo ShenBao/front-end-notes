@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+</head>
+<body>
+    <p>
+        index page
+        <button id="btn1">发送消息</button>
+    </p>
+
+    <iframe id="iframe1" src="./child.html"></iframe>
+
+    <script>
+        const btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click', () => {
+            console.info('index clicked')
+            window.iframe1.contentWindow.postMessage('hello', '*')
+        })
+
+        window.addEventListener('message', event => {
+            console.info('origin', event.origin) // 来源的域名
+            console.info('index received', event.data)
+        })
+    </script>
+</body>
+</html>

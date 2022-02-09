@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+</head>
+<body>
+    <p>ajax</p>
+
+    <script>
+        function ajax1(url, successFn) {
+            const xhr = new XMLHttpRequest()
+            xhr.open("GET", url, false)
+            xhr.onreadystatechange = function () {
+                // 这里的函数异步执行，可参考之前 JS 基础中的异步模块
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        successFn(xhr.responseText)
+                    }
+                }
+            }
+            xhr.send(null)
+        }
+
+        function ajax2(url) {
+            return fetch(url).then(res => res.json())
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    测试href 与 assign 以及 replace
+
+    <iframe  id="ifr" src="./3.1 ifr.html"></iframe>
+
+    <div>
+        <button type="button" id="btnHref">href</button>
+        <button type="button" id="btnAssign">assign</button>
+        <button type="button" id="btnReplace">replace</button>
+    </div>
+
+    <script>
+        btnHref.onclick = function () {
+            window.location.href = "https://www.imooc.com/";
+        }
+        btnAssign.onclick = function () {
+            window.location.assign("https://www.imooc.com/");
+        }
+        btnReplace.onclick = function () {
+            window.location.replace("https://www.imooc.com/");
+        }
+    </script>
+
+</body>
+
+</html>

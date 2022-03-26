@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="getCookie">获取cookie</button>
+        <button id="setCookie">设置cookie</button>
+        <button id="deleteCookie">删除一个cookie</button>
+        <div class="show-cookie"></div>
+        <script>
+
+            const domNode = document.querySelector(".show-cookie");
+            getCookie.onclick = function () {
+                //读
+                domNode.innerText = document.cookie;
+            };
+            setCookie.onclick = function () {
+                //写
+                document.cookie = "testUid=test;path=/;";
+            };
+
+            deleteCookie.onclick = function () {
+                const expiresTime = new Date(0).toUTCString();
+                //修改cookie或者删除cookie,需要保障path和domain两个值不变。
+                document.cookie = `testUid=test;path=/;expires=${expiresTime};`;
+            };
+        </script>
+    </body>
+</html>

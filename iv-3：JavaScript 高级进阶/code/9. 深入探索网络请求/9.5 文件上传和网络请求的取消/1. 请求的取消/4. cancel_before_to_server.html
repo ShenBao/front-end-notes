@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    * {
+        font-size: 28px;
+    }
+</style>
+
+<body>
+    <div>发送到服务之前，取消</div>
+    <button id="btnSend">发送请求</button>
+    <button id="btnCancel">取消请求</button>
+    <script>
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        function sendFetch(ticket, options = {}) {
+            fetch(`http://127.0.0.1:3000/fetch?ticket=${ticket}`, options)
+                .then((response) => {
+                    return response.text();
+                })
+                .then((text) => {
+                    console.log(text);
+                });
+        }
+
+
+        btnSend.onclick = function () {
+            // chrome 默认是6个连接
+            sendFetch(1);
+            sendFetch(2);
+            sendFetch(3);
+            sendFetch(4);
+            sendFetch(5);
+            sendFetch(6);
+
+            sendFetch(7);
+            sendFetch(8);
+            sendFetch(9, { signal });
+        }
+
+
+        btnCancel.onclick = function () {
+            console.log("取消请求");
+            controller.abort();
+        }
+
+
+    </script>
+</body>
+
+</html>

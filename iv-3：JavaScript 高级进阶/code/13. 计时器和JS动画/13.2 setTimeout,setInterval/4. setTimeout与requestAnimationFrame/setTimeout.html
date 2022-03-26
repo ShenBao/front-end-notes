@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    * {
+        font-size: 28px;
+    }
+    .animate-ele {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+</style>
+<body>
+    setTimeout 实现动画
+    <div id="animateEle" class="animate-ele"></div>
+    <button id="start">开始</button>
+    <script>
+        var timeout=null;
+
+        function test(callback){
+            if(timeout){
+                clearTimeout(timeout);
+                timeout=null;
+            }
+            timeout=setTimeout(()=>{
+                 test(callback);
+                 const flag=callback();
+                 if(flag){
+                    if(timeout){
+                        clearTimeout(timeout);
+                        timeout=null;
+                    }
+                 }
+            },0);
+        }
+
+        start.onclick=function(){
+            let count=0;
+            const animateEle=document.getElementById("animateEle");
+            test(()=>{
+                count++;
+                if(count < 500){
+                    animateEle.style.transform = 'translateX(' + count + 'px)';
+                    return false;
+                }
+                return true;
+            });
+        }
+    </script>
+</body>
+</html>

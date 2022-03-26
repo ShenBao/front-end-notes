@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "co": "^4.6.0",
+    "typescript": "^4.6.2"
+  }
+}

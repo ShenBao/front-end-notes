@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class MyArray extends Array {
+            constructor() {
+                super(...arguments);
+            }
+        };
+
+        var myArray = new MyArray();
+
+        myArray[0] = "1";
+        myArray[1] = "1";
+        myArray[2] = "1";
+        myArray[3] = "1";
+        myArray[4] = "1";
+        myArray[5] = "1";
+        myArray[6] = "1";
+        myArray[7] = "1";
+        myArray[8] = "1";
+        myArray[9] = "1";
+        myArray[10] = "1";
+        myArray[11] = "1";
+        console.log(myArray);
+
+        function operation() {
+            myArray[10000] = "1";
+            console.log("myArray[10000]:", myArray);
+        }
+
+    </script>
+
+    <button onclick="operation()">操作</button>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AggregateError</title>
+</head>
+
+<body>
+    <script>
+        Promise.any([
+            Promise.reject(new Error("error 1")),
+            Promise.reject(new Error("error 2")),
+        ]).catch(e => {
+            console.log("e instanceof AggregateError:", e instanceof AggregateError);
+            console.log("e.message:", e.message);
+            console.log("e.name", e.name);
+            console.log("e.errors", e.errors);
+        });
+    </script>
+</body>
+
+</html>

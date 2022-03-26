@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传单个文件</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+    <script src="./fileUtils.js"></script>
+    <script src="./spark-md5.min.js"></script>
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <input id="uploadFile" type="file" />
+    <button type="button" id="uploadBtn" onClick="startUpload()">开始上传</button>
+    <div class="progress">
+        上传进度：<span id="progressValue">0</span>
+    </div>
+
+    <div id="uploadResult" class="result">
+
+    </div>
+
+    <script>
+        const uploadFileEle = document.getElementById("uploadFile");
+        const progressValueEle = document.getElementById("progressValue");
+        const uploadResultEle = document.getElementById("uploadResult");
+
+        try {
+            function startUpload() {
+                if (!uploadFileEle.files.length) return;
+                //获取文件
+                const file = uploadFileEle.files[0];
+                window.upload.start(file);
+            }
+        } catch (e) {
+            console.log("error==", e);
+        }
+
+    </script>
+</body>
+
+</html>

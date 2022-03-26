@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>聊天室</title>
+</head>
+
+<style>
+    .txt{
+        font-size: 30px;
+    }
+    .inputBtn{
+        font-size: 40px;
+    }
+</style>
+<body>
+	<form onsubmit="return false;">
+		<h1>慕课聊天室：</h1>
+		<textarea id="repText" class="txt" style="width: 800px; height: 600px;"></textarea>
+		<br>
+		<input class="inputBtn" type="text"  id="myInput" name="message" style="width: 300px" value="Hello world">
+		<input class="inputBtn" type="button" id="mySend" value="发送消息" onclick="send(this.form.message.value)">
+	</form>
+	
+
+
+    <script type="text/javascript">
+		let socket;
+        const repTextEl=document.getElementById('repText');
+		if (window.WebSocket) {
+			socket = new WebSocket("ws://127.0.0.1:18000");
+			socket.onmessage = function (event) {
+				repTextEl.value = repTextEl.value + '\n' + event.data
+			};
+			socket.onopen = function (event) {
+				repTextEl.value = "webSocket已链接";
+			};
+			socket.onclose = function (event) {
+				repTextEl.value = repTextEl.value + "连接被关闭";
+			};
+		} else {
+			console.log("浏览器不支持webSocket")
+		}
+
+		function send(message) {
+			if (!window.WebSocket) {
+				return;
+			}
+			if (socket.readyState == WebSocket.OPEN) {
+				socket.send(message);
+			} else {
+				console.log("webSocket还没有开启")
+			}
+		}
+
+	</script>
+</body>
+
+</html>

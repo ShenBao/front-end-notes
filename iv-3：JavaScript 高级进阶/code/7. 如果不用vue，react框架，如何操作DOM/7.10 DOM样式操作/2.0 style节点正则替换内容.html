@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style id="ss-test">
+      .div {
+        background-color: red;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <button id="btnReplace" type="button">替换</button>
+    </div>
+    <div class="div">文本</div>
+
+    <script>
+      const ssEl = document.getElementById("ss-test");
+      btnReplace.addEventListener("click", function () {
+        ssEl.textContent = ssEl.textContent.replace(
+          "background-color: red",
+          "background-color: blue"
+        );
+      });
+    </script>
+  </body>
+</html>

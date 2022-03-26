@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <button type="button" id="btnAddClass">添加class</button>
+        <button type="button" id="btnAddID">添加id</button>
+        <button type="button" id="btnAddStyle">添加内联样式</button>
+    </div>
+
+    <div id="container">
+        <div>文字</div>
+    </div>
+    <style>
+        #test-div {
+            color: blue
+        }
+
+        .test-div {
+            color: green
+        }
+
+        div {
+            color: pink
+        }
+    </style>
+
+    <script>
+        const el = container.firstElementChild;
+        // style="color:red" id="test-div" class="test-div"
+
+        // 添加class
+        btnAddClass.addEventListener("click", function () {
+            el.classList.add("test-div");
+        });
+        // 添加id
+        btnAddID.addEventListener("click", function () {
+            // 或者 el.setAttribute("id","test-div")
+            el.id = "test-div"
+        })
+        // 添加内联样式
+        btnAddStyle.addEventListener("click", function () {
+            // 或者 el.setAttribute("id","test-div")
+            el.style.color = "red"
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    #net-change {
+        font-size: 50px;
+    }
+</style>
+
+<body>
+    <div id="net-change"></div>
+    <script>
+        function netChangeStatus(online) {
+            const netChangeEl = document.getElementById("net-change");
+
+            if (online) {
+                netChangeEl.innerText = `你是在线状态`;
+            } else {
+                netChangeEl.innerText = `哥们你掉线了`;
+            }
+        }
+        netChangeStatus(navigator.onLine);
+
+        window.addEventListener("online", () => {
+            netChangeStatus(true);
+        });
+
+        window.addEventListener("offline", () => {
+            netChangeStatus(false);
+        });
+    </script>
+</body>
+
+</html>

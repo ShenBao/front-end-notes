@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var name = "全局的name"
+        var log = console.log;   
+
+        // ,分组
+        function test1() {
+            var name = "local的name";
+            log((0, eval)('name'))
+        }
+
+        // 直接复制，修改名字
+        function test2() {
+            var name = "local的name";
+
+            var eval = window.eval;
+            var eval2 = eval;
+            log(eval2('name'))
+        }
+
+        // 解构修改名字
+        function test3() {
+            var name = "local的name";
+
+            // 切记，不能修改名字
+            const { eval: eval2 } = window
+            log(eval2('name'))
+        }
+    
+        test1();
+        test2();
+        test3();
+    </script>
+</body>
+
+</html>

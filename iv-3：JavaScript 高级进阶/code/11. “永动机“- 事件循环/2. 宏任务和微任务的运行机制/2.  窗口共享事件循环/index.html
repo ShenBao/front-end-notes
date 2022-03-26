@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+
+        button {
+            font-size:28px
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <iframe src="./other.html"></iframe> -->
+
+    <!-- <button id="btnOpen">打开新窗口</button> -->
+
+    <a id="btnOpen" target="_blank" href="./other.html" rel="noopener" >打开新窗口</a>
+    <script>
+
+        function printTime() {
+            console.log("index.html:", new Date().toLocaleTimeString());
+        }
+
+        function asyncSleep(duration) {
+            const now = Date.now();
+            while (now + duration > Date.now()) {
+
+            }
+        }
+
+        btnOpen.onclick = function () {
+            // window.open("./other.html");
+            printTime();
+            console.log("index.html: 3000ms之后执行", )
+            setTimeout(function () {
+                asyncSleep(6000)
+            }, 3000)
+        }
+
+        // btnOpen.click();
+
+
+
+    </script>
+
+</body>
+
+</html>

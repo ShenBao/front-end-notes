@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history新四样</title>
+</head>
+
+<body>
+
+    <div>
+        state:
+        <div id="stateValue"></div>
+        <div>历史记录长度:<span id="hlength"></span></div>
+    </div>
+    <div>
+        <button type="button" id="btnPushState">pushState</button>
+        <button type="button" id="btnReplaceState">replaceState</button>
+    </div>
+
+    <script>
+
+
+        let index = 0;
+
+        hlength.textContent = history.length
+        btnPushState.onclick = function (ev) {
+            index++
+            history.pushState({ data: "pushState" +index }, "", `/pushState${index}.html`)
+            hlength.textContent = history.length
+        }
+        btnReplaceState.onclick = function (ev) {
+            history.replaceState({ data: "replaceState" }, "", "/replaceState.html")
+            hlength.textContent = history.length
+        }
+
+        window.onpopstate = function (ev) {
+            stateValue.textContent = JSON.stringify(ev.state);
+            hlength.textContent = history.length
+        }
+
+    </script>
+
+
+</body>
+
+</html>

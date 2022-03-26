@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <button id="btn" type="button">点我</button>
+
+    <script type="module">
+        import { watch, cancelWatch } from "./evm.mjs";
+
+        //尝试使用WeakMap,因为WeakMap存储的为弱引用，防止可能因为我们的存储导致的内存泄漏。
+        const wp = new WeakMap();
+        watch(function (target, event, fn) {
+            //观察到有添加事件,使用WeakMap来存储。
+            let t = wp.get(target);
+            if (!t) {
+                t = Object.create(null)
+                wp.set(target, t);
+            }
+            if (!t[event]) {
+                t[event] = []
+            }
+            //添加同一类型的事件
+            t[event].push(fn);
+            console.log(wp);
+
+
+        }, function (target, event, fn) {
+            let t = wp.get(target);
+            if (!t) {
+                return
+            }
+            if (!t[event]) {
+                return;
+            }
+            //移除事件集合中一项
+            const index = t[event].findIndex(f => f === fn)
+            if (index >= 0) {
+                t[event].splice(index, 1);
+            }
+            //移除事件类型
+            if (t[event].length === 0) {
+                delete t[event]
+            }
+            //移除target 所有
+            if (Object.keys(t).length === 0) {
+                wp.delete(target)
+            }
+            console.log(wp);
+        });
+
+
+        function clickFn(e) {
+            console.log(this === e.target)
+        }
+
+        document.getElementById("btn").addEventListener("click", clickFn)
+        document.getElementById("btn").addEventListener("click", clickFn)
+        
+        // cancelWatch();
+
+        document.getElementById("btn").addEventListener("click", clickFn)
+
+        // setTimeout(function () {
+        //     document.getElementById("btn").removeEventListener("click", clickFn)
+        // }, 3000)
+
+        // setTimeout(function () {
+        //     document.getElementById("btn").removeEventListener("click", clickFn)
+        // }, 13000)
+
+        // setInterval(function () {
+        //     console.log(wp)
+        // }, 5000)
+
+        function onResize(){
+
+        }
+
+        window.addEventListener("resize", onResize);
+
+
+        // setTimeout(function () {
+        //     window.removeEventListener("resize", onResize);
+        // }, 20000)
+
+    
+
+    </script>
+
+</body>
+
+</html>

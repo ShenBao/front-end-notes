@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件读取</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="file" id="inputFile" />
+
+    <div>
+        <img id="preview" src="" style="width: 200px;"/>
+    </div>
+    <script>
+
+        function readAsDataURL() {
+            const fileEl = document.getElementById("inputFile");
+            return new Promise((resolve, reject) => {
+                const fd = new FileReader();
+                fd.readAsDataURL(fileEl.files[0]);
+                fd.onload = function () {
+                    resolve(fd.result);
+                    // data:image/png;base64,iVBORw0KGgoAAAA.......
+                }
+                fd.onerror = reject;
+            });
+        }
+
+        inputFile.onchange =  async function onchange() {
+            console.log("onchange");
+            const url = await readAsDataURL();
+            preview.src = url;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

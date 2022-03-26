@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn-buy{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ulList">
+        <li>
+            <div>白菜</div>
+            <a class="btn-buy" data-id="1">购买</a>
+        </li>
+        <li>
+            <div>萝卜</div>
+            <a class="btn-buy" data-id="2">购买</a>
+        </li>
+    </ul>
+
+    <script>
+        ulList.addEventListener("click", function (ev) {
+            // console.log("ev", ev)
+            // 识别节点
+            if (ev.target.classList.contains("btn-buy")) {
+                console.log("商品id:", ev.target.dataset.id)
+            }
+        })
+    </script>
+</body>
+
+</html>

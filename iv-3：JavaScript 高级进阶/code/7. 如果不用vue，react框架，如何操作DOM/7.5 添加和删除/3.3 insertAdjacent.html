@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="parent">
+        <div class="child">child</div>
+    </div>
+
+    <script>
+        function createDiv(content){
+            var el = document.createElement("div");
+            el.innerHTML = content;
+            return el;
+        }
+
+        var pEl = document.querySelector(".parent");
+        pEl.insertAdjacentElement("afterbegin", createDiv("afterbegin"));
+        pEl.insertAdjacentElement("afterend", createDiv("afterend"));
+        pEl.insertAdjacentElement("beforebegin", createDiv("beforebegin"));
+        pEl.insertAdjacentElement("beforeend", createDiv("beforeend"));
+    </script>
+
+</body>
+
+</html>

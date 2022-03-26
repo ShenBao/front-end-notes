@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>other</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnGet" type="button">取key-1</button>
+    <div>
+        <div>消息：</div>
+        <div id="message"></div>
+    </div>
+    <script>
+        btnGet.onclick = function () {
+            message.innerHTML =  `结果: ${sessionStorage.getItem('key-1')}`
+        }
+    </script>
+</body>
+
+</html>

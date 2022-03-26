@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    * {
+        font-size: 28px;
+    }
+</style>
+
+<body>
+    <button id="btnSend">发送请求</button>
+    <button id="btnCancel">取消请求</button>
+    <script>
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        function sendFetch() {
+            fetch("http://127.0.0.1:3000/fetch", { signal })
+                .then((response) => {
+                    return response.text();
+                })
+                .then((text) => {
+                    console.log(text);
+                });
+        }
+
+
+        btnSend.onclick = function () {
+            sendFetch();
+        }
+
+        btnCancel.onclick = function () {
+            console.log("取消请求");
+            controller.abort();
+        }
+
+
+    </script>
+</body>
+
+</html>

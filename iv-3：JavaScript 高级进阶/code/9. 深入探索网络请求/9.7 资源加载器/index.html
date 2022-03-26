@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>r-loader演示</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+
+        #messages{
+            height: 500px;
+            overflow-y: auto;
+            outline: solid red 1px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="messages"></div>
+
+    <div>
+        <button id="btn-load">加载</button>
+        <button id="btn-clear">清除缓存</button>
+    </div>
+
+    <script src="./idb.js"></script>
+    <script src="./util.js"></script>
+    <script src="./r-loader.js"></script>
+    <script src="./test.js"></script>
+
+</body>
+
+</html>

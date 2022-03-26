@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <button id="btnLog" class="btnLog">操作点击事件</button>
+    <button class="start">开始添加dom</button>
+    <script>
+
+        var startBtn = document.querySelector(".start");
+        var array = [];
+        for (var i = 1; i <= 300000; i++) {
+            array.push(i);   //制造300000条数据
+        };
+        console.log("数据制造完成");
+        //渲染数据
+        var renderDomList = function (data) {
+            for (var i = 0, l = data.length; i < l; i++) {
+                var div = document.createElement('div');
+                div.innerHTML = `列表${i}`;
+                document.body.appendChild(div);
+            }
+        };
+
+        startBtn.onclick = function () {
+            console.log("startBtn clicked:", new Date().toLocaleTimeString());
+            renderDomList(array);
+        }
+
+        btnLog.onclick = function () {
+            console.log("btnLog clicked:", new Date().toLocaleTimeString());
+        }
+    </script>
+</body>
+
+</html>

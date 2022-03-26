@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // 创建 注释节点
+        var commentEl = new Comment("标题");
+        document.body.appendChild(commentEl);
+
+        // 创建div
+        var divEl = document.createElement("div");
+
+        // 属性复制
+        divEl.setAttribute("title", "div的title");
+        // 设置样式
+        divEl.style.backgroundColor = "red";
+
+        // 添加文本
+        divEl.appendChild(new Text("JavaScript"));
+        // 创建span
+        var spanEl = document.createElement("span");
+        spanEl.textContent = "进阶";
+
+        divEl.appendChild(spanEl);
+        // 添加到body
+        document.body.appendChild(divEl);
+
+    </script>
+
+</body>
+
+</html>

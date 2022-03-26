@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        .abort{
+            position: relative;
+            font-size: 30px;
+            width: 180px;
+            height: 50px;
+            background: red;
+        }
+
+        .start{
+            position: relative;
+            font-size: 30px;
+            width: 180px;
+            height: 50px;
+            background: beige;
+            margin-bottom: 20px;
+            
+        }
+    </style>
+    <body>
+        <div class="start" id="startNet">startNet</div>
+        <script>
+            const controller = new AbortController();
+            const signal = controller.signal;
+
+            function sendFetch(){
+                fetch("http://127.0.0.1:3000/test4")
+                .then((response) => {
+                    return response.text();
+                })
+                .then((text) => {
+                    console.log(text);
+                }); 
+            }
+
+            function sendFetch1(){
+                fetch("http://127.0.0.1:3000/test4?a=1", { signal })
+                .then((response) => {
+                    return response.text();
+                })
+                .then((text) => {
+                    console.log(text);
+                }); 
+            }
+
+            startNet.onclick=function(){
+                sendFetch();
+                sendFetch();
+                sendFetch();
+                sendFetch(); 
+                sendFetch();
+                sendFetch();
+                setTimeout(()=>{
+                    sendFetch1(); 
+                },1000);
+                setTimeout(()=>{
+                    //自动中断请求
+                    controller.abort();
+                },10000);
+
+                        
+            }
+
+            
+        </script>
+    </body>
+</html>

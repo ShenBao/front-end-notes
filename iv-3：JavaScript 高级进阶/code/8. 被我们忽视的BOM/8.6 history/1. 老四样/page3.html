@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div>当前:Page 3</div>
+
+    <div>
+        <a href="./page1.html">去page1.html</a><br>
+        <a href="./page2.html">去page2.html</a><br>
+        <a href="./page3.html">去page3.html</a><br>
+    </div>
+    <div>历史记录长度:<span id="hlength"></span></div>
+    <div>
+        <button type="button" onclick="history.back()">Back</button>
+        <button type="button" onclick="history.forward()">Forward</button>
+        <button type="button" onclick="history.go(1)">Go(1)</button>
+        <button type="button" onclick="history.go(2)">Go(2)</button>
+        <button type="button" onclick="history.go(-1)">Go(-1)</button>
+        <button type="button" onclick="history.go(-2)">Go(-2)</button>
+    </div>
+    
+    <script>
+        hlength.textContent = history.length;
+    </script>
+</body>
+</html>

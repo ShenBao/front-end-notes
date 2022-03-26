@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            font-size: 28px;
+            color: #FFF;
+            background-color: silver
+        }
+    </style>
+    <script> console.log("index.html", new Date().toLocaleTimeString()); </script>
+    <link rel="stylesheet" href="./1.css">
+    <link rel="stylesheet" href="./1.css?t=1">
+    <script>
+        document.head
+    </script>
+</head>
+
+<body>
+
+    <!-- css 阻塞后面js代码的执行，会在页面渲染后1s后可见 -->
+    <link rel="stylesheet" href="./1.css?t=2">
+    <script> console.log("index.html:内容1", new Date().toLocaleTimeString()); </script>
+    <div>内容1</div>
+
+    <!-- index6 5s后返回 -->
+    <!-- index6 执行后，内容2才会出现 -->
+    <script src="./index6.js"></script>
+    <div>内容2</div>
+    <script> console.log("index.html:内容2", new Date().toLocaleTimeString()); </script>
+
+    <!-- index6 8s后返回 -->
+    <!-- js执行会阻塞DOM解析, index.js执行3秒，内容3延时3秒出现 -->
+    <!-- index1.js的加载需要8秒，8秒后，外加上执行3秒， 一共需要11秒后才出现。-->
+    <script src="./index1.js"></script>
+    <div>内容3</div>
+
+
+    <script> console.log("index.html:内容3", new Date().toLocaleTimeString()); </script>
+    <script>
+        document.body.style.backgroundColor = "#333"
+    </script>
+</body>
+
+</html>
+

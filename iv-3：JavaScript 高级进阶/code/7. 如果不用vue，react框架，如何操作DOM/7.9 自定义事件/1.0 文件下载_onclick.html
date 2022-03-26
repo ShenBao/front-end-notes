@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <button type="button" id="btnDownload">下载文件</button>
+    </div>
+
+    <script>
+        function createBlob(content, type) {
+            var blob = new Blob([content],{type});
+            return blob;
+        }
+
+        function downloadFile(filename,
+            content,
+            type = "text/plain") {
+            var aEl = document.createElement('a');
+            // 指定下载文件名
+            aEl.download = filename;
+
+            const blob = createBlob(content, type);
+            // 生成url地址
+            const url = URL.createObjectURL(blob);
+            console.log(url);
+
+            aEl.href = url;
+            document.body.appendChild(aEl);
+
+            // 触发点击事件
+            aEl.click();
+            document.body.removeChild(aEl);
+
+            // 释放url
+            URL.revokeObjectURL(url);
+        }
+        const content = "测试的文本";
+        btnDownload.addEventListener("click", function () {
+            console.log("点击饿了")
+            downloadFile("测试.txt", content)
+        })
+    </script>
+
+</body>
+
+</html>

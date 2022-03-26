@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>unhandledrejection</title>
+    </head>
+
+    <body>
+        <div>promise 错误</div>
+
+        <script>
+            window.onerror = function (message, url, line, column, error) {
+                console.log("window.onerror 捕获到错误:", message, "==line:", line, "==column:", column, "==error:", error);
+            };
+
+            window.addEventListener("error", function (e) {
+                console.log("window.addEventListener:", e, "==e.error:", e.error);
+            });
+
+            window.addEventListener("unhandledrejection", function (e) {
+                //阻断异常继续抛出
+                e.preventDefault();
+                console.log("unhandledrejection捕获到promise错误的原因是", e.reason);
+                console.log("Promise 对象是", e.promise);
+                return true;
+            });
+
+            new Promise((resolve, reject) => {
+                reject("promise error1");
+            });
+
+            new Promise((resolve) => {
+                resolve();
+            }).then(() => {
+                throw new Error("promise error2");
+            });
+
+            try {
+                new Promise((resolve) => {
+                    resolve();
+                }).then(() => {
+                    throw new Error("promise error3");
+                });
+            } catch (e) {
+                console.log("try catch:", e);
+            }
+        </script>
+    </body>
+</html>

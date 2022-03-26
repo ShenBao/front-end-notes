@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<div>
+    <button type="button" id="btnSetItem">添加</button>
+    <button type="button" id="btnGetItem">查询</button>
+</div>
+
+<body>
+    <script>
+        const myLocalStore = {
+            setItem: (key, value, expire) => {
+                const lsValue = JSON.parse(localStorage.getItem(key) || '{}');
+                localStorage.setItem(
+                    key,
+                    JSON.stringify({
+                        ...lsValue,
+                        value,
+                        expire
+                    }))
+            },
+            getItem: (key) => {
+                // 在取值之前先判断是否过期
+                const lsValue = JSON.parse(
+                    localStorage.getItem(key) || "{}"
+                )
+                if (lsValue.expire && lsValue.expire >= Date.now()) {
+                    return lsValue.value
+                } else {
+                    localStorage.removeItem(key)
+                    return null
+                }
+            }
+        }
+
+    </script>
+
+    <script>
+        btnSetItem.onclick = function () {
+            myLocalStore.setItem('key-x', 'value-1', Date.now() + 10000);
+        }
+        btnGetItem.onclick = function () {
+            console.log("getItem:", myLocalStore.getItem('key-x'));
+        }
+    </script>
+</body>
+
+</html>

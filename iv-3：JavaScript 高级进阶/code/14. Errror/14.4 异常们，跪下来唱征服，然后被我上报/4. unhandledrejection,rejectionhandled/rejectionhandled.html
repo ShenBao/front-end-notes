@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rejectionhandled</title>
+</head>
+
+<body>
+    <div>promise 错误</div>
+
+    <script>
+        window.addEventListener("unhandledrejection", function (e) {
+            //阻断异常继续抛出
+            e.preventDefault();
+            console.log("unhandledrejection捕获到promise错误的原因是：", e.reason);
+            console.log("unhandledrejection Promise 对象是：", e.promise);
+            return true;
+        });
+        //promise异常被处理了
+        window.addEventListener('rejectionhandled', e => {
+             // rejected的原因
+            console.log('rejectionhandled:', e.reason);
+        })
+
+        const p1 = new Promise((resolve, reject) => {
+            reject("promise error1");
+        });
+
+        setTimeout(() => {
+            p1.catch((e) => {
+                console.log("catch捕获到promise1 错误:", e);
+            })
+        }, 1000)
+
+    </script>
+</body>
+
+</html>

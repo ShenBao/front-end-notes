@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        button {
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <button type="button" id="btnOpen">打开新窗口</button>
+        <button type="button" id="btnClose">关闭</button>
+    </div>
+
+    <script>
+
+
+        let winRef;
+        let strWindowFeatures = `
+                    menubar=yes,
+                    location=yes,
+                    resizable=yes,
+                    scrollbars=yes,
+                    status=no,
+                    left=100px,
+                    top=100px,
+                `;
+
+        btnOpen.addEventListener("click", function () {
+            winRef = window.open("https://www.imooc.com", "慕课网", strWindowFeatures);
+        })
+
+        btnClose.addEventListener("click", function () {
+            winRef && winRef.close();
+        })
+    </script>
+</body>
+
+</html>

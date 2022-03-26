@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <iframe id="ifr" src="./ifr.html" style="width:600px; height:300px"></iframe>
+
+
+    <div> index.html</div>
+
+
+    <div>
+        <div>Message:</div>
+        <div id="messages"></div>
+    </div>
+
+    <script>
+        const channel = new MessageChannel();
+
+        var ifr = document.querySelector('iframe');
+        var otherWindow = ifr.contentWindow;
+
+        ifr.onload = function () {
+            ifr.contentWindow.postMessage('__init__', '*', [channel.port2])
+        }
+        // 监听消息
+        channel.port1.onmessage = onMessage;
+        function onMessage(e) {
+            messages.innerHTML += `
+                <div>${event.data}</div>  
+            `
+        }
+        setInterval(function(){
+            channel.port1.postMessage(`message from index.html, ${Date.now()}`)
+        }, 3000)
+
+    </script>
+</body>
+
+</html>

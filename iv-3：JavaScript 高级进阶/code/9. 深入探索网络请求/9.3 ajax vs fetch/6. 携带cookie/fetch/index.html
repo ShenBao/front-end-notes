@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="ajaxBtn">xhr 携带cookie</button>
+    <script>
+
+        function test() {
+            //2018年以后 默认值从 {"credentials":"omit"}  修改为 {"credentials":"same-origin"}
+            fetch("./a.png",)
+                .then((response) => response.text())
+                .then((text) => console.log("获取到的数据对象===", text))
+                .catch((err) => console.log("Request Failed", err));
+
+        }
+
+        document.getElementById("ajaxBtn").addEventListener("click", function () {
+            test();
+        });
+    </script>
+</body>
+
+</html>

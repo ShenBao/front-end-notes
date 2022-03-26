@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>127.0.0.1</title>
+</head>
+<body>
+    <div>种植cookie 调用登录接口</div>
+    <div class="show-cookie"></div>
+    <script>
+          var xhrObj = new XMLHttpRequest();
+                xhrObj.onreadystatechange = function () {
+                    if (xhrObj.readyState == 4 && xhrObj.status == 200) {
+                        const domNode= document.querySelector(".show-cookie");
+                        domNode.innerText=document.cookie;
+                    }
+                };
+                xhrObj.open("post", "https://test.web.com/login", true);
+                xhrObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                //设置携带cookie
+                xhrObj.withCredentials = true;
+                xhrObj.send("xhr=1");
+    </script>
+
+
+</body>
+</html>

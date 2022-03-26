@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      font-size: 28px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id="btnAdd">添加数据</button>
+    <button id="btnQuery">查询数据</button>
+  </div>
+  <script>
+    // https://github.com/mdn/indexeddb-examples/blob/master/idbkeyrange/scripts/main.js
+    var db;
+    var things = [
+      { fThing: "Drum kit", fRating: 10 },
+      { fThing: "Family", fRating: 10 },
+      { fThing: "Batman", fRating: 9 },
+      { fThing: "Brass eye", fRating: 9 },
+      { fThing: "The web", fRating: 9 },
+      { fThing: "Mozilla", fRating: 9 },
+      { fThing: "Firefox OS", fRating: 9 },
+      { fThing: "Curry", fRating: 9 },
+      { fThing: "Paneer cheese", fRating: 8 },
+      { fThing: "Mexican food", fRating: 8 },
+      { fThing: "Chocolate", fRating: 7 },
+      { fThing: "Heavy metal", fRating: 10 },
+      { fThing: "Monty Python", fRating: 8 },
+      { fThing: "Aphex Twin", fRating: 8 },
+      { fThing: "Gaming", fRating: 7 },
+      { fThing: "Frank Zappa", fRating: 9 },
+      { fThing: "Open minds", fRating: 10 },
+      { fThing: "Hugs", fRating: 9 },
+      { fThing: "Ale", fRating: 9 },
+      { fThing: "Christmas", fRating: 8 },
+    ];
+
+    // 插入数据
+    function insertData() {
+      // 事务
+      var transaction = db.transaction(["fThings"], "readwrite");
+      // 对象库
+      var objectStore = transaction.objectStore("fThings");
+      // 添加数据
+      for (i = 0; i < things.length; i++) {
+        var request = objectStore.put(things[i]);
+      }
+      // 成功的回调
+      transaction.oncomplete = function () {
+        console.log("insert data success");
+      };
+    }
+
+    // 我们先打开一个数据库, window.indexedDB(IDBFactory)
+    const openRequest = window.indexedDB.open("fThings", 1);
+    // 升级的时候创建对象库和对应的索引
+    openRequest.onupgradeneeded = function (event) {
+      var db = event.target.result;
+      db.onerror = function (event) {
+        console.log("Error loading database");
+      };
+      var objectStore = db.createObjectStore("fThings", {
+        keyPath: "fThing",
+      });
+      objectStore.createIndex("fRating", "fRating", { unique: false });
+    };
+
+    openRequest.onerror = function (event) {
+      console.log("open error:", event);
+    }
+
+    openRequest.onsuccess = function (event) {
+      console.log("open success");
+      // 获得database
+      db = event.target.result;
+    };
+
+    btnQuery.onclick = function () {
+      // 事务
+      const transaction = db.transaction(["fThings"], "readonly");
+      // 对象库
+      const objectStore = transaction.objectStore("fThings");
+      // 键
+      const keyRangeValue = IDBKeyRange.bound("A", "F");
+      // 游标
+      objectStore.openCursor(keyRangeValue).onsuccess = function (event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          console.log("value:", cursor.value);
+          cursor.continue();
+        } else {
+          console.log("Entries all displayed.");
+        }
+      };
+    };
+
+    btnAdd.onclick = insertData;
+
+  </script>
+</body>
+
+</html>

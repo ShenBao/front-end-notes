@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size:28px
+        }
+
+        button {
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>子窗口</div>
+
+    <button id="btnInvoke">调用父窗口方法</button>
+
+    <script>
+
+        function childMethod(){
+            alert("子窗口方法执行调用")
+        }
+
+        btnInvoke.addEventListener("click", function () {
+            window && window.opener && window.opener.parentMethod() 
+        })
+    </script>
+</body>
+
+</html>

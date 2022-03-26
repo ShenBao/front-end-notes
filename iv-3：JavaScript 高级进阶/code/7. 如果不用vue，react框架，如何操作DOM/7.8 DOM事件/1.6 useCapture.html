@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+
+    <script>
+
+        function onClick(){
+            console.log("按钮被点击了");
+        }
+        // capture选项都是false, 只有一个添加成功
+        btn.addEventListener("click", onClick);
+        btn.addEventListener("click", onClick);
+
+        // capture选项都是true, 只有一个添加成功
+        btn.addEventListener("click", onClick, {
+            capture: true,
+        });
+        btn.addEventListener("click", onClick, {
+            capture: true,
+            once: true,
+        });
+
+    </script>
+</body>
+</html>

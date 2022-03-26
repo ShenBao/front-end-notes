@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>资源加载时间</title>
+  <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+  <img src="./logo2020.png" />
+
+  <script src="./index.js"></script>
+
+  <div>
+    资源加载时间：
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceEntry
+
+    function getPerformanceEntries() {
+      var p = performance.getEntries();
+      for (var i = 0; i < p.length; i++) {
+        console.log(p[i]);
+        printPerformanceEntry(p[i]);
+      }
+    }
+    function printPerformanceEntry(perfEntry) {
+      var properties = ["name", "entryType", "startTime", "duration"];
+      if (perfEntry.entryType === "navigation") {
+        result.innerHTML += `
+          <div>资源:${perfEntry.name}</div>
+          <div>加载时间:${perfEntry.responseEnd - perfEntry.startTime}</div><hr>
+        `;
+      } else if (perfEntry.entryType == "resource") {
+        result.innerHTML += `
+          <div>资源:${perfEntry.name}</div>
+          <div>加载时间:${perfEntry.duration}</div>
+          <hr>
+        `;
+      }
+    }
+
+    getPerformanceEntries();
+  </script>
+</body>
+
+</html>

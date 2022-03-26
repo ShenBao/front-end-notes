@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnQuery">查询位置权限</button>
+    <button id="btnGetLocation">获取位置信息</button>
+    <script>
+        btnQuery.onclick = function () {
+            navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+                if (result.state === 'granted') {
+                    console.log("位置权限 granted");
+                } else if (result.state === 'prompt') {
+                    console.log("位置权限 prompt");
+                }
+                console.log("位置权限:", result.state)
+            }).catch(err =>{
+                console.log("err:", err);
+            })
+        }
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 1200,
+            maximumAge: 0
+        };
+
+        btnGetLocation.onclick = function () {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+                var crd = pos.coords;
+                console.log(`Latitude : ${crd.latitude}`);
+                console.log(`Longitude: ${crd.longitude}`);
+            }, function (err) {
+                console.log("error", err)
+            }, options)
+        }
+    </script>
+</body>
+
+</html>

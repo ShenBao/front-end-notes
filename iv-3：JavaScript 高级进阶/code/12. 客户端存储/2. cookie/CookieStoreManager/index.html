@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookieStorage</title>
+    <style>
+        * {
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="btnAdd">添加或更改</button>
+        <button id="btnDel">删除</button>
+    </div>
+    <script>
+            let index = 1
+            btnAdd.onclick = function () {
+                const day = 24 * 60 * 60 * 1000;
+                cookieStore.set({
+                    name: `cookie-x`,
+                    value: `cookie-x-${index}`,
+                    expires: Date.now() + day,
+                })
+                    .then(
+                        function () {
+                            console.log("add cookie success");
+                        },
+                        function (reason) {
+                            console.error("add cookie failed: ", reason);
+                        }
+                    );
+                index++
+            }
+            btnDel.onclick = function () {
+                cookieStore.delete('cookie-x')
+                    .then(
+                        function () {
+                            console.log("delete cookie success");
+                        },
+                        function (reason) {
+                            console.error("delete cookie failed: ", reason);
+                        }
+                    );
+            }
+    </script>
+    <script>
+        navigator.serviceWorker.register('./sw.js', {
+        })
+            .then(function (registration) {
+                registration.addEventListener('updatefound', function () {
+                    var installingWorker = registration.installing;
+                    console.log('A new service worker is being installed:',
+                        installingWorker);
+                });
+            })
+            .catch(function (error) {
+                console.log('Service worker registration failed:', error);
+            });
+    </script>
+</body>
+
+</html>

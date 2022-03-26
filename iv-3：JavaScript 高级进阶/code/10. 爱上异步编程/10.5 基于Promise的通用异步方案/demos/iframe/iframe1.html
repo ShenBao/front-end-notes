@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>I am iframe1</div>
+
+    <script>
+
+        function isObject(obj) {
+            return obj !== null && typeof obj === "object"
+        }
+
+        function onMessage(ev) {
+            const data = ev.data;
+            if (!isObject(data) || typeof data.method !== "string") {
+                return;
+            }
+            // console.log("ifr1 data:", data);
+            switch (data.method) {
+                case "init":
+                    setTimeout(() => {
+                        top.postMessage({
+                            _key_: data._key_,
+                            method: "init",
+                            data: {
+                                isOk: true,
+                                source: "iframe1"
+                            }
+                        })
+                    }, 3000)
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        window.addEventListener("message", onMessage);
+
+        // setInterval(() => {
+        //     top.postMessage({
+        //         method: "timeInfo",
+        //         data: {
+        //             time: Date.now(),
+        //         }
+        //     })
+        // }, 3000);
+
+
+    </script>
+
+
+</body>
+
+</html>

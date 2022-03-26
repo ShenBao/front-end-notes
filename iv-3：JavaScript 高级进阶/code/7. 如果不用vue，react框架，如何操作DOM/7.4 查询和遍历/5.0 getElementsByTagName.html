@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="outer" id="outer">
+        <ul class="list list-1">
+            <li name="li-item" class="item item2 item3">list-one</li>
+            <li class="item">list-two</li>
+            <li class="item">list-three</li>
+        </ul>
+    </div>
+    <div class="outer2" id="outer"></div>
+    <ccc name="ccc">ccc</ccc>
+
+    <script>
+        var log = console.log;
+
+        var outerEl = document.getElementById("outer");
+        // Element也有此方法
+        var items2 = outerEl.getElementsByTagName("li");
+        // 查询能被解析的节点
+        var items3 = document.getElementsByTagName("ccc")
+
+        // 功效等同于 document.all
+        console.log(document.getElementsByTagName("*").length === document.all.length)
+
+    </script>
+</body>
+
+</html>

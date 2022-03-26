@@ -1,0 +1,1 @@
+console.log("index4.js:", new Date().toLocaleTimeString());

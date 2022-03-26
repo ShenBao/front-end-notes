@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div>测试ajax 界面</div>
+    <button id="ajaxBtn">AjAX局部刷新</button>
+    <div class="ajax-change" id="responseDiv">change区域</div>
+    <script>
+
+        function test() {
+            //1. 创建实例对象
+            var xhrObj = new XMLHttpRequest();
+            xhrObj.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhrObj.responseType = 'blob';
+            //onprogress
+            xhrObj.onprogress = function (event) {
+                console.log("total:", event.total, "=progress:", event.loaded, "==%:", (event.loaded / event.total) * 100 + "%");
+                if(event.lengthComputable){
+                    console.log("获取完毕")
+                }
+            };
+
+            xhrObj.open("get", "./test.mp4", true);
+
+            //发送请求数据
+            xhrObj.send();
+           
+
+            //请求成功完成回调
+            // xhrObj.onload = function (oEvent) {
+            //     console.log(oEvent, 'oEvent===');
+            //     console.log(xhrObj.status, 'status===');
+            //     console.log(xhrObj.response, 'response===');
+            //     if (xhrObj.readyState === 4 && xhrObj.status === 200) {
+            //         const blob = new Blob([xhrObj.response]);
+            //         const video = URL.createObjectURL(blob);
+            //         const link = document.createElement('a');
+            //         link.href = video;
+            //         link.download = 'test.mp4';
+            //         link.click();
+            //     }
+
+            // };
+
+            
+        }
+
+        document.getElementById("ajaxBtn").addEventListener("click", function () {
+            test();
+        });
+    </script>
+</body>
+
+</html>

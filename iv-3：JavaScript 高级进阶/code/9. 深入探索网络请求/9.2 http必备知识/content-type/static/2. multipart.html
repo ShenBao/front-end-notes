@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>结果:</div>
+    <div id="result">
+
+    </div>
+
+
+    <div>表单提交</div>
+    <form action="/multipart" method="post" enctype="multipart/form-data">
+        <input type="text" name="name" value="tom">
+
+        <input type="text" name="age" value="18">
+
+        <button type="submit">提交表单</button>
+    </form>
+    <hr />
+    <div>代码提交:</div>
+    <button type="button" id="btnSend">发送请求</button>
+    <script>
+
+        btnSend.onclick = fetchByMultipart;
+
+        function fetchByMultipart() {
+            const formData = new FormData();
+            formData.append('name', "tom");
+            formData.append('age', 18)
+
+            fetch("/multipart", {
+                method: "POST",
+                // 不要设置 content-tyoe
+                // headers: {
+                //     "Content-Type": "multipart/form-data",
+                // },
+                body: formData
+            }).then(res => res.json())
+                .then(res => {
+                    console.log("收到结果:", res);
+                    result.innerHTML = JSON.stringify(res);
+                })
+        }
+
+
+    </script>
+
+</body>
+
+</html>

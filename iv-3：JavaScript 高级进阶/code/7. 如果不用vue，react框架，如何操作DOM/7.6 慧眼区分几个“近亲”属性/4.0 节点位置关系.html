@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="parent">
+        <div id="child"></div>
+    </div>
+
+    <script>
+
+        const pEl = document.getElementById("parent");
+        const cEl = document.getElementById("child");
+        // node.compareDocumentPosition(otherNode )
+        // 不在同一文档中        1
+        // otherNode在node之前  2
+        // otherNode在node之后 	4  ✔
+        // otherNode包含node    8
+        // otherNode被node包含  16 ✔
+        console.log("compareDocumentPosition:", pEl.compareDocumentPosition(cEl));  // 20
+
+        console.log("contains:", pEl.contains(cEl));
+
+    </script>
+</body>
+
+</html>

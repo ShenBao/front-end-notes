@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dexie</title>
+</head>
+
+<body>
+    <script type="module">
+        import Dexie from "./dexie.min.mjs";
+        // 实例化
+        const db = new Dexie("FriendDatabase");
+        db.version(1).stores({
+            friends: "++id,name,age"
+        });
+
+        try {
+            // 添加
+            await db.friends.add({ name: "Josephine", age: 21 });
+            // 查询
+            const youngFriends = await db.friends.where("age").below(25).toArray();
+            console.log(`My young friends: ${JSON.stringify(youngFriends)}`);
+        } catch (e) {
+            console.log(`Error: ${e}`);
+        }
+    </script>
+</body>
+
+</html>

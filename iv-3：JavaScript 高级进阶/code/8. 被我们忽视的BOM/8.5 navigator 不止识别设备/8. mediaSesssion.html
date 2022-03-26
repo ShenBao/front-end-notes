@@ -1,0 +1,121 @@
+<html lang="zh-cmn-Hans">
+ 
+<head>
+  <meta charset="utf-8">
+  <title>ajanuw</title>
+  <link rel="shortcut icon" type="image/ico" href="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--移动端视图-->
+  <meta name="renderer" content="webkit" />
+  <meta name="keywords" content="ajanuw" />
+  <!--关键词-->
+  <meta name="description" content="ajanuw, b,c" />
+  <!--网站内容描述-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta http-equiv="Pragma" content="no-cache" />
+</head>
+ 
+<body>
+  <div class="audio-state">null</div>
+  <audio poster="https://pic.cnblogs.com/avatar/1053296/20171128213246.png" src="http://dl.stream.qqmusic.qq.com/C400001IapGk0SNlnb.m4a?vkey=142B2367BEA057666BAA43D662C2E4329FC6B5C7BB02DC3F424D4DC3448F7A0ACCD2A3BB660F2E7C2D5AE61EDD1B6ADDFF1352D51EF5E7F6&guid=5617301546&uin=1641845087&fromtag=66"
+    controls></audio>
+  <button class="play-button">click 播放</button>
+  <p>
+    <div class="doc"></div>
+  </p>
+  <script>
+    const audioSrcs = [
+      'http://dl.stream.qqmusic.qq.com/C400001IapGk0SNlnb.m4a?vkey=142B2367BEA057666BAA43D662C2E4329FC6B5C7BB02DC3F424D4DC3448F7A0ACCD2A3BB660F2E7C2D5AE61EDD1B6ADDFF1352D51EF5E7F6&guid=5617301546&uin=1641845087&fromtag=66'
+    ];
+    let playButton = document.querySelector('.play-button');
+    let audio = document.querySelector('audio');
+ 
+    playButton.addEventListener('pointerup', function (event) {
+      if (audio.paused) {
+        audio.play()
+          .then(_ => {
+            document.querySelector('.audio-state').textContent = ' playing!'
+            setMediaSession();
+          })
+          .catch(error => {
+            console.log(error)
+          });
+      } else {
+        audio.pause();
+        document.querySelector('.audio-state').textContent = ' paused!'
+      }
+    });
+ 
+ 
+    function setMediaSession() {
+      if (!('mediaSession' in navigator)) {
+        return;
+      }
+      document.querySelector('.doc').textContent = 'yes .'
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Never Gonna Give You Up',
+        artist: 'Rick Astley', // 艺术家 name
+        album: 'Whenever You Need Somebody', // 专辑 name
+        artwork: [{
+            src: 'https://dummyimage.com/96x96',
+            sizes: '96x96',
+            type: 'image/png'
+          },
+          {
+            src: 'https://dummyimage.com/128x128',
+            sizes: '128x128',
+            type: 'image/png'
+          },
+          {
+            src: 'https://dummyimage.com/192x192',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: 'https://dummyimage.com/256x256',
+            sizes: '256x256',
+            type: 'image/png'
+          },
+          {
+            src: 'https://dummyimage.com/384x384',
+            sizes: '384x384',
+            type: 'image/png'
+          },
+          {
+            src: 'https://dummyimage.com/512x512',
+            sizes: '512x512',
+            type: 'image/png'
+          },
+        ]
+      });
+      navigator.mediaSession.setActionHandler('play', function () {
+        document.querySelector('.audio-state').textContent = ' playing!'
+      });
+      navigator.mediaSession.setActionHandler('pause', function () {
+        document.querySelector('.audio-state').textContent = ' paused!'
+      });
+      let skipTime = 10; // Time to skip in seconds
+ 
+      navigator.mediaSession.setActionHandler('seekbackward', function () {
+        // 向后看
+        // video.currentTime = Math.max(video.currentTime - skipTime, 0);
+      });
+      navigator.mediaSession.setActionHandler('seekforward', function () {
+        // 向前看
+        // video.currentTime = Math.min(video.currentTime + skipTime, video.duration);
+      });
+ 
+      navigator.mediaSession.setActionHandler('previoustrack', function () {
+        // 用户点击了“上一首”媒体通知图标。
+        // playPreviousVideo(); // load and play previous video
+      });
+      navigator.mediaSession.setActionHandler('nexttrack', function () {
+        // 用户点击了“下一首”媒体通知图标
+        // playNextVideo(); // load and play next video
+      });
+ 
+    }
+  </script>
+</body>
+ 
+</html>

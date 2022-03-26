@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var el = document.createElement("div");
+        var commentNode = document.createComment("注释");
+        var textNode = document.createTextNode("文本");
+        var fragment = document.createDocumentFragment();
+        fragment.append('fragment创建的节点');
+
+        el.appendChild(textNode);
+
+        document.body.appendChild(el);
+        document.body.appendChild(commentNode);
+        document.body.appendChild(fragment);
+    </script>
+</body>
+
+</html>

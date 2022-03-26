@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="../utils.js"></script>
+    </head>
+    <body>  
+        <button id="sBtn"> sessionStorage 存储</button>
+        <script>
+            sBtn.onclick=function(){
+                const charTxt = "人";
+                let count = (10 * 1024 * 1024) / 2 - 8 / 2;
+                let content = new Array(count).fill(charTxt).join("");
+                const key = "bb🔴";
+                const key1 = "cc🔴";
+                sessionStorage.clear();
+                try {
+                    sessionStorage.setItem(key, content);
+                    sessionStorage.setItem(key1, content);
+                } catch (err) {
+                    console.log("err", err);
+                }
+                const sizeKey = sizeofUtfBytes(key,"utf16");
+                const contentSize = sizeofUtfBytes(content,"utf16");
+                console.log("key size:", sizeKey, content.length);
+                console.log("content size:", contentSize, content.length);
+                console.log("total size:", sizeKey + contentSize, content.length + key.length);
+            }
+        </script>
+    </body>
+</html>

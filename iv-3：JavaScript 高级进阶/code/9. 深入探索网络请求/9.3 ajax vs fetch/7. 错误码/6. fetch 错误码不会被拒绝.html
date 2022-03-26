@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="ajaxBtn">fetch 404错误码</button>
+    <script>
+
+        function test() {
+            //2018年以后 默认值从 {"credentials":"omit"}  修改为 {"credentials":"same-origin"}
+            fetch("http://127.0.0.1:3000/test3", {
+            credentials: "include",
+            mode: "cors"
+        })
+            .then((response) => {
+                console.log("请求成功status:", response.status)
+                return response.text();
+            })
+            .catch((err) => console.log("Request Failed", err));
+
+
+        }
+
+        document.getElementById("ajaxBtn").addEventListener("click", function () {
+            test();
+        });
+    </script>
+</body>
+
+</html>

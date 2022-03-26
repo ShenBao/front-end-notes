@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let progress = 0;
+            let contentLength = 0;
+
+            fetch("./test.mp4")
+                .then((response) => {
+                    // 通过响应头获取文件大小
+                    contentLength = response.headers.get("Content-Length");
+                    const reader = response.body.getReader();
+
+                    return reader.read().then(function processResult(result) {
+                        if (result.done) {
+                            console.log("请求完毕");
+                            return;
+                        }
+
+                        progress += result.value.byteLength;
+                        console.log("total:",contentLength,"=progress:",progress,"==%:",(progress / contentLength) * 100 + "%");
+
+                        return reader.read().then(processResult);
+                    });
+                })
+                .catch((err) => console.log("Request Failed", err));
+        </script>
+    </body>
+</html>

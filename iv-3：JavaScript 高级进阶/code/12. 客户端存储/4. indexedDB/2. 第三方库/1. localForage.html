@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localForage</title>
+</head>
+
+<body>
+
+    <script src="./localforage.min.js"></script>
+    <script>
+        localforage.config({
+            // 指定存储媒介， localStorage, web sql, localStorage
+            driver: localforage.INDEXEDDB,
+            // 数据库名
+            name: 'myApp',
+            // 版本
+            version: 1.0,
+            // 配额
+            size: 4980736,
+            // 对象库名
+            storeName: 'keyvaluepairs',
+            description: 'some description'
+        });
+
+        // 实例1
+        var store = localforage.createInstance({
+            name: "nameHere"
+        });
+
+        // 实例2
+        var store2 = localforage.createInstance({
+            name: "otherName"
+        });
+
+        ; (async function () {
+            // 实例1存和取
+            await store.setItem("key-1", "value-1", console.log);
+            const storeValue1 = await store.getItem("key-1");
+            console.log("store key-1:", storeValue1);
+            // 实例2存和取
+            await store2.setItem("key-1", "value-1", console.log);
+            const store2Value1 = await store.getItem("key-1");
+            console.log("store2 key-1:", storeValue1);
+
+            // 纯二进制
+            store.setItem("key-2", new Blob(['sdsd']));
+        })()
+
+    </script>
+
+</body>
+
+</html>

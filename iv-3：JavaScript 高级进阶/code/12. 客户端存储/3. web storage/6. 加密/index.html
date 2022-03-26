@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Crypto API</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .side {
+            flex: 0 0 50%;
+        }
+
+        textarea {
+            min-height: 400px;
+            min-width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div class="side">
+            <div>加密前内容</div>
+            <div>
+                <textarea id="textAreaClearText"></textarea>
+            </div>
+        </div>
+        <div>
+            <div>加密后内容</div>
+            <div>
+                <textarea id="textAreaCipherText"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="button" id="btnEncrypt">加密</button>
+        <button type="button" id="btnDecrypt">解密</button>
+    </div>
+
+    <script>
+        let publicKey;
+        let privateKey;
+
+        let arrayBuffer;
+        (async function init() {
+            // 生成私钥(privateKey)和公钥(publicKey)
+            // 加密用公钥， 解密用私钥
+            const keyPair = await crypto.subtle.generateKey(
+                {
+                    name: "RSA-OAEP",
+                    modulusLength: 2048,
+                    publicExponent: new Uint8Array([1, 0, 1]),
+                    hash: "SHA-256",
+                },
+                true,
+                ["encrypt", "decrypt"]
+            );
+            publicKey = keyPair.publicKey;
+            privateKey = keyPair.privateKey;
+        })();
+
+        /**
+         * 返回ArrayBuffer
+         */
+        function encrypt(text, publicKey) {
+            // 字符串转为TypedArray
+            const clearText = new TextEncoder().encode(text);
+            return window.crypto.subtle.encrypt(
+                {
+                    name: "RSA-OAEP",
+                },
+                publicKey,
+                // an ArrayBuffer, or a TypedArray
+                clearText
+            );
+        }
+
+        /**
+         *  cipherText: ArrayBuffer
+         *
+         */
+        async function decrypt(cipherText, privateKey) {
+            // cipherText 是ArrayBuffer
+            let decrypted = await window.crypto.subtle.decrypt(
+                {
+                    name: "RSA-OAEP",
+                },
+                privateKey,
+                cipherText
+            );
+            const dec = new TextDecoder();
+            return dec.decode(decrypted);
+        }
+
+        btnEncrypt.onclick = async () => {
+            const text = textAreaClearText.value;
+            arrayBuffer = await encrypt(text, publicKey);
+
+            // ArrayBuffer转为字符串
+            const dec = new TextDecoder();
+            textAreaCipherText.value = dec.decode(arrayBuffer);
+            console.log("arrayBuffer:", arrayBuffer);
+        };
+
+        btnDecrypt.onclick = async () => {
+            const text = await decrypt(arrayBuffer, privateKey);
+            textAreaClearText.value = text;
+        };
+    </script>
+</body>
+
+</html>

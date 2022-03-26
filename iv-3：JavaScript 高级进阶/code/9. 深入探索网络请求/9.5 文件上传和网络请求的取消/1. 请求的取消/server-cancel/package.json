@@ -1,0 +1,33 @@
+{
+    "name": "node-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/app.js",
+    "scripts": {
+        "start": "ts-node ./app.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/bluebird": "3.5.27",
+        "@types/express": "4.17.0",
+        "@types/http-errors": "1.6.2",
+        "@types/http-proxy-middleware": "0.19.2",
+        "@types/md5": "2.1.33",
+        "@types/node": "12.6.8",
+        "@types/qs": "6.5.3",
+        "@typescript-eslint/parser": "1.12.0",
+        "body-parser": "^1.19.2",
+        "cross-env": "^7.0.0",
+        "express": "4.17.1",
+        "http-errors": "1.7.3",
+        "http-proxy-middleware": "0.19.1",
+        "md5": "2.2.1",
+        "multiparty": "^4.2.3",
+        "qs": "6.7.0",
+        "soap": "0.29.0",
+        "ts-node": "8.3.0",
+        "typescript": "3.5.3"
+    },
+    "devDependencies": {}
+}

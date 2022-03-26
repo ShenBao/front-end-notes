@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-size: 28px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container" style="height: 100px; border: 1px solid #333"></div>
+    <button type="button" id="btn">queueMicrotask + setTimeout</button>
+
+    <script>
+      let count = 0;
+
+      function addMicroTask() {
+        console.log("queueMicrotask:callback", performance.now());
+        count++;
+        if (count < 1000) {
+          queueMicrotask(addMicroTask);
+        }
+      }
+
+      btn.onclick = function () {
+        // 产生宏任务，此时宏任务队列: setTimeout:callback
+        setTimeout(function () {
+          const message = "setTimeout:callback" + performance.now();
+          container.innerHTML = message;
+          console.log(message);
+        }, 0);
+
+        addMicroTask();
+      };
+
+      // if (typeof window.queueMicrotask !== "function") {
+      //     window.queueMicrotask = function (callback) {
+      //         Promise.resolve()
+      //         .then(callback)
+      //         .catch(e => setTimeout(() => { throw e; }));
+      //     };
+      // }
+    </script>
+  </body>
+</html>

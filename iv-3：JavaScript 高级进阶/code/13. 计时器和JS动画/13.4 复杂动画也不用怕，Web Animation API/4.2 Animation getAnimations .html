@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation getAnimations</title>
+    <style>
+        .box1 {
+            height: 100px;
+            width: 100px;
+            background-color: #000;
+            position: absolute;
+        }
+
+        #btnPlay {
+            margin-top: 50px;
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="overflow: hidden; height: 150px">
+        <div class="box1"></div>
+    </div>
+    <div>
+        <button type="button" id="btnPlay">播放</button>
+    </div>
+
+    <script>
+        const box1ItemEl = document.querySelector(".box1");
+
+        const kyEffect1 = new KeyframeEffect(box1ItemEl, {
+            left: ['0', '100px']
+        },
+            {
+                duration: 3000,
+                fill: 'forwards'
+            }
+        )
+
+        const kyEffect2 = new KeyframeEffect(box1ItemEl, {
+            transform: ['rotate(0)', 'rotate(720deg)']
+        },
+            {
+                duration: 6000,
+                fill: 'forwards'
+            }
+        )
+
+        btnPlay.onclick = () => {
+
+            new Animation(kyEffect1).play();
+            new Animation(kyEffect2).play();
+
+            Promise
+            .all(box1ItemEl.getAnimations().map(a=> a.finished))
+            .then(function(){
+                console.log("all animations finished");
+            })
+        }
+
+    </script>
+</body>
+
+</html>

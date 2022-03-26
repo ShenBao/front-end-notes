@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <button type="button" id="btnToggleFalse">toggle(false)</button>
+        <button type="button" id="btnToggleTrue">toggle(true)</button>
+    </div>
+
+    <div id="container">
+        <div>文字</div>
+    </div>
+    <style>
+        .test-div {
+            color: red
+        }
+    </style>
+
+    <script>
+        const el = container.firstElementChild;
+        // toggle false
+        btnToggleFalse.addEventListener("click", function () {
+            el.classList.toggle("test-div");
+        });
+        // toggle true
+        btnToggleTrue.addEventListener("click", function () {
+            el.classList.toggle("test-div", true);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        .flex {
+            display: flex;
+        }
+
+        .menu-x {
+            flex: 0 0 200px;
+        }
+
+        .menu-x li {
+            cursor: pointer;
+        }
+
+        .c-link {
+            display: block;
+            cursor: pointer;
+        }
+        
+        * {
+            font-size:28px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-item">测试的产品</div>
+    <div class="flex">
+        <ul class="menu-x">
+            <c-link to="/" class="c-link">首页</c-link>
+            <c-link to="/about" class="c-link">关于</c-link>
+        </ul>
+        <div>
+            <c-router>
+                <c-route path="/" component="home" default></c-route>
+                <c-route path="/detail/:id" component="detail"></c-route>
+                <c-route path="/about" component="about"></c-route>
+            </c-router>
+        </div>
+    </div>
+
+    <script src="./router.js"></script>
+</body>
+
+</html>

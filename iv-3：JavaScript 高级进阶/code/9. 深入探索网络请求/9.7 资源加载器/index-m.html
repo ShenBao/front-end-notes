@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>r-loader演示</title>
+    <style>
+      * {
+        font-size: 28px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <button id="btnCreateImg">动态创建图片</button>
+      <button id="btnCreateVideo">动态创建视频</button>
+    </div>
+    <div id="container"></div>
+
+    <script src="./idb.js"></script>
+    <script src="./util.js"></script>
+    <script src="./r-loader.js"></script>
+    <script>
+      const resourcesInfo = [
+        {
+          key: "flower.webm",
+          url: "./resources/flower.webm",
+        },
+        {
+          key: "img.png",
+          url: "./resources/img.png",
+        }
+      ];
+  
+      const rl = new ResourceLoader(resourcesInfo, idb);
+      rl.reset();
+      rl.startLoad();
+
+
+      btnCreateImg.onclick = function(){
+        container.innerHTML += `
+          <img src="${rl.get("img.png")}" width="300px"/>        
+        `
+      }
+
+      btnCreateVideo.onclick = function(){
+        container.innerHTML += `
+          <video src="${rl.get("flower.webm")}" autoplay controls width="300px"/>        
+        `
+      }
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+    "editor.detectIndentation": false,
+    "[javascript]": {    
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "terminal.integrated.shell.windows": "cmd.exe",
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 150,
+}

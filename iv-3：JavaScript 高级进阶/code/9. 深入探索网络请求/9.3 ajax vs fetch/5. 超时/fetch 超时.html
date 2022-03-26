@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>fetch 不支持超时</div>
+    <button id="ajaxBtn">发起超时请求</button>
+    <div class="ajax-change" id="responseDiv">change区域</div>
+    <script>
+        const oldFetch = fetch;
+        window.fetch = function (input, opts) {
+            return new Promise(function (resolve, reject) {
+                //开启超时
+                const timeoutId = setTimeout(function () {
+                    reject(new Error("fetch timeout"));
+                }, opts.timeout);
+                oldFetch(input, opts).then(
+                    (res) => {
+                        //清除超时
+                        clearTimeout(timeoutId);
+                        resolve(res);
+                    },
+                    (err) => {
+                        //清除超时
+                        clearTimeout(timeoutId);
+                        reject(err);
+                    }
+                );
+            });
+        };
+
+        function test() {
+            // get 
+            fetch("http://127.0.0.1:3000/timeout", { timeout: 5 * 1000 })
+                .then((response) => response.text())
+                .then((text) => console.log("获取到的数据对象===", text))
+                .catch((err) => console.error("Request Failed", err));
+        }
+
+
+        document.getElementById("ajaxBtn").addEventListener("click", function () {
+            test();
+        });
+
+    </script>
+
+
+</body>
+
+</html>

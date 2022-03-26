@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 22px;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>我们都是好孩子，最最善良的孩子。</div>
+    <div>好好学习，天天向上。</div>
+    <input value="JS高级进阶" />
+    <div style="margin-top: 50px"></div>
+    选中的内容：
+    <div id="selectedContent"></div>
+    <script>
+        setInterval(function () {
+            selectedContent.textContent = window.getSelection().toString();
+        }, 3000);
+    </script>
+</body>
+
+</html>

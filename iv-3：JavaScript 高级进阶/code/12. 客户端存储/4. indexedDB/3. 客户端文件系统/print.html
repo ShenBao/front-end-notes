@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>打印</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let doc = document, href = doc.location.href
+        if (href.indexOf('?') > 0) {
+            blobUrl = decodeURIComponent(doc.location.href.split('?')[1].split('=')[1])
+            if (blobUrl.startsWith('blob:')) {
+                var ifr = document.createElement('iframe')
+                ifr.style = 'height:100%;width:100%;border:none'
+                ifr.src = blobUrl
+                ifr.onload = function () {
+                    //ifr.contentWindow.print() firefox 会失败，同源策略
+                    if (window.navigator.userAgent.match('Chrome/')) {
+                        ifr.contentWindow.print()
+                    } else {
+                        setTimeout(function(){
+                            window.print()
+                        },2500)
+                    }
+                }
+                document.body.appendChild(ifr)
+            }
+        }
+    </script>
+</body>
+
+</html>

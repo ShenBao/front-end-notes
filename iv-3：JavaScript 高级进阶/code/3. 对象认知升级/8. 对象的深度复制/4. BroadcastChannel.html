@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<body>
+    <script>
+
+        let chId = 0;
+        function clone(data) {
+            chId++;
+            var cname =  `__clone__${chId}`
+            var ch1 = new BroadcastChannel(cname);
+            var ch2 = new BroadcastChannel(cname);
+            return new Promise((resolve) => {
+                ch2.addEventListener("message", ev => resolve(ev.data),
+                    { once: true });
+                ch1.postMessage(data);
+            })
+        }
+
+        // 复制对象： 正确
+        var obj1 = { a: { b: 1 } };
+        clone(obj1).then(function (o) {
+            console.log("克隆普通对象:");
+            console.log(o, o === obj1);
+            console.log("")
+        })
+
+        // 复制时间： 正确, 依旧能调用getFullYear方法
+        var obj2 = {
+            a: new Date()
+        };
+        clone(obj2)
+            .then(function (o) {
+                console.log("克隆对象:包含时间");
+                console.log(o, o === obj2, o.a.getFullYear())
+                console.log("")
+            })
+
+
+        // 复制正则, 正确，依旧能调用正则的test方法
+        var obj3 = {
+            a: /[0-9]/
+        };
+        clone(obj3)
+            .then(function (o) {
+                console.log("克隆对象:包含正则")
+                console.log(o, o === obj3, o.a.test(1))
+                console.log("")
+            })
+
+
+        // 复制Blob, 正确，依旧还是Blob类型
+        var obj4 = {
+            a: new Blob(["123"])
+        };
+        clone(obj4)
+            .then(function (o) {
+                console.log("克隆对象:包含Blob")
+                console.log(o, o === obj3,  o.a instanceof Blob);
+                console.log("")
+            })
+
+
+        // 复制 window，异常
+        var obj5 = {
+            a: 1,
+            window
+        };
+        clone(obj5).then(function (o) {
+            console.log(o, o === obj5)
+        }).catch(err => {
+            console.log("克隆window:", err);
+        })
+
+
+        // 复制自定义函数, 异常
+        var obj6 = {
+            a: 1,
+            fn: function fn() { return false; },
+        };
+        clone(obj6)
+            .then(o => console.log(o, o === obj6))
+            .catch(err => {
+                console.log("克隆window:", err);
+            })
+    </script>
+    <div>BroadcastChannel</div>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div>测试ajax 界面</div>
+    <button id="ajaxBtn">发起超时请求</button>
+    <div class="ajax-change" id="responseDiv">change区域</div>
+    <script>
+
+        function test() {
+            //1. 创建实例对象
+            var xhrObj = new XMLHttpRequest();
+     
+            //请求错误回调
+            xhrObj.onerror = function () {
+                console.log("-------onerror-------:")
+            };
+
+            //请求完成回调，不论请求成功与否
+            xhrObj.onloadend = function () {
+                console.log("-------onloadend-------")
+            };
+
+            //超时监听
+            xhrObj.ontimeout = function () {
+                console.error('The request timed out.');
+                document.getElementById("responseDiv").innerHTML = "The request timed out";
+            };
+            //设置网络超时时间
+            xhrObj.timeout = 5 * 1000;
+
+            xhrObj.open("GET", "http://127.0.0.1:3000/timeout", true);
+            //发送请求数据
+            xhrObj.send();
+
+        }
+
+        document.getElementById("ajaxBtn").addEventListener("click", function () {
+            test();
+        });
+    </script>
+</body>
+
+</html>

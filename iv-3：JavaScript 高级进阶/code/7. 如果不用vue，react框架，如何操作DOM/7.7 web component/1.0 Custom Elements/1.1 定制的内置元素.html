@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p color="red" is="color-p">
+        这是color-p的内容
+    </p>
+    <script>
+        class ColorP extends HTMLParagraphElement {
+            constructor() {
+                super();
+                this.style.color = this.getAttribute("color");
+                console.log(this.style.color)
+            }
+
+        }
+        window.customElements.define("color-p", ColorP, { extends: "p" });
+    </script>
+
+</body>
+
+</html>

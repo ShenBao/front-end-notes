@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板</title>
+</head>
+
+<body>
+    <div id="template">
+        <div>名字:${name}</div>
+        <div>年龄:${age}</div>
+        <div>性别:${sex}</div>
+        <div>性别:${c.b}</div>
+        <div>商品:${products.join(",")}</div>
+    </div>
+
+
+    <script>
+        function parse(source, data) {
+            return new Function('data', `
+                with(data){
+                    return \`${source}\`
+                }
+            `)(data)
+        }
+
+        const result = parse(template.innerHTML, {
+            name: "帅哥",
+            age: 18,
+            sex: "男",
+            products: ["杯子","瓜子"],
+            c:{
+                b: "哈哈"
+            }
+        })
+
+        template.innerHTML = result;
+    </script>
+</body>
+
+</html>

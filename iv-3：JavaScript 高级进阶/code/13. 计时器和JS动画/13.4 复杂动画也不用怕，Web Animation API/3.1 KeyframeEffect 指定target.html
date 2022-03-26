@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyframeEffect</title>
+    <style>
+        .box1,
+        .box2 {
+            height: 100px;
+            width: 100px;
+            background-color: #000;
+        }
+
+        .box2 {
+            margin-top: 50px;
+        }
+
+        #btnPlay {
+            margin-top: 50px;
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+    <div>
+        <button type="button" id="btnPlay">播放</button>
+    </div>
+
+    <script>
+        const box1ItemEl = document.querySelector(".box1");
+        const box2ItemEl = document.querySelector(".box2");
+
+        btnPlay.onclick = () => {
+            const kyEffect1 = new KeyframeEffect(null, {
+                transform: ['translateX(0)', 'translateX(500px)']
+            },
+                {
+                    duration: 3000,
+                    fill: 'forwards'
+                }
+            )
+
+            const ky1 = new KeyframeEffect(kyEffect1);
+            ky1.target = box1ItemEl;
+            new Animation(ky1).play();
+ 
+            const ky2 = new KeyframeEffect(kyEffect1);
+            ky2.target = box2ItemEl;
+            new Animation(ky2).play();
+        }
+
+
+    </script>
+</body>
+
+</html>

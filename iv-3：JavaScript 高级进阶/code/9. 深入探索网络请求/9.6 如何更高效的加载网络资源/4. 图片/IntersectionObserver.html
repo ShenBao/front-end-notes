@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #imgContainers {
+        border: 1px solid #333;
+        height: 400px;
+        width: 500px;
+        overflow: auto;
+      }
+
+      #imgContainers img {
+        border: 1px solid #666;
+        width: 400px;
+        height: 400px;
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="imgContainers">
+      <img data-src="./images/dragon.png?t=1" />
+      <img data-src="./images/dragon.png?t=2" />
+      <img data-src="./images/dragon.png?t=3" />
+      <img data-src="./images/dragon.png?t=4" />
+      <img data-src="./images/dragon.png?t=5" />
+      <img data-src="./images/dragon.png?t=6" />
+      <img data-src="./images/dragon.png?t=7" />
+      <img data-src="./images/dragon.png?t=8" />
+    </div>
+
+    <script>
+      window.onload = function () {
+        var imagesCol = imgContainers.querySelectorAll("img[data-src]");
+
+        var options = {
+          threshold: 0,
+          rootMargin: "0px",
+          root: null,
+        };
+
+        var ioCallBack = function (entries, obs) {
+          console.log("entries:", entries);
+          entries.forEach((entry) => {
+            console.log("entry:", entry);
+            if (entry.isIntersecting) {
+              // 可见
+              entry.target.src = entry.target.dataset.src;
+              obs.unobserve(entry.target); // 停止观察
+            }
+          });
+        };
+        const observer = new IntersectionObserver(ioCallBack, options);
+
+        imagesCol.forEach(function (item) {
+          console.log("observer", item.dataset.src);
+          observer.observe(item);
+        });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width" />
+    <title>demo</title>
+    <link rel="stylesheet" href="" />
+    <script src="./index3.js"></script>
+</head>
+
+<body>
+    <button id="startMsg">BroadcastChannel 发送广播</button>
+
+    <script>
+        startMsg.onclick = function () {
+            console.log("main");
+            setTimeout(() => {
+                console.log("setTimeout 宏任务 1");
+            }, 0);
+
+            new Promise((resolve, reject) => {
+                console.log("promise 构造");
+                resolve(5);
+            }).then((data) => {
+                console.log("promise 微任务", data);
+            });
+
+            const ch = new MessageChannel();
+            ch.port1.onmessage = function (ev) {
+                console.log("收到MessageChannel消息", ev.data.msg);
+            };
+            ch.port2.postMessage({ msg: "11" });
+
+            new Promise((resolve, reject) => {
+                console.log("promise2 构造");
+                resolve(6);
+            }).then((data) => {
+                console.log("promise2 微任务", data);
+            });
+
+            setTimeout(() => {
+                console.log("setTimeout 宏任务 2");
+            },0);
+
+            console.log("main end");
+        };
+    </script>
+</body>
+
+</html>

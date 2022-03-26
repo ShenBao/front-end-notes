@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 82px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="home">#/home</button>
+    <button id="detail">#/detail</button>
+    <script>
+        const homeBtn = document.getElementById("home");
+        const detailBtn = document.getElementById("detail");
+        homeBtn.addEventListener("click", function () {
+            window.location.hash = "home";
+        });
+
+        detailBtn.addEventListener("click", function () {
+            window.location.hash = "test";
+        });
+
+        window.onhashchange = function hashChangeListener(e) {
+            console.log("window.onhashchange: onhashchange:");
+            console.log("oldUrl:", e.oldURL);
+            console.log("newUrl:", e.newURL);
+        };
+
+        window.addEventListener("hashchange", function hashChangeListener(e) {
+            console.log("window.addEventListener: hashchange:");
+        }, false);
+
+
+        document.body.onhashchange = function hashChangeListener(e) {
+            console.log("document.body.onhashchange: onhashchange:");
+        };
+
+        document.body.addEventListener("hashchange",function hashChangeListener(e) {
+            console.log("document.addEventListener: onhashchange:");
+        })
+    </script>
+</body>
+
+</html>

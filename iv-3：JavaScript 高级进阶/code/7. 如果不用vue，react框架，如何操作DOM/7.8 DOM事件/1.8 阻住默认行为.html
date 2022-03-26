@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <a id="linkMK" target="_blank" href="https://www.imooc.com/">跳转到慕课</a>
+    </div>
+    <div>
+        <input id="ckBox" type="checkbox"><label for="ckBox">我统一</label>
+    </div>
+
+    <script>
+        linkMK.addEventListener("click", function(ev){
+            ev.preventDefault();
+        })
+
+        ckBox.addEventListener("click", function(ev){
+            ev.preventDefault();
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // get 
+            fetch("http://127.0.0.1:3000/test1")
+                .then((response) => response.text())
+                .then((text) => console.log("获取到的数据对象===", text))
+                .catch((err) => console.log("Request Failed", err));
+
+
+            //post
+            fetch("http://127.0.0.1:3000/report",{
+                method:"POST",
+                headers:{
+                    "Content-Type": "application/x-www-form-urlencoded;"
+                },
+                body:"report=2",
+                mode: 'cors' //设置跨域
+            })
+            .then((response) => response.json())
+            .then((json) => console.log("post 获取到的数据对象===", json))
+            .catch((err) => console.log("Request Failed", err));
+
+        </script>
+    </body>
+</html>

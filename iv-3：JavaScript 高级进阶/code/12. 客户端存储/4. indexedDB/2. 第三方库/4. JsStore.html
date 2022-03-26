@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsStore</title>
+</head>
+
+<body>
+    <script src="./jsstore.min.js"></script>
+    <script src="./jsstore.worker.js"></script>
+    <script>
+        // 定义数据结构
+        function getDbSchema() {
+            var table = {
+                name: 'Student',
+                columns: {
+                    id: {
+                        primaryKey: true,
+                        autoIncrement: true
+                    },
+                    name: {
+                        notNull: true,
+                        dataType: 'string'
+                    },
+                    gender: {
+                        dataType: 'number',
+                        default: 'male'
+                    },
+                    country: {
+                        notNull: true,
+                        dataType: 'string'
+                    },
+                    city: {
+                        dataType: 'string',
+                        notNull: true
+                    }
+                }
+            }
+
+            var db = {
+                name: 'My-Db',
+                tables: [table]
+            }
+            return db;
+        };
+        // 实例化
+        var jsstoreCon = new JsStore.Connection();
+
+        async function initDb() {
+            // 创建数据库
+            var isDbCreated = await jsstoreCon.initDb(getDbSchema());
+            if (isDbCreated) {
+                console.log('db created');
+            }
+            else {
+                console.log('db opened');
+            }
+            // 添加
+            await addStudent();
+            // 查询
+            var students = await jsstoreCon.select({
+                from: 'Student'
+            });
+
+            console.log("students", students)
+        }
+
+        async function addStudent() {
+            try {
+                var noOfDataInserted = await jsstoreCon.insert({
+                    into: 'Student',
+                    values: [{
+                        name: "小名",
+                        gender: 1,
+                        country: "北京",
+                        city: "北京"
+                    }, {
+                        name: "小红",
+                        gender: 0,
+                        country: "新疆",
+                        city: "乌鲁木齐"
+                    }]
+                });
+            } catch (ex) {
+                console.log("addStudent error:", ex.message);
+            }
+
+        }
+
+        initDb();
+    </script>
+</body>
+
+</html>

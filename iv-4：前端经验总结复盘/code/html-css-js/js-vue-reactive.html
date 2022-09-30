@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的 Reactive</title>
+</head>
+<body>
+    <p>简单的 Reactive</p>
+
+    <script>
+        const fns = new Set()
+
+        function reactive(obj) {
+            return new Proxy(obj, {
+                get(target, key) {
+                    if (activeFn) fns.add(activeFn)
+                    return target[key]
+
+                    // // obj 嵌套属性
+                    // const val = target[key]
+                    // if (typeof val === 'object' && val != null) { // 只考虑 object ，其他未考虑
+                    //     return reactive(val) // 直接返回一个 Proxy 对象即可
+                    // } else {
+                    //     return val
+                    // }
+                },
+                set(target, key, newVal) {
+                    target[key] = newVal
+                    fns.forEach(fn => fn())
+                    return true
+                }
+            })
+        }
+
+        let activeFn
+        function effect(fn) {
+            activeFn = fn
+            fn() // 执行一次，触发 proxy get
+        }
+
+        const user = reactive({ name: '张三' })
+        effect(() => {
+            console.log('name', user.name)
+        })
+        user.name = '张三'
+        setTimeout(() => {
+            user.name = '李四'
+        }, 1000)
+
+        // // obj 嵌套属性
+        // const user = reactive({ name: '张三', info: { city: '北京' } })
+        // effect(() => {
+        //     console.log('city', user.info.city)
+        // })
+        // user.info.city = '上海'
+        // setTimeout(() => {
+        //     user.info.city = '杭州'
+        // }, 1000)
+
+    </script>
+</body>
+</html>

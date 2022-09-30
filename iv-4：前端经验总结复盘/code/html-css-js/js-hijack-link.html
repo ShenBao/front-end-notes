@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 劫持链接</title>
+</head>
+<body>
+    <p>JS 劫持链接，非同域则给出提示</p>
+    <ul>
+        <li><a href="./index.html">首页</a></li>
+        <li><a href="https://www.baidu.com/">百度</a></li>
+    </ul>
+
+    <script>
+        document.addEventListener('click', (event) => {
+            const { target } = event
+            if (target.tagName !== 'A') return
+
+            hijackLink(target, event)
+        })
+
+        function hijackLink(elem, event) {
+            const href = elem.getAttribute('href')
+
+            // href 可能是绝对路径，也可能是相对路径。因此最好转换为 URL 再统一判断
+            const url = new URL(href, location.origin)
+            if (url.origin === location.origin) {
+                return // 同源，则继续默认行为
+            } else {
+                // 非同源，则弹出提示框
+                const res = confirm(`是否继续访问 ${url.href}`)
+                if (res) return
+                else event.preventDefault() // 阻止默认行为
+            }
+        }
+    </script>
+</body>
+</html>

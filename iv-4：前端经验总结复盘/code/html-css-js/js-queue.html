@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 队列</title>
+</head>
+<body>
+    <p>JS 队列</p>
+
+    <script>
+        // 实现队列的：入队、出队、长度
+        // PS：要用链表来实现，用数组性能较低
+
+        class MyQueue {
+            constructor() {
+                this.length = 0 // 长度
+                this.head = null
+                this.tail = null
+            }
+            // 从 tail 入队
+            add(value) {
+                const newNode = { value }
+
+                if (this.length === 0) {
+                    // 长度是 0
+                    this.head = newNode
+                    this.tail = newNode
+                } else {
+                    // 长度 > 0 ，把 newNode 拼接到 tail 位置
+                    this.tail.next = newNode
+                    this.tail = newNode
+                }
+
+                this.length++ // 累加长度
+            }
+            // 从 head 出队
+            delete() {
+                if (this.length <= 0) return null
+
+                let value = null
+                if (this.length === 1) {
+                    // 长度是 1 ，只有一个元素了
+                    value = this.head.value // 先找到结果
+                    // 重置 head tail
+                    this.head = null
+                    this.tail = null
+                } else {
+                    // 长度 > 1 ，多个元素
+                    value = this.head.value // 先找到结果
+                    this.head = this.head.next // 重置 head
+                }
+
+                // 减少长度，返回结果
+                this.length--
+                return value
+            }
+        }
+
+        // 功能测试
+        const queue = new MyQueue()
+        queue.add(100)
+        console.log('length1', queue.length) // 1
+        queue.add(200)
+        console.log('length2', queue.length) // 2
+        console.log('delete1', queue.delete()) // 100
+        queue.add(300)
+        console.log('length3', queue.length) // 2
+        console.log('delete2', queue.delete()) // 200
+        console.log('length4', queue.length) // 1
+        console.log('delete3', queue.delete()) // 300
+        console.log('length5', queue.length) // 0
+        console.log('delete4', queue.delete()) // null
+    </script>
+</body>
+</html>

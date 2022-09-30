@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合并两个递增数组</title>
+</head>
+<body>
+    <p>合并两个递增数组</p>
+
+    <script>
+        const arr1 = [1, 3, 5, 7, 9]
+        const arr2 = [2, 4, 6, 8]
+
+        // // 1. 直接用 concat + sort —— 时间复杂度高，因为有排序，复杂度至少是 O(n*logn)
+        // const res = arr1.concat(arr2).sort((a, b) => a - b)
+        // console.log(res)
+
+        // 2. 双指针 - 时间复杂度 O(m + n)
+        const res = []
+        let i = 0
+        let j = 0
+
+        while(arr1[i] != null || arr2[j] != null) {
+            // 只要 arr1 或 arr2 还有值，就继续循环
+
+            const v1 = arr1[i]
+            const v2 = arr2[j]
+            // console.log('index', i, j)
+
+            if (v1 == null && v2 == null) {
+                // arr1 和 arr2 都没有值了，则停止
+                break
+            }
+            if (v1 < v2 || v2 == null) {
+                // v1 较小，则只拼接 v1
+                res.push(v1)
+                i++
+            }
+            if (v1 > v2 || v1 == null) {
+                // v2 较小，则只拼接 v2
+                res.push(v2)
+                j++
+            }
+            if (v1 === v2) {
+                // v1 v2 相等，则都拼接
+                res.push(v1)
+                i++
+                res.push(v2)
+                j++
+            }
+        }
+        console.log(res)
+
+    </script>
+</body>
+</html>

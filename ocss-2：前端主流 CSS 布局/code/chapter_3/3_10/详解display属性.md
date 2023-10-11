@@ -20,9 +20,11 @@
     <div>改变盒模型类型</div>
 </div>
 
-&emsp;&emsp;可以看到，div具备了内联盒子的特性，而span则具备了块级盒子的特性。当然display远比这些复杂的多，像我们后面章节中讲到的弹性布局、网格布局等都是跟display有着紧密关系。
+可以看到，div 具备了内联盒子的特性，而 span 则具备了块级盒子的特性。
 
-&emsp;&emsp;display属性大概可分为以下几类进行学习：
+当然 display 远比这些复杂的多，像我们后面的弹性布局、网格布局等都是跟display 有着紧密关系。
+
+display属性大概可分为以下几类进行学习：
 
 <div align=center>
 	<img src="./img/3_10_2.jpg" />
@@ -111,7 +113,9 @@
     <div>inline-block特性</div>
 </div>
 
-&emsp;&emsp;可以看到，盒子即具备了块级盒子的特性(支持宽高)又具备了内联盒子的特性(横向排列)。 关于`inline-flex`、`inline-grid`的特性会在相关章节中进行讲解。
+&emsp;&emsp;可以看到，盒子即具备了块级盒子的特性(支持宽高)又具备了内联盒子的特性(横向排列)。 
+
+关于`inline-flex`、`inline-grid`的特性会在相关章节中进行讲解。
 
 ## global(全局值)
 

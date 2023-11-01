@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        const log = console.log;
+        log(window === window.window);
+        log(window.window === window.window.window)
+        log(window.window.window === window.window.window.window)
+
+
+        window === window.window  // true
+        window.window === window.window.window // true
+        window.window.window === window.window.window.window // true
+
+
+        this === window  // true
+
+    </script>
+
+    <script>
+
+        // 如何出处 aName??
+        var aName = "global的name";
+        function a() {
+            var aName = "local的name";
+            // 想输出全局对象的aName？？？
+            console.log();
+        }
+        a();
+        alert("哈哈")
+
+    </script>
+
+    <script>
+
+        var xxxx = this;
+        var aName = "global的name";
+        function a() {
+            var aName = "local的name";
+            // 从xxxx上访问
+            console.log(xxxx.name);
+        }
+        a();
+        alert("哈哈")
+
+
+
+    </script>
+
+    <script>
+
+        this === this.window(this即window, 其有window属性) === this.window.window
+        // 去掉this
+        window === window.window
+
+    </script>
+
+
+    <script>
+        this.window  // Window
+        window.this  // undefined
+    </script>
+
+</body>
+
+</html>

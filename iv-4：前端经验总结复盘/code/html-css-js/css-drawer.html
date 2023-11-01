@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 抽屉</title>
+    <style>
+        #drawer-container {
+            width: 0;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            transition: width .3s;
+        }
+    </style>
+</head>
+<body>
+    <p>CSS 抽屉</p>
+
+    <div id="drawer-container" style="background-color: #ccc;">
+        抽屉
+    </div>
+
+    <script>
+        const drawerContainer = document.getElementById('drawer-container')
+        
+        setTimeout(() => {
+            drawerContainer.style.width = '300px'
+        }, 1000)
+
+        setTimeout(() => {
+            drawerContainer.style.width = '0'
+        }, 3000)
+    </script>
+</body>
+</html>

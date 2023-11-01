@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+  // 3 个状态  pending  fulfilled  rejected
+  new Promise(function (resolve, reject) {
+    let fullName = "freemen";
+    if (fullName === "Vinko") {
+      resolve(1);
+    } else {
+      reject(2);
+    }
+  }).then(
+    function (value) {
+      console.log(`resolve - value`, value);
+    },
+    function (value) {
+      console.log(`reject - value`, value);
+    }
+  );
+    </script>
+  </body>
+</html>

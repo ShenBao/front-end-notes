@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5 editor</title>
+</head>
+<body>
+    <p>H5 editor</p>
+
+    <script>
+
+        // // 问题1
+        // const page = {
+        //     // Array 有序
+        //     components: {
+        //         'text1': {
+        //             type: 'text',
+        //             value: '文本1',
+        //             style: {
+        //                 color: 'red',
+        //                 fontSize: '16px',
+        //             },
+        //             attrs: {
+
+        //             },
+        //             on: {
+                        
+        //             }
+        //         },
+        //         'text2': {
+        //             type: 'text',
+        //             value: '文本2',
+        //             color: 'red',
+        //             fontSize: '16px',
+        //         },
+        //         'img1': {
+        //             type: 'image',
+        //             src: 'xxx.png',
+        //             width: '100px'
+        //         }
+        //     }
+        // }
+
+        // // 问题二：vuex 同步
+
+        // // 问题三：
+        // {
+        //     layers: [
+        //         {
+        //             id: 'text1',
+        //             name: '文本1'
+        //         },
+        //         {
+        //             id: 'text2', // component id
+        //             name: '文本2' // layer name
+        //         },
+        //         {
+        //             id: 'img1',
+        //             name: '图片'
+        //         },
+        //     ]
+        // }
+
+
+        // 第一个问题
+        const store = {
+            page: {
+                title: '标题',
+                setting: { /* 其他扩展信息：多语言，微信分享的配置，其他 */ },
+                props: { /* 当前页面的属性设置，背景 */ },
+                components: [
+                    // components 有序，数组
+
+                    {
+                        id: 'x1',
+                        name: '文本1',
+                        tag: 'text', // type
+                        style: { color: 'red', fontSize: '16px' },
+                        attrs: { /* 其他属性 */ },
+                        text: '文本1',
+                    },
+                    {
+                        // 文本2
+                    },
+                    {
+                        id: 'x3',
+                        name: '图片1',
+                        tag: 'image',
+                        style: { width: '100px' },
+                        attrs: { src: 'xxx.png' }
+                    }
+                ]
+            },
+
+            // 问题2 Vuex
+            // 用于记录当前选中的组件，记录 id 即可
+            activeComponentId: 'x3'
+        }
+
+        // 问题3 Vuex getters
+        const getters = {
+            // Vue computed
+            layers() {
+                store.page.components.map(c => {
+                    return {
+                        id: c.id,
+                        name: c.name
+                    }
+                })
+            }
+        }
+
+    </script>
+</body>
+</html>

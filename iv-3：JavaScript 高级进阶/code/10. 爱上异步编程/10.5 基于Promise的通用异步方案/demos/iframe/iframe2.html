@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>I am iframe2</div>
+
+    <script>
+
+        function isObject(obj) {
+            return obj !== null && typeof obj === "object"
+        }
+
+        function onMessage(ev) {
+            const data = ev.data;
+            if (!isObject(data) || typeof data.method !== "string") {
+                return;
+            }
+            // console.log("ifr2 data:", data);
+            switch (data.method) {
+                case "init":
+                    setTimeout(() => {
+                        top.postMessage({
+                            method: "init",
+                            // scope: "iframe2",
+                            _key_: data._key_,
+                            data: {
+                                isOk: true,
+                                source: "iframe2"
+                            }
+                        })
+                    }, 2000)
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        window.addEventListener("message", onMessage);
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="display: flex">
+        <p id="source">
+            <style>
+                #source {
+                    color: red;
+                    font-size: 30px;
+                }
+            </style>
+            <script>
+                document.getElementById("source");
+            </script>
+            JS <br /> 进阶 实战 空格<br /> 讲解
+            下一层.
+            <span style="display:none">隐藏文本</span>
+        </p>
+        <div>
+            <xmp>
+                <style>
+                    #source {
+                        color: red;
+                        font-size: 20px;
+                    }
+                </style>
+                <script>
+                    document.getElementById("source");
+                </script>
+                JS <br /> 进阶 实战 空格<br /> 讲解
+                下一层.
+                <span style="display:none">隐藏文本</span>
+
+            </xmp>
+        </div>
+    </div>
+
+
+    <div style="display: flex">
+        <div>
+            <h3>Node.textContent:</h3>
+            <textarea id="textContentOutput" rows="15" cols="50" readonly></textarea>
+        </div>
+        <div>
+            <h3>HTMLElement.innerText:</h3>
+            <textarea id="innerTextOutput" rows="15" cols="50" readonly></textarea>
+        </div>
+    </div>
+
+
+
+    <script>
+        const source = document.getElementById('source');
+        const textContentOutput = document.getElementById('textContentOutput');
+        const innerTextOutput = document.getElementById('innerTextOutput');
+
+        textContentOutput.innerHTML = source.textContent;
+        innerTextOutput.innerHTML = source.innerText;
+    </script>
+</body>
+
+</html>

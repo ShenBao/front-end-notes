@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>window.onerror捕获到的错误</div>
+
+    <script>
+        window.onerror = function (message, url, line, column, error) {
+            console.log('捕获到错误:', message, "==line:", line, "==column:", column, "==error:", error);
+        }
+
+        setTimeout(() => {
+            a.b();
+        })
+
+        var f = {};
+        f.cc.ee;
+
+    </script>
+</body>
+
+</html>

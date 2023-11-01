@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态规划 路径数</title>
+</head>
+<body>
+    <p>动态规划 路径数</p>
+
+    <script>
+        function getPaths(m, n) {
+            // m * n 二维数组，模拟网格
+            const map = new Array(m)
+            for (let i = 0; i < m; i++) {
+                map[i] = new Array(n)
+            }
+
+            // 如果只走第一行，就只有一条路径。所以第一行所有 item 都填充 1
+            map[0].fill(1)
+
+            // 如果只走第一列，也只有一条路径。所以第一列所有 item 都填充 1
+            for (let i = 0; i < m; i++) {
+                map[i][0] = 1
+            }
+
+            // 其他 item ，根据这个公式 map[i][j] = map[i - 1][j] + map[i][j - 1]
+            // 如走到 [5, 4] 的路径数，就是 [4, 4] 和 [5, 3] 路径数的总和 —— 动态规划的思想
+            // 注意：i 和 j 都从 1 开始 ！！！ 因为 0 位置已经被上文赋值为了
+            for (let i = 1; i < m; i++) {
+                for (let j = 1; j < n; j++) {
+                    map[i][j] = map[i - 1][j] + map[i][j - 1]
+                }
+            }
+
+            // 返回 finish 节点的路径数
+            return map[m - 1][n - 1]
+        }
+
+        console.log('paths', getPaths(5, 4))
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error(`捕获到错误1: ${event.reason}`)
+        });
+
+        window.onunhandledrejection = event => {
+            console.error(`捕获到错误2: ${event.reason}`);
+        };
+
+        //不能捕获
+        window.onerror= (event) => {
+            console.error(`onerror 捕获到错误: ${event.reason}`)
+       };
+
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                throw new Error("错误");
+                resolve(5);
+            }, 1000);
+        });
+
+
+    </script>
+</body>
+
+</html>

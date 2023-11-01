@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 四合院</title>
+    <style>
+        html * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        #header {
+            height: 50px;
+            background-color: red;
+        }
+        #container {
+            flex: 1;
+            display: flex;
+        }
+        #left-container {
+            width: 100px;
+            background-color: green;
+        }
+        #main-container {
+            flex: 1;
+            background-color: #ccc;
+        }
+        #right-container {
+            width: 200px;
+            background-color: yellow;
+        }
+        #footer {
+            height: 50px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML5 标签 语义化 -->
+    <header id="header">
+        header
+    </header>
+    <section id="container">
+        <aside id="left-container">left</aside>
+        <section id="main-container">main</section> <!-- 或者用 article ，看用途 -->
+        <aside id="right-container">right</aside> <!-- 或者用 section ，看用途 -->
+    </section>
+    <footer id="footer">
+        footer
+    </footer>
+</body>
+</html>

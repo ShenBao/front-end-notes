@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <iframe src="./7.1 iframe.html" id="ifr"></iframe>
+
+    <div id="container">
+
+    </div>
+
+    <div>
+        <button id="btnCloneNode">cloneNode</button>
+        <button id="btnImportNode">importNode</button>
+        <button id="btnAdoptNode">adoptNode</button>
+    </div>
+
+
+    <script>
+
+        const ifrEl = document.getElementById("ifr");
+
+        ifrEl.onload = function () {
+            const docEx = ifr.contentWindow.document;
+            btnCloneNode.addEventListener("click", function () {
+                const node = docEx.getElementById("divCloneNode").cloneNode(true);
+                container.append(node);
+            })
+
+            btnImportNode.addEventListener("click", function () {
+                const node = document.importNode(docEx.getElementById("divImportNode"), true);
+                container.append(node);
+            })
+
+            btnAdoptNode.addEventListener("click", function () {
+                const node = document.adoptNode(docEx.getElementById("divAdoptNode"))
+                container.append(node);
+            })
+        }
+
+    </script>
+
+
+</body>
+
+</html>

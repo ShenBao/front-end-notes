@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 快速排序</title>
+</head>
+<body>
+    <p>快速排序</p>
+
+    <script>
+        /**
+         * 快速排序（使用 splice）
+         * @param arr 原数组
+         * @returns 排序的数组
+         */
+        function quickSort1(arr) {
+            let length = arr.length
+            if (length <= 1) return arr
+
+            const midIndex = Math.floor(length / 2) // 中间的 index
+            const midValue = arr.splice(midIndex, 1)[0] // 中间的值。splice 会修改数组
+            const left = []
+            const right = []
+
+            // 注意这里使用 arr.length ，arr 被修改了
+            for (let i = 0; i < arr.length; i++) {
+                const n = arr[i]
+                if (n < midValue) {
+                    // 小于 midValue ，则放在左侧
+                    left.push(n)
+                } else {
+                    // 大于等于 midValue ，则放在右侧
+                    right.push(n)
+                }
+            }
+
+            return quickSort1(left).concat(
+                [midValue],
+                quickSort1(right)
+            )
+        }
+
+        /**
+         * 快速排序（使用 slice）
+         * @param arr 原数组
+         * @returns 排序的数组
+         */
+        function quickSort2(arr) {
+            const length = arr.length
+            if (length <= 1) return arr
+
+            const midIndex = Math.floor(length / 2) // 中间的 index
+            const midValue = arr.slice(midIndex, midIndex + 1)[0] // 中间的值。注意，使用 slice，原数组没有改动
+
+            const left = []
+            const right = []
+
+            for (let i = 0; i < length; i++) {
+                if (i !== midIndex) {
+                    const n = arr[i]
+                    if (n < midValue) {
+                        // 小于 midValue ，则放在左侧
+                        left.push(n)
+                    } else {
+                        // 大于等于 midValue ，则放在右侧
+                        right.push(n)
+                    }
+                }
+            }
+
+            return quickSort2(left).concat(
+                [midValue],
+                quickSort2(right)
+            )
+        }
+
+        // 功能测试
+        const arr1 = [2, 1, 9, 7, 8, 6, 3, 5]
+        console.log(quickSort1(arr1))
+        const arr2 = [2, 1, 9, 7, 8, 6, 3, 5]
+        console.log(quickSort2(arr2))
+    </script>
+</body>
+</html>

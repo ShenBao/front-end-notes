@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      // Promise.prototype.then
+      // 1 可以支持链式调用
+      // 2 then 接受两个参数且都是函数
+      // 第一个函数是我们promise 状态变成fullfilled 时候的回调函数
+      // 第二个函数是我们promise 状态变成rejected  时候的回调函数
+      // 3 返回值也是Promise(新的)
+      new Promise(function (resolve, reject) {
+        let fullName = "freemen";
+        if (fullName === "freemen") {
+          resolve(1);
+        } else {
+          reject(2);
+        }
+      })
+        .then((value) => {
+          console.log(`fulfilled value`, value);
+          return Promise.reject(2);
+        })
+        .then(
+          (fulfilledValue) => {
+            console.log(`fulfilled value`, fulfilledValue);
+          },
+          (rejectedValue) => {
+            console.log(`rejectedValue`, rejectedValue);
+          }
+        );
+      // fulfilled value 1
+      // fulfilled value 2
+    </script>
+  </body>
+</html>

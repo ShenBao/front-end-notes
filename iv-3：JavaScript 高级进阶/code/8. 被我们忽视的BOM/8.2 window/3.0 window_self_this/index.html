@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+    <div>index</div>
+    <iframe src="./ifr1.html" id="ifr1"></iframe>
+    <script>
+        window.name = "index";
+        ifr1.contentWindow.onload = function () {
+            console.log(`index: top:${top.name}`)
+            console.log(`index: self:${self.name}`)
+            console.log(`index: parent:${parent.name}`)
+            console.log(`index: parent.parent:${parent.parent.name}`)
+            console.log("")
+        }
+    </script>
+</body>
+
+</html>

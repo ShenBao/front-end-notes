@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 居中</title>
+    <style>
+        #container {
+            width: 500px;
+            height: 500px;
+            background-color: #999;
+        }
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        /* 1. 定位 + translate
+        #container {
+            position: relative;
+        }
+        #box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        } */
+
+        
+        /* 2. 定位 + margin: auto
+        #container {
+            position: relative;
+        }
+        #box {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        } */
+
+        /* 3. 使用 flex
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        } */
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="box"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>如何区分 px/em/rem/vh/vw ?</title> 
+  <style>
+    /* 基础样式 */
+    * {
+      margin:0;
+      padding:0;
+    }
+
+    html {
+      font-size: 100px;
+    }
+  
+    div {
+      font-size: 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 20px;
+      background:#f1f1f1;
+      color: #000;
+      font-weight: bold;
+      height: 40px;
+    }
+
+    /* 章节内容 */
+    .px-box {
+      width: 200px;
+      background: red;  
+    }
+    
+    .em-box {
+      /* 200px */
+      width: 10em; 
+      background: green;   
+    }
+    
+    .rem-box {
+      /* 200px */
+      width: 2rem;
+      background:blue;
+    }
+    
+    .vw-vh-box {
+      width: 100vw; 
+      height: 40vh;
+      background: yellow;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- px绝对长度单位  1px = 1个像素 -->
+  <div class="px-box">
+    px-box  -  200px
+  </div>
+  <!-- 相对长度单位, 相对于当前元素内文本的字体尺寸 -->
+  <div class="em-box">
+    em-box - 10em  
+  </div>
+  <!-- rem是CSS3新增的一个相对单位 ，基于 html 元素的字体大小来决定 -->
+  <div class="rem-box">
+    rem-box - 2rem
+  </div>
+  <!-- vw 和 vh 是相对于视口的长度单位, 1vw 即值为视口宽度的1%，1vh 意味着值为视口高度的1% -->
+  <div class="vw-vh-box">
+    vw-vh-box
+  </div>
+</body>
+</html>

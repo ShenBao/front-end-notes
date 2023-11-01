@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>throttle</title>
+  </head>
+  <body>
+    <script>
+      // window.onresize
+      // 1 单位时间内 
+      // 2 只触发一次
+
+      // 1 返回值是一个函数
+      // 2 开启定时器
+      // 3 如果定时器存在直接返回 false
+      // 4 定时器内部清空定时器 并且把timmer 置为null 然后执行我们的事件响应函数
+      function throttle(fn, interval) {
+        let timer;
+        return (event) => {
+          if (timer) {
+            return false;
+          }
+          timer = setTimeout(() => {
+            clearTimeout(timer);
+            timer = null;
+            fn(event);
+          }, interval);
+        };
+      }
+
+      window.onresize = throttle(function (event) {
+        console.log(`event`, event);
+      }, 1000);
+    </script>
+  </body>
+</html>

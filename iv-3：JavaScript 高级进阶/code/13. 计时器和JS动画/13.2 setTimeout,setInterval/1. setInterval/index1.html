@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    .warp {
+        position: relative;
+        height: 100px;
+        background: red;
+    }
+</style>
+
+<body>
+    setIntervale
+    <div id="progress" class="warp" style="width: 0">0%</div>
+    <button id="start">开始</button>
+    <script>
+        //同步耗时操作
+        function syncSleep(duration) {
+            const now = Date.now();
+            while (now + duration > Date.now()) { }
+        }
+
+        var interval = null;
+        var timeout = null;
+        var curCount = 0;
+        var timeLine = Date.now();
+        var lastIntervalTime;
+
+        function printTime(text, isInterval) {
+            if (isInterval) {
+                var intervalTime = lastIntervalTime ? Date.now() - lastIntervalTime : '第一次执行';
+                console.log(text, "==时间线：", Date.now() - timeLine, "上一次间隔：", intervalTime);
+                lastIntervalTime = Date.now();
+            } else {
+                console.log(text, "==时间线：", Date.now() - timeLine);
+            }
+        }
+
+        function intervalFun(totalCount) {
+            interval = setInterval(() => {
+                printTime("执行interval", true);
+                syncSleep(4000);
+                printTime("执行interval完毕");
+                curCount += 1;
+                if (curCount > totalCount) {
+                    window.clearInterval(interval);
+                }
+            }, 5000);
+        }
+
+        intervalFun(6);
+
+
+
+        timeout = setTimeout(() => {
+            printTime("模拟click");
+            start.click();
+        }, 3000),
+
+        timeout = setTimeout(() => {
+            printTime("执行timeout");
+            syncSleep(9000);
+            printTime("执行timeout完毕");
+        }, 4000),
+
+        start.onclick = function () {
+                printTime("执行onClick");
+                syncSleep(6000);
+                printTime("执行onClick完毕");
+        };
+
+        window.onbeforeunload = function (event) {
+            console.log("卸载")
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+
+        //onclick（当前）                             3s + 6 
+        //onclick（当前）,timeout                     4s 
+        //onclick（当前），timeout,interval-1         5s 
+        //timeout（当前）,interval-1                  9s + 9 
+        //timeout（当前）,interval-1                  10s     interval-2 
+        //timeout（当前）,interval-1                  15s     interval-3 
+        //interval-1（当前）                          18s + 4 
+        //interval-1（当前）                          18s + 4 
+        //interval-1（当前）,interval-4               20s 
+        //interval-4（当前）                          22s + 4
+        //interval-4（当前），interval-5              25s
+        //interval-5（当前），                         26s + 4
+        //interval-6                                 30s
+        //interval-7                                 35s
+    </script>
+</body>
+
+</html>
+

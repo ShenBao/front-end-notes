@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            function isFunction(fn) {
+                return typeof fn === "function" || fn instanceof Function;
+            }
+
+            function retry(fun, count) {
+                if (!isFunction(fun)) {
+                    return Promise.resolve();
+                }
+
+                return new Promise((resolve, reject) => {
+                    let curIndex = 0; //当前索引;
+
+                    let error = null; //错误值
+
+                    const next = () => {
+                        curIndex = curIndex + 1;
+                        if (curIndex <= count) {
+                            exeFun(curIndex);
+                            return;
+                        }
+                        reject(error);
+                    };
+
+                    const exeFun = async (index) => {
+                        console.log("执行次数", index);
+                        try {
+                            const value = await fun(index);
+                            resolve(value);
+                        } catch (e) {
+                            error = e;
+                            next();
+                        }
+                    };
+                    next();
+                });
+            }
+
+            // retry(()=>{
+            //     throw new Error("错误")
+            // },3).catch((e)=>{
+            //     console.log("捕获到错误：",e)
+            // });
+
+            retry(() => {
+                return fetch("http://127.0.0.1:3000/test1").then((response) => response.text());
+            }, 3)
+                .then((res) => {
+                    console.log("当前的数据:", res);
+                })
+                .catch((e) => {
+                    console.log("捕获到错误：", e);
+                });
+        </script>
+    </body>
+</html>

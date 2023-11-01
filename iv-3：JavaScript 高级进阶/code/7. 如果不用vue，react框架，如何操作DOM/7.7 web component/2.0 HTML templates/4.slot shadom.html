@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <template id="tpl-test">
+        <style type="text/css">
+            .title {
+                color: red;
+            }
+        </style>
+        <div class="title">标题</div>
+        <slot name="slot-des">默认内容</slot>
+    </template>
+
+    <test-item>
+        <div slot="slot-des">不是默认内容哦</div>
+    </test-item>
+
+    <script>
+        class TestItem extends HTMLElement {
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                const content = document.getElementById("tpl-test").content.cloneNode(true);
+
+                // 结果呢？ 不生效
+                // this.append(content);
+                // 
+                const shadow = this.attachShadow({mode: "open"}); 
+                shadow.append(content);
+
+            }
+        }
+        window.customElements.define("test-item", TestItem);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .outer-btn{
+                position: relative;
+                width: 300px;
+                height: 100px;
+                background: red;
+            }
+
+            .inner-btn{
+                position: relative;
+                width: 200px;
+                height: 80px;
+                background: yellow;
+            }
+        </style>
+    </head>
+
+    
+
+    <body>
+        <div class="outer-btn">
+            外部按钮
+            <div class="inner-btn">内部按钮</div>
+        </div>
+        <script>
+            var outerBtn = document.querySelector(".outer-btn");
+            var innerBtn = document.querySelector(".inner-btn");
+
+            new MutationObserver(function () {
+                console.log("mutate 微任务");
+            }).observe(outerBtn, {
+                //观察属性变化
+                attributes: true,
+            });
+
+            //点击方法
+            function onClick() {
+                console.log("click");
+
+                setTimeout(function () {
+                    console.log("timeout 宏任务");
+                });
+
+                
+                Promise.resolve().then(function () {
+                    console.log("promise 微任务");
+                });
+
+                outerBtn.setAttribute("data-number", Math.random());
+            }
+
+            outerBtn.addEventListener("click", onClick);
+            innerBtn.addEventListener("click", onClick);
+
+
+            
+            //点击
+            const evObj=  document.createEvent("MouseEvents");
+            evObj.initEvent("click", true, true);
+            evObj.eventType = 'message';
+            innerBtn.dispatchEvent(evObj);
+
+        </script>
+    </body>
+</html>

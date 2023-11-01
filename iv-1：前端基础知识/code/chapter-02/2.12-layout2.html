@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS实现三栏布局-flex布局</title>
+	<style type="text/css">
+
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .box {
+      display: flex;
+    }
+
+    div {
+      height: 100px;
+    }
+
+    .left {
+      width: 100px;
+      background: red;
+    }
+
+    .center {
+      flex: 1;
+      background: green;
+    }
+
+    .right {
+      width: 100px;
+      background: blue;
+    }
+  
+	</style>
+</head>
+<body>
+  <div class="box">
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div>    
+  </div>
+</body>
+</html>

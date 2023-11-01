@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=q, initial-scale=1.0">
+    <title>for vs forEach</title>
+</head>
+<body>
+    <p>for vs forEach</p>
+
+    <script>
+        const arr = []
+        for (let i = 0; i < 100 * 10000; i++) {
+            arr.push(i)
+        }
+        const length = arr.length
+
+        console.time('for')
+        let n1 = 0
+        for (let i = 0; i < length; i++) {
+            n1++
+        }
+        console.timeEnd('for') // 3.7ms
+
+        console.time('forEach')
+        let n2 = 0
+        arr.forEach(() => n2++)
+        console.timeEnd('forEach') // 15.1ms
+    </script>
+</body>
+</html>

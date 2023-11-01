@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>落球</title>
+    <style>
+        .ball {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-left: 180px;
+            background: radial-gradient(circle at 70% 30%, #0aafe6, #222222);
+            cursor: pointer;
+        }
+
+        .desk {
+            height: 200px;
+            width: 200px;
+            border-right: 1px solid #000;
+            border-top: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" onclick="location.reload();">重置</button>
+    <div class="ball"></div>
+    <div class="desk"></div>
+
+    <script>
+        const ballEl = document.querySelector(".ball");
+        ballEl.addEventListener("click", function () {
+            let fallAni = ballEl.animate({
+                transform: [
+                    'translate(0, 0)',
+                    'translate(20px, 8px)',
+                    'translate(50px, 200px)']
+            },
+                {
+                    easing: "cubic-bezier(.68,.08,.89,-0.05)",
+                    duration: 2000,
+                    fill: "forwards"
+                })
+        });
+
+    </script>
+
+</body>
+
+</html>

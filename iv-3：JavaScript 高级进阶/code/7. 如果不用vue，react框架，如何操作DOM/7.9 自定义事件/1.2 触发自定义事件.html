@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="divWrapper">
+        <button type="button" id="btnTrigger">触发事件</button>
+    </div>
+    <script>
+        btnTrigger.addEventListener("myEvent", function () {
+            console.log("DOM2: myEvent")
+        })
+
+        btnTrigger.onmyEvent = function (event) {
+            console.log("DOM0: myEvent")
+        }
+
+        var event = new MouseEvent("myEvent");
+        btnTrigger.dispatchEvent(event);
+    </script>
+</body>
+
+</html>

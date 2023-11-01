@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC</title>
+    <style>
+        section {
+          background: red;
+          color: black;
+          width: 200px;
+          line-height: 100px;
+          text-align:center;
+          margin: 50px;
+        } 
+        /* 解除注释创建BFC */
+        /* .box-container {
+          overflow: hidden;
+        } */
+    </style>
+  </head>
+  <body>
+    <section>box-one</section>
+    <div class="box-container">
+      <section>box-two</section>
+    </div>
+  </body>
+  </html>

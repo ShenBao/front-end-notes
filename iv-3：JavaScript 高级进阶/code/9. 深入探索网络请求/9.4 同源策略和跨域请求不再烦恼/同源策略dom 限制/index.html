@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function loadEnd(){
+            const iframe = document.getElementById('iframe');
+            const win = iframe.contentWindow;//window对象的属性和方法几乎是不可用的
+
+            //console.log(win.blur);
+            // win.location="http://www.baidu.com";
+            // window.iframeWin=win;
+            const doc = win.document;//这里获取不到iframe里的document对象
+            const name = win.name;//这里同样获取不到window对象的name属性
+        }
+    </script>
+    <iframe id = "iframe" src="https://www.imooc.com/" onload = "loadEnd()" style="width:800px;height:600px"></iframe>
+</body>
+</html>
+

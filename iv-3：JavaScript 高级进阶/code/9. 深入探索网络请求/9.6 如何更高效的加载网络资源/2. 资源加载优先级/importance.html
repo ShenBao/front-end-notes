@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资源加载</title>
+  <link rel="stylesheet" href="./assets/index.css">
+  <!-- <link rel="preload" href="./assets/index.js?t=1" as="script"> -->
+  <style>
+    .dis-none{
+      display: none;
+    }
+
+  </style>
+    <style>
+      * {
+        font-size: 28px;
+      }
+    </style>
+</head>
+<body>
+
+  <img src="./assets/dragon.png?t=1" width="30px">
+  <img src="./assets/dragon.png?t=2" width="30px">
+  <img src="./assets/dragon.png?t=3" width="30px">
+  <img src="./assets/dragon.png?p=low" importance="low" width="30px">
+  <img class="dis-none" src="./assets/img.png?p=low-dis-none"  width="30px">
+  <img src="./assets/dragon.png?t=4" width="30px">
+
+
+  <!--设置优先级为low-->
+  <iframe src="./ifr.html" importance="low"></iframe>
+
+  <script src="./assets/index.js?t=2"></script>
+
+  <link rel="stylesheet" href="./assets/index.css?t=2">
+  <link rel="stylesheet" href="./assets/index.css?t=3">
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .warp {
+        position: absolute;
+        width: 100px;
+        height: 300px;
+        border: 1px solid #F60093;
+        overflow: hidden;
+    }
+
+    .progress-in {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: red;
+        opacity: 1;
+        transform: translateY(100%);
+        transition: transform 3s, opacity 3s;
+    }
+
+    #start {
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        left: 200px;
+    }
+</style>
+
+<body>
+    <div class="warp">
+        <div class="progress-in">
+
+        </div>
+    </div>
+    <button id="start">开始</button>
+    <script>
+
+        const progressIn = document.querySelector(".progress-in");
+        start.onclick = function () {
+            progressIn.style.transform = `translateY(0%)`;
+            progressIn.style.opacity = 0.4;
+        }
+
+        progressIn.addEventListener("transitionend", (ele) => {
+            console.log(`过渡动画完成：过渡属性${ele.propertyName}=过渡时间：${ele.elapsedTime}s`);
+        }, true);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <button id="btnXhr">XHR</button>
+        <button id="btnFetch">Fetch</button>
+    </div>
+
+    <script>
+
+        btnXhr.onclick = xhr30x;
+        btnFetch.onclick = fetch30x
+
+        function fetch30x() {
+            fetch("http://www.baidu.com", { redirect: "error" })
+                .catch(err => console.log("err:", err));
+        }
+
+
+        function xhr30x() {
+            var xhrObj = new XMLHttpRequest();
+            xhrObj.onreadystatechange = function () {
+                console.log("xhrObj.readyState==", xhrObj.readyState);
+                console.log("xhrObj.status==", xhrObj.status);
+            }
+            xhrObj.open("get", "http://www.baidu.com", true);
+            //设置请求携带header
+            xhrObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            //发送请求数据
+            xhrObj.send("xhr=1");
+
+            xhrObj.onerror = function () {
+                console.log("-------onerror-------:")
+            };
+
+        }
+
+    </script>
+</body>
+
+</html>

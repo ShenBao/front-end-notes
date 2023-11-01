@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" id="btnAdd">添加</button>
+    <iframe src="./other.html"></iframe>
+    <script>
+        let index = 1;
+        btnAdd.onclick = function () {
+            console.time(`key-1`)
+            sessionStorage.setItem('key-1', `值-${index}`)
+            console.timeEnd(`key-1`)
+            index++
+        }
+        window.addEventListener("storage", function (ev) {
+            message.innerHTML = ev.newValue;
+        })
+    </script>
+</body>
+
+</html>

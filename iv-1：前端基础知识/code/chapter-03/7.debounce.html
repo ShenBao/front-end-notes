@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>debounce</title>
+</head>
+
+<body>
+  <input type="text" id="searchElement">
+  <script>
+    const searchElement = document.getElementById("searchElement");
+    // 1.返回值是函数
+    // 2.固定间隔执行·事件响应函数
+    const debounce = (fn, initial) => {
+      let timer = null;
+      return () => {
+        clearTimeout(timer)
+        timer = setTimeout(fn, initial)
+      }
+    }
+    searchElement.oninput = debounce(function (event) {
+      const value = searchElement.value;
+      console.log(`value`, value);
+    }, 1000)
+  </script>
+</body>
+
+</html>

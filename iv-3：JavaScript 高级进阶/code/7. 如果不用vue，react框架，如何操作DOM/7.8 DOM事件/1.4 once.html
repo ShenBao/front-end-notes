@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        btn.addEventListener("click", function () {
+            console.log("按钮被点击了")
+        }, {
+            once: true,
+        })
+    </script>
+
+
+    <video id="video" controls width="250" autoplay>
+
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm">
+
+        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+
+        Sorry, your browser doesn't support embedded videos.
+    </video>
+
+    <script>
+
+        document.addEventListener("click", ()=>{
+            console.log("播放视频喽")
+            video.play();
+
+        },{
+            once: true,
+        })
+
+    </script>
+</body>
+
+</html>

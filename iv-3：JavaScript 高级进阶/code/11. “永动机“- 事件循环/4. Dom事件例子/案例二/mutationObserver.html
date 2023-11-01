@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .outer-btn{
+                position: relative;
+                width: 300px;
+                height: 100px;
+                background: red;
+            }
+
+            .inner-btn{
+                position: relative;
+                width: 200px;
+                height: 80px;
+                background: yellow;
+            }
+        </style>
+    </head>
+
+    
+
+    <body>
+        <div class="outer-btn">
+            外部按钮
+        </div>
+        <script>
+            var outerBtn = document.querySelector(".outer-btn");
+
+            new MutationObserver(function () {
+                console.log("mutate 微任务");
+            }).observe(outerBtn, {
+                //观察属性变化
+                attributes: true,
+            });
+
+            //点击方法
+            function onClick() {
+                console.log("click");
+
+                outerBtn.setAttribute("data-number", Math.random());
+                outerBtn.setAttribute("data-number", Math.random());
+                outerBtn.setAttribute("data-number", Math.random());
+            }
+
+            outerBtn.addEventListener("click", onClick);
+
+        </script>
+    </body>
+</html>

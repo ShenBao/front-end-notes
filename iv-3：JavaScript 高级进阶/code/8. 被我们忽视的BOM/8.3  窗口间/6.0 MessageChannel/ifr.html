@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    ifr.html
+    <div>
+        <div>Message:</div>
+        <div id="messages"></div>
+    </div>
+    <script>
+
+        window.addEventListener("message", function (event) {
+            if (event.data === "__init__") {
+                initChannel( event.ports[0])
+            }
+        })
+        function initChannel(port) {
+            port.onmessage = function (event) {
+                messages.innerHTML += `
+                <div>${event.data}</div>  
+            `;
+                port.postMessage(`message from the iframe, ${Date.now()}`);
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主窗口</title>
+     <style>
+         iframe {
+             height: 100px;
+             width: 200px;
+         }
+     </style>
+</head>
+<body>
+
+    <iframe id="ifr" src="./3. instanceOf2.html"></iframe>
+
+    <script>
+      var frame = window.frames[0];
+      var isInstanceOf = [] instanceof frame.Array;
+      console.log("frame.Array", frame.Array);
+      console.log("isInstanceOf", isInstanceOf)
+
+    </script>
+
+</body>
+</html>

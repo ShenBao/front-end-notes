@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout_next</title>
+    <style>
+      * {
+        font-size: 28px;
+      }
+      .wrapper {
+        margin: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <span id="seconds">60</span>
+      <div>
+        <button id="btnPause">暂停</button>
+        <button id="btnContinue">继续</button>
+      </div>
+    </div>
+    <script> 
+      exports = {};
+    </script>
+    <script src="../dist/index.js"></script>
+    <script>
+      const nextFactory = createTimeoutGenerator();
+
+      const secondsEl = document.getElementById("seconds");
+      let seconds = 60;
+
+      function setSeconds(val) {
+        secondsEl.innerText = val;
+      }
+
+      nextFactory.start(function (next) {
+        seconds--;
+        setSeconds(seconds);
+        next();
+      });
+
+      document.getElementById("btnPause").addEventListener("click", () => {
+        nextFactory.cancel();
+      });
+
+      document.getElementById("btnContinue").addEventListener("click", () => {
+        nextFactory.continue();
+      });
+    </script>
+  </body>
+</html>

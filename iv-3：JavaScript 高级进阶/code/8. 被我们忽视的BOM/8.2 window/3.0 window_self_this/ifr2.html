@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>iframe 2</div>
+
+    <script>
+        window.name = "iframe 2";
+        console.log(`iframe2: top:${top.name}`)
+        console.log(`iframe2: self:${self.name}`)
+        console.log(`iframe2: parent:${parent.name}`)
+        console.log(`iframe2: parent.parent:${parent.parent.name}`)
+        console.log("")
+
+    </script>
+</body>
+
+</html>

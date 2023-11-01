@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .animate-ele {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    * {
+        font-size: 28px;
+    }
+</style>
+
+<body>
+    <div id="animateEle" class="animate-ele"></div>
+    <button id="start">开始</button>
+    <script>
+        //同步耗时操作
+        function syncSleep(duration) {
+            const now = Date.now();
+            while (now + duration > Date.now()) { }
+        }
+
+        const element = document.getElementById('animateEle');
+        let count = 0;
+
+        function step(timestamp) {
+            console.log("渲染帧");
+            count++;
+            if (count < 500) {
+                element.style.transform = 'translateX(' + count + 'px)';
+                window.requestAnimationFrame(step);
+            }
+        }
+
+        start.onclick = function () {
+            console.log("启动帧");
+            window.requestAnimationFrame(step);
+            requestIdleCallback((idleDeadline) => {
+                // didTimeout表示是否超时正在执行
+                const didTimeout = idleDeadline.didTimeout ? '超时正在执行' : '未超时执行'
+                // timeRemaining()表示当前帧还剩余多少时间（以毫秒计算）
+                const timeRemaining = idleDeadline.timeRemaining();
+                console.log("didTimeout==", didTimeout, "==", timeRemaining)
+
+                // { timeout: 50 }
+            }, {timeout: 50});//{timeout:50}
+
+            console.log("执行onClick")
+            setTimeout(() => {
+                console.log("执行timeout")
+                syncSleep(1000);
+                console.log("执行timeout完成");
+                Promise.resolve().then(function () {
+                    console.log("promise 微任务");
+                });
+            }, 30)
+            syncSleep(1000);
+            console.log("执行onClick完毕")
+        };
+
+    </script>
+</body>
+
+</html>

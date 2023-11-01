@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="btnBatch" >批量创建</button>
+        <button id="btnSingle" >单独创建</button>
+        <button id="btnClear" >清除</button>
+    </div>
+    <div id="root" style="height:500px; overflow:auto;">
+
+    </div>
+
+    <script type="text/javascript">
+        var items = Array.from({ length: 10000 }, (v, i) => ({
+            name: "name" + i,
+            age: i,
+            sex: i % 2
+        }));
+
+        var rootEl = document.getElementById("root");
+        function createByS() {
+            console.time("createByS");
+            items.forEach(function (item) {
+                var div = document.createElement("div");
+                div.innerHTML = `name:${item.name} - age: ${item.age} - sex: ${item.sex}`
+                rootEl.appendChild(div);
+            })
+            console.timeEnd("createByS");
+        }
+
+        function createByB() {
+            console.time("createByB");
+            var fragment = document.createDocumentFragment();
+            items.forEach(function (item) {
+                var div = document.createElement("div");
+                div.innerHTML = `name:${item.name} - age: ${item.age} - sex: ${item.sex}`
+                fragment.appendChild(div);
+            })
+            rootEl.appendChild(fragment);
+            console.timeEnd("createByB");
+        }
+
+        btnBatch.addEventListener("click", createByB);
+        btnSingle.addEventListener("click", createByS);
+        btnClear.addEventListener("click", () => {
+            rootEl.innerHTML = "";
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GC</title>
+</head>
+<body>
+    <p>Garbage collection</p>
+
+    <script>
+        function fn1() {
+            const a = 'aa'
+            console.log(a)
+
+            const obj = { x: 100 }
+            console.log(obj)
+        }
+        fn1()
+
+        function fn2() {
+            const obj = { x: 100 }
+            window.obj = obj
+        }
+        fn2()
+
+        function getDataFns() {
+            const data = {} // 闭包
+            return {
+                get(key) {
+                    return data[key]
+                },
+                set(key, value) {
+                    data[key] = value
+                }
+            }
+        }
+        const { get, set } = getDataFns()
+        set('x', 100)
+        get('x')
+
+        // 对象被 a 引用
+        let a = { x: 100 }
+        let a1 = a
+        a = 10
+        a1 = null
+
+        // 循环引用
+        function fn3() {
+            const obj1 = {}
+            const obj2 = {}
+            obj1.a = obj2
+            obj2.a = obj1
+        }
+        fn3()
+
+        // // IE6-7 内存泄漏的 bug
+        // var div1 = document.getElementById('div1')
+        // div1.a = div1
+        // div1.someBigData = {}
+
+        // JS 根 window
+    </script>
+</body>
+</html>

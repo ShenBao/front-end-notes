@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 翻转字符串</title>
+</head>
+<body>
+    <p>JS 翻转字符串</p>
+
+    <script>
+        function reverseStr(str) {
+            const stack = []
+            for (const c of str) {
+                stack.push(c) // 入栈
+            }
+
+            let newStr = ''
+            let c = ''
+            while(c = stack.pop()) { // 出栈
+                newStr += c
+            }
+            return newStr
+        }
+        console.log(reverseStr('A1B2C3'))
+    </script>
+</body>
+</html>

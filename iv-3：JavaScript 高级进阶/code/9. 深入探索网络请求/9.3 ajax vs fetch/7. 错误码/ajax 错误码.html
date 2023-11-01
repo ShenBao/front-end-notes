@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="ajaxBtn">ajax 404错误码</button>
+    <script>
+
+        function test() {
+
+            //1. 创建实例对象
+            var xhrObj = new XMLHttpRequest();
+
+            //请求完成回调，不论请求成功与否
+            xhrObj.onloadend = function () {
+                console.log("-------onloadend-------")
+            };
+
+            //请求错误回调
+            xhrObj.onerror = function () {
+                console.log("-------onerror-------:")
+            };
+
+            //请求成功完成回调
+            xhrObj.onload = function () {
+                console.log("-------onload-------:")
+            };
+
+            xhrObj.open("GET", "http://127.0.0.1:3000/test3", true);
+            //发送请求数据
+            xhrObj.send();
+        }
+
+        document.getElementById("ajaxBtn").addEventListener("click", function () {
+            test();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(`
+            <xml>
+                <persons>
+                    <person>
+                        <name>小明</name>
+                        <age>18</age>
+                    </person>
+                    <person>
+                        <name>小红</name>
+                        <age>19</age>
+                    </person>
+                </persons>
+            </xml>
+        `, "text/xml");
+
+        console.log("constructor:", xmlDoc.__proto__.constructor);
+        const persons = xmlDoc.querySelectorAll("person");
+
+        const personsJSON = Array.from(persons).map(function (node) {
+            return {
+                name: node.querySelector("name").childNodes[0].nodeValue,
+                age: node.querySelector("age").childNodes[0].nodeValue
+            }
+        });
+
+        console.log("personsJSON:", personsJSON)
+
+    </script>
+
+</body>
+
+</html>

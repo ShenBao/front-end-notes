@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button type="button" id="btn">queueMicrotask + setTimeout</button>
+
+    <script>
+        btn.onclick = function () {
+            // 同步的代码
+            console.log("onclick:start", performance.now());
+            // 产生微任务，此时微任务队列: promise:callback
+            Promise.resolve().then(function () {
+                console.log("promise:callback", performance.now());
+            })
+            // 产生宏任务，此时宏任务队列: setTimeout:callback
+            setTimeout(function () {
+                console.log("setTimeout:callback", performance.now())
+            }, 0)
+            // 产生微任务, 追加，此时微任务队列: promise:callback, queueMicrotask:callback
+            queueMicrotask(() => {
+                console.log("queueMicrotask:callback", performance.now())
+            })
+            // 同步的代码
+            console.log("onclick:end", performance.now());
+            // 此时宏任务队列: setTimeout:callback
+            // 此时微任务队列: promise:callback, queueMicrotask:callback
+
+        }
+
+    </script>
+</body>
+
+</html>

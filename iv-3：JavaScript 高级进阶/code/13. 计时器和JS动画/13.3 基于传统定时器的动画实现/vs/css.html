@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    img {
+        height: 40px;
+        position: absolute;
+        top: 0;
+        left: 50vw;
+        transform: translate(-50%);
+        animation: 3s linear 0s infinite move alternate forwards;
+    }
+
+    body {
+        background-color: black;
+        overflow: hidden;
+        height: 100vh;
+        cursor: pointer;
+    }
+
+    #start {
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        left: 200px;
+        bottom: 30px;
+    }
+
+    @keyframes move {
+        to   {transform: translateY(800px);  }
+    }
+</style>
+
+<body>
+    <img class="proto mover" src="./snow.png" style="transform:translateY(0px)" />
+    <button id="start">开始</button>
+    <script>
+        var proto = document.querySelector('.proto');
+        var bodySize = document.body.getBoundingClientRect();
+        var ballSize = proto.getBoundingClientRect();
+        var maxHeight = Math.floor(bodySize.height - ballSize.height);
+        var maxWidth = 97;
+        var domCount =500;
+        var movers = [];
+        var  distance = 3;
+        var frame=null;
+
+        function init() {
+            for (var i = 0; i < domCount; i++) {
+                var m = proto.cloneNode();
+                var top = Math.floor(Math.random() * (maxHeight));
+                if (top === maxHeight) {
+                    m.classList.add('up');
+                } else {
+                    m.classList.add('down');
+                }
+                m.style.left = (i / (domCount / maxWidth)) + 'vw';
+                m.style.transform = `translateY(${top}px)`;
+                document.body.appendChild(m);
+            }
+        }
+
+        init();
+
+        start.onclick = function () {
+            frame=window.requestAnimationFrame(update);
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise</title>
+</head>
+<body>
+  <script>
+    // Promise.resolve  将现有对象转化成Promise 对象
+    // new Promise(function(resolve, reject){
+    //    console.log(`loading start...`)
+    //    let fullName = "freemen";
+    //    if(fullName==="freemen") {
+    //       resolve(1);
+    //    }else{
+    //       reject('promise error')
+    //    }
+    // }).then(res=>{
+    //   console.log(`res`, res)
+    // })
+    Promise.resolve(1).then(res=>{
+      console.log(`res`, res)
+    })
+  </script>
+</body>
+</html>

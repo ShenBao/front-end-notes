@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .option-btn {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            font-size: 20px;
+            color: #fff;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btnStart">触发按钮</button>
+    </div>
+
+    <button class="first-btn">首次点击</button>
+    <button class="second-btn"> 二次点击</button>
+    <script>
+
+        var firstBtn = document.querySelector(".first-btn");
+        var secondBtn = document.querySelector(".second-btn");
+        //同步耗时操作
+        function asyncSleep(duration) {
+            const now = Date.now();
+            while (now + duration > Date.now()) {
+
+            }
+        }
+
+        firstBtn.onclick = function () {
+            console.log("firstBtn onClick", new Date().toLocaleTimeString())
+            //2. 假设需要执行3s
+            console.time("firstBtn:cost")
+            asyncSleep(3000);
+            Promise.resolve().then(() => {
+                console.log("执行 微任务 promise", new Date().toLocaleTimeString());
+                //3. 假设需要执行2s
+                console.time("promise:cost");
+                asyncSleep(2000);
+                console.timeEnd("promise:cost");
+            })
+            console.timeEnd("firstBtn:cost")
+        }
+
+        secondBtn.onclick = function () {
+            console.log("secondBtn onClick", new Date().toLocaleTimeString())
+            //4. 假设需要执行1s
+            console.time("secondBtn:cost")
+            asyncSleep(1000);
+            console.timeEnd("secondBtn:cost")
+        }
+
+        btnStart.onclick = function () {
+            //1. 假设需要执行5s
+            console.log("main:", new Date().toLocaleTimeString())
+            console.time("main:cost")
+            asyncSleep(5000);
+            console.timeEnd("main:cost")
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "noImplicitAny": false,
+        "module": "commonjs",
+        "moduleResolution": "Node",
+        "jsx": "preserve",
+        "jsxFactory": "h",
+        "allowJs": true,
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "allowUmdGlobalAccess": true,
+        "noEmitOnError": false,
+        "experimentalDecorators": true,
+        "lib": [
+            "dom",
+            "ES6",
+            "ES7"
+        ]
+    },
+    "exclude": [
+        "src/template",
+    ],
+    "include": [
+        "**/*.js"
+, "1. code1.ts"4. hash计算版.ts.ts"3. hash跳出版.ts.ts"2. map基础版本.ts.ts", "迭代器2.ts", "迭代器1.ts"    ]
+}

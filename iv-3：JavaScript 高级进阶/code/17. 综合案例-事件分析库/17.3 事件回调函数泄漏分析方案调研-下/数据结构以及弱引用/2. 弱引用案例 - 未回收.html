@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 弱引用案例 - 未回收</title>
+</head>
+
+<body>
+
+  <script>
+
+    let target = {};
+    let wr = new WeakRef(target);
+    setTimeout(() => {
+      window.gc();
+      setTimeout(() => {
+        let obj = wr.deref();
+        if (!obj) {
+          console.log("target 对象已被回收");
+        } else {
+          console.log("target 对象未被回收");
+        }
+      }, 3000);
+    }, 100);
+  </script>
+
+</body>
+
+</html>

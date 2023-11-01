@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        function CustomObject(eCount, pCount) {
+            for (let i = 0; i < eCount; i++) {
+                this[i] = `e-${i}`
+            }
+            //添加常规属性 
+            for (let i = 0; i < pCount; i++) {
+                this[`p-${i}`] = `p-${i}`
+            }
+        }
+
+        // 排序属性6， 普通属性6个
+        // var obj = new CustomObject(6, 6);
+
+        // 排序属性6， 普通16个
+        // var obj = new CustomObject(6, 16);
+
+        // 排序属性6， 普通50个, 普通属性非线性存储
+        var obj = new CustomObject(6, 50);
+
+        console.log(obj)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // function CustomObject(eCount, pCount) {
+        //     this[0] = "v-1";
+        //     this[9999999] = "v-9999999";
+        //     this['str1'] = 'v-str1';
+        //     // this["pp"] = "p"
+
+        //     // return this;
+        // }
+
+
+        // var obj = new CustomObject(10, 10);
+
+        // console.log(obj[100])
+        
+
+    </script>
+
+
+</body>
+
+</html>
+
+</html>

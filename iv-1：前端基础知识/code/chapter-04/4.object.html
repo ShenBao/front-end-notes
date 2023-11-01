@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object</title>
+</head>
+<body>
+  <script>
+    // 用于判断两个值是否相等
+    // const obj = {};
+    // const secondObj = {};
+    const numOne = 1;
+    const numTwo = '1';
+    // const result = Object.is(numOne,numTwo);
+    // console.log(`result`, result);
+    // if(NaN===NaN){
+    //   console.log(`getName`);
+    // }
+    // const result = Object.is(NaN,NaN);
+    // console.log(`result`, result);
+    // 特点： 1 不仅可以对值类型进行正常处理而且对象类型的值也可以进行判断
+    // 2 对于特殊的值 NaN 也可以进行正常的处理
+    // 2. Object.assgin 用于合并对象
+    // const obj = {
+    //   name:"freemen"
+    // }
+    // const objTwo = {
+    //   age: 18
+    // }
+    // const result = Object.assign(obj,objTwo);
+    // console.log(`result`, result)
+    // Object.keys 目标对象的所有可遍历属性的键名
+    // const object = {
+    //   name:"freemen",
+    //   age:18
+    // }
+    // const result = Object.keys(object);
+    // console.log(`result`, result);
+    // Object.values 目标对象的所有可遍历属性的键值
+    // const object = {
+    //   name:"freemen",
+    //   age:18
+    // }
+    // const result = Object.values(object);
+    // console.log(`result`, result);
+    // Object.entries() 
+
+    const object = {
+      name:"freemen",
+      age:18
+    }
+
+    const result = Object.entries(object);
+    console.log(`result`, result);
+  </script>
+</body>
+</html>

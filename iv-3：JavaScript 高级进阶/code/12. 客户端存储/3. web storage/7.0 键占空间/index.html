@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button type="button" id="btnSave">保存</button>
+    <script>
+        btnSave.onclick = function () {
+            const charTxt = "a";
+            let count = (2.5 * 1024 * 1024);
+            let content = Array.from({ length: count }, _ => charTxt).join("");
+            const key = Array.from({ length: count }, _ => charTxt).join("")
+            localStorage.clear();
+            try {
+                console.time("setItem")
+                localStorage.setItem(key, content);
+                console.timeEnd("setItem")
+            } catch (err) {
+                console.log("err code:", err.code);
+                console.log("err message:", err.message)
+            }
+        }
+    </script>
+
+</body>
+
+</html>

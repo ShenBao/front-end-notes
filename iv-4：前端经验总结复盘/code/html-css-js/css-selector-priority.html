@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 选择器 优先级</title>
+    <style>
+        #container p { color: blue; }
+        div #p1, div #p2 { color: red; }
+        #container p.yellow-text { color: yellow; font-weight: bold; }
+        div p.green-text { color: green; font-weight: bold; }
+        div p { color: gray; }
+    </style>
+</head>
+<body>
+    <p>CSS 选择器优先级</p>
+
+    <div id="container">
+        <p id="p1" class="yellow-text">100</p>
+        <p id="p2" class="green-text">200</p>
+        <p id="p3">300</p>
+    </div>
+</body>
+</html>

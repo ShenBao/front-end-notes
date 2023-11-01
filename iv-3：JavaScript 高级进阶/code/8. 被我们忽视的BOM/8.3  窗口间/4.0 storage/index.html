@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页面</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+
+        <div>
+            <button id="btnSend" type="button">发送消息</button>
+        </div>
+        <div>消息:</div>
+        <div id="message"></div>
+        <script>
+            // 拦截，监听事件
+            const oriSetItem = localStorage.setItem;
+            Object.defineProperty(localStorage.__proto__, 'setItem', {
+                value: function (key, value) {
+                    var oldValue = localStorage.getItem(key);
+                    var event = new StorageEvent('storage', {
+                        key,
+                        newValue: value,
+                        oldValue,
+                        url: document.URL,
+                        storageArea: localStorage
+                    });
+                    window.dispatchEvent(event);
+                    oriSetItem.apply(this, arguments);
+                }
+            })
+
+        </script>
+        <script>
+            btnSend.addEventListener('click', function () {
+                localStorage.setItem('key', JSON.stringify({
+                    key: "key",
+                    data: Math.random()
+                }))
+            })
+
+            window.addEventListener("storage", function (ev) {
+                console.log("ev:", ev);
+                message.textContent = JSON.stringify({
+                    oldValue: ev.oldValue,
+                    newValue: ev.newValue
+                })
+            })
+        </script>
+
+    </form>
+</body>
+
+</html>

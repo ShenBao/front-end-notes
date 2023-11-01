@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布订阅模式</title>
+</head>
+<body>
+  <!-- 
+    发布—订阅模式又叫 观察者模式 
+    它定义对象间的一种一对多的依赖关系
+    当一个对象的状状 态发生改变时
+    所有依赖于它的对象都将得到通知 
+  --> 
+  <script>
+    // 用户就是发布者  document 绑定的click事件
+    document.addEventListener('click',(event)=>{
+        console.log(event);
+    })
+  </script>
+</body>
+</html>

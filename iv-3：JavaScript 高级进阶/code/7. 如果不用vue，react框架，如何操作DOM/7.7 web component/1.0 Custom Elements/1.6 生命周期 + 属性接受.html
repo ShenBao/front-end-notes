@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+</head>
+
+<body>
+
+    <div id="container1">
+        <p is="my-text" text="大家好" id="myText"></p>
+    </div>
+    <div id="container2">
+    </div>
+
+    <div>
+        <button id="btnUpdateText">更新属性</button><br />
+        <button id="btnRemove">删除节点</button>
+        <button id="btnRestore">恢复节点</button>
+    </div>
+
+    <script>
+        class MyText extends HTMLParagraphElement {
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                console.log("生命周期:connectedCallback")
+                this.append("我说:" + this.getAttribute("text"))
+            }
+
+            disconnectedCallback() {
+                console.log("生命周期:disconnectedCallback")
+                this.innerHTML = ""
+            }
+
+            static get observedAttributes() {
+                // return [''];
+                return ['text'];
+            }
+
+            attributeChangedCallback(name, oldValue, newValue) {
+                console.log("生命周期:attributeChangedCallback", name, oldValue, newValue);
+                // 先触发changed再触发 connectedCallback
+                // 所以这里判断是不是一次触发 changed
+                // 第一次的话，交给connectedCallback处理
+                if (oldValue != null) {
+                    this.replaceChildren("我说:" + newValue);
+                }
+            }
+
+            adoptedCallback() {
+                console.log("生命周期:adoptedCallback")
+            }
+        }
+
+        window.customElements.define("my-text", MyText, { extends: "p" });
+
+        var myTextEl = document.getElementById("myText")
+        btnUpdateText.addEventListener("click", function (e) {
+            myTextEl.setAttribute("text", "随机的文本" + Math.random());
+        })
+
+        btnRemove.addEventListener("click", function (e) {
+            myTextEl.remove()
+        })
+
+        btnRestore.addEventListener("click", function (e) {
+            container1.appendChild(myTextEl)
+        });
+
+    </script>
+
+</body>
+
+</html>

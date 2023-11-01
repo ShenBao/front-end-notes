@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookieStorage</title>
+    <style>
+        * {
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="btnAdd">添加</button>
+        <button id="btnAddFail">添加失败</button>
+        <button id="btnDel">删除</button>
+        <button id="btnGet">获取</button>
+        <button id="btnGetAll">获取全部</button>
+    </div>
+    <script>
+        let index = 1
+        btnAdd.onclick = function () {
+            const day = 24 * 60 * 60 * 1000;
+            cookieStore.set({
+                name: `cookie-${index}`,
+                value: `cookie-${index}-value`,
+                expires: Date.now() + day,
+            })
+                .then(
+                    function () {
+                        console.log("add cookie success");
+                    },
+                    function (reason) {
+                        console.error("add cookie failed: ", reason);
+                    }
+                );
+            index++
+        }
+        btnAddFail.onclick = function () {
+            const day = 24 * 60 * 60 * 1000;
+            cookieStore.set({
+                name: `cookie-1`,
+                value: `cookie-1-value`,
+                expires: Date.now() + day,
+                domain: "test.com"
+            })
+                .then(
+                    function () {
+                        console.log("add cookie success");
+                    },
+                    function (reason) {
+                        console.error("add cookie failed: ", reason);
+                    }
+                );
+        }
+
+        btnDel.onclick = function () {
+            cookieStore.delete('cookie-1')
+                .then(
+                    function () {
+                        console.log("delete cookie success");
+                    },
+                    function (reason) {
+                        console.error("delete cookie failed: ", reason);
+                    }
+                );
+        }
+
+        btnGet.onclick = function () {
+            cookieStore.get({ name: 'cookie-1' })
+                .then(
+                    function (res) {
+                        console.log("get cookie success:", res);
+                    },
+                    function (reason) {
+                        console.error("get cookie failed: ", reason);
+                    }
+                );
+        }
+
+        btnGetAll.onclick = function () {
+            cookieStore.getAll()
+                .then(
+                    function (res) {
+                        console.log("getAll cookie success:", res);
+                    },
+                    function (reason) {
+                        console.error("getAll cookie failed: ", reason);
+                    }
+                );
+        }
+
+        cookieStore.addEventListener("change", function(ev){
+            // ev.changed 变化的
+            // ev.deleted 删除的
+            console.log("cookieStorage change:", ev.changed, ev.deleted)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<template>
+    <div>商品详情</div>
+    <div id="detail">
+        商品ID:<span id="product-id" class="product-id"></span>
+    </div>
+</template>
+
+<script>
+    this.querySelector("#product-id").textContent = history.state.id;
+</script>
+
+<style>
+    .product-id{
+        color: red;
+    }
+</style>
+
+
+

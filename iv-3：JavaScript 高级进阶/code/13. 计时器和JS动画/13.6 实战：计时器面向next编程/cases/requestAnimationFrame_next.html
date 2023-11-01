@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>requestAnimationFrame next</title>
+    <style>
+      * {
+        font-size: 28px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="margin: 50px">
+      <canvas id="canvas" height="300" width="300"></canvas>
+    </div>
+    <div>
+      <div>
+        <button id="btnPause">暂停</button>
+        <button id="btnContinue">继续</button>
+      </div>
+    </div>
+
+    <script> 
+      exports = {};
+    </script>
+    <script src="../dist/index.js"></script>
+    <script>
+      const nextFactory = createRequestAnimationFrameGenerator();
+
+      const canvasEl = document.getElementById("canvas");
+      const ctx = canvasEl.getContext("2d");
+      ctx.fillStyle = "#f00";
+      ctx.fillRect(0, 0, 300, 300);
+
+      let count = 0;
+      let lastTime;
+
+      function drawTime() {
+        ctx.clearRect(0, 0, 300, 300);
+        ctx.fillStyle = "#f00";
+        ctx.fillRect(0, 0, 300, 300);
+
+        ctx.fillStyle = "#000";
+        ctx.font = "bold 20px Arial";
+        ctx.fillText(Date.now(), 100, 100);
+      }
+
+      nextFactory.start((next) => {
+        count++;
+        console.log(count);
+        drawTime();
+        const now = Date.now();
+        console.log("cost:", now - lastTime);
+        lastTime = now;
+        next();
+      });
+
+      document.getElementById("btnPause").addEventListener("click", () => {
+        nextFactory.cancel();
+      });
+
+      document.getElementById("btnContinue").addEventListener("click", () => {
+        nextFactory.continue();
+      });
+    </script>
+  </body>
+</html>

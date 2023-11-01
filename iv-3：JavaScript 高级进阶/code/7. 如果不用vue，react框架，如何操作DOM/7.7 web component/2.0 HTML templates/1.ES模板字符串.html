@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+</head>
+
+<body>
+
+    <product-item 
+        name="关东煮"
+        img = "//img10.360buyimg.com/seckillcms/s200x200_jfs/t1/121953/18/20515/175357/61e7dc79Ee0acbf20/4f4f56abd2ea2f75.jpg!cc_200x200.webp",
+        price = "49.8"
+    ></product-item>
+
+    <script>
+        class ProductItem extends HTMLElement {
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                const content = `
+                    <img class="img" src="https://misc.360buyimg.com/lib/skin/e/i/error-jd.gif" />
+                    <div class="name"></div>
+                    <div class="price"></div>
+                `
+                this.innerHTML = content;
+                this.querySelector('.img').src = this.getAttribute("img");
+                this.querySelector('.name').innerText = this.getAttribute("name");
+                this.querySelector('.price').innerText = this.getAttribute("price")
+            }
+        }
+        window.customElements.define("product-item", ProductItem);
+    </script>
+
+</body>
+
+</html>

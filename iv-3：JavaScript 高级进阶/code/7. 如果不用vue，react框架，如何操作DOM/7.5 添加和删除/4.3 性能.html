@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+    <div>
+        <button id="btnAdd">单个新增</button>
+        <button id="btnBatchAdd">批量新增</button>
+        <button id="btnClone">克隆</button>
+        <button id="btnInnerHTML">innerHTML</button>
+    </div>
+
+    <div style="height:600px; overflow-y: auto;" id="container">
+        <div>
+            <div>name</div>
+            <div>des</div>
+        </div>
+    </div>
+
+    <script>
+
+        const count = 1000;
+
+        function addSingle() {
+            console.time("addSingle");
+            for (let i = 0; i < count; i++) {
+                var el = document.createElement("div");
+                var elName = document.createElement("div");
+                var elDes = document.createElement("div")
+
+                elName.textContent = "name" + i;
+                elDes.textContent = "des" + i;
+
+
+                el.append(elName, elDes)
+                container.appendChild(el);
+            }
+            console.timeEnd("addSingle");
+        }
+        btnAdd.addEventListener("click", addSingle);
+
+
+        function addBatch() {
+            console.time("addBatch");
+
+            var fragment = document.createDocumentFragment();
+            for (let i = 0; i < count; i++) {
+                var el = document.createElement("div");
+                var elName = document.createElement("div");
+                var elDes = document.createElement("div")
+
+                elName.textContent = "name" + i;
+                elDes.textContent = "des" + i;
+
+
+                el.append(elName, elDes)
+                fragment.appendChild(el);
+            }
+            container.appendChild(fragment);
+            console.timeEnd("addBatch");
+        }
+        btnBatchAdd.addEventListener("click", addBatch);
+
+
+        function addClone() {
+            console.time("addClone");
+            // 不是 firstChild
+            const baseEL = container.firstElementChild;
+
+            var fragment = document.createDocumentFragment();
+            for (let i = 0; i < count; i++) {
+                var el = baseEL.cloneNode(true);
+
+                // 节点访问
+                el.children[0].textContent =   "name" +  i;
+                el.children[1].textContent  =  "des" + i;
+                fragment.appendChild(el)
+            }
+            container.appendChild(fragment);
+            console.timeEnd("addClone");
+        }
+
+        btnClone.addEventListener("click", addClone);
+
+        function addInnerHTML() {
+            console.time("addInnerHTML");
+
+            // var elStrArr = [];
+            // for (let i = 0; i < count; i++) {
+            //     elStrArr.push(`
+            //         <div>name${i}</div>
+            //         <div>des${i}</div>
+            //     `)
+            // }
+            // container.innerHTML =  elStrArr.join("")
+
+            var htmlStr = '';
+            for (let i = 0; i < count; i++) {
+                htmlStr+= "<div>name"+ i + "</div><div>des"+ i + "</div>"
+            }
+
+            container.innerHTML = htmlStr
+
+            console.timeEnd("addInnerHTML");
+        }
+
+        btnInnerHTML.addEventListener("click", addInnerHTML)
+
+    </script>
+
+</body>
+
+</html>

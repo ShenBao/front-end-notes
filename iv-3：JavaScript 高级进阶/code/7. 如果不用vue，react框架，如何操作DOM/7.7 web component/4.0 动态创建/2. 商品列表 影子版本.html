@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div id="product-list" style="display: flex">
+
+    </div>
+
+    <template id="product-item">
+        <style>
+            .product-item {
+                margin-left: 15px;
+                cursor: pointer;
+            }
+
+            .img {
+                width: 100px
+            }
+
+            .name {
+                text-align: center;
+            }
+
+            .price {
+                color: #999;
+                text-align: center;
+            }
+        </style>
+        <div class="product-item">
+            <img class="img" src="https://misc.360buyimg.com/lib/skin/e/i/error-jd.gif" />
+            <div class="name"></div>
+            <div class="price"></div>
+        </div>
+    </template>
+
+    <script>
+        class ProductItemElement extends HTMLElement {
+            constructor(props) {
+                super(props);
+                this.addEventListener("click", ()=> {
+                    window.open(`https://item.jd.com/${this.id}.html`)
+                });
+            }
+
+            connectedCallback() {
+
+                var shadow = this.attachShadow({ mode: 'open' });
+                var doc = document;
+                var templateElem = doc.getElementById('product-item');
+                var content = templateElem.content.cloneNode(true);
+
+                content.querySelector('.img').src = this.img;
+                content.querySelector('.name').innerText = this.name;
+                content.querySelector('.price').innerText = this.price;
+
+                shadow.appendChild(content);
+
+            }
+        }
+        window.customElements.define('product-item', ProductItemElement);
+    </script>
+
+    <script>
+        var products = [{
+            name: "关东煮",
+            img: "//img10.360buyimg.com/seckillcms/s200x200_jfs/t1/121953/18/20515/175357/61e7dc79Ee0acbf20/4f4f56abd2ea2f75.jpg!cc_200x200.webp",
+            id: '10026249568453',
+            price: 49.8
+        }, {
+            name: "土鸡蛋",
+            img: "//img11.360buyimg.com/seckillcms/s200x200_jfs/t1/172777/32/27438/130981/61fbd2e0E236000e0/7f5284367e2f5da6.jpg!cc_200x200.webp",
+            id: "10024773802639",
+            price: 49.8
+        }, {
+            name: "东北蜜枣粽子",
+            img: "//img20.360buyimg.com/seckillcms/s200x200_jfs/t1/129546/31/19459/110768/60b1f4b4Efd47366c/3a5b80c5193bc6ce.jpg!cc_200x200.webp",
+            id: "10035808728318",
+            price: 15
+        }];
+
+        var proList = document.getElementById("product-list");
+
+        function createProductItem(attrs) {
+            const el = document.createElement("product-item");
+            el.img = attrs.img;
+            el.name = attrs.name;
+            el.price = attrs.price;
+            el.id = attrs.id;
+            return el;
+        }
+        var elList = products.map(createProductItem)
+        proList.append.apply(proList, elList)
+
+    </script>
+
+</body>
+
+</html>

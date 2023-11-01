@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <template id="tpl-note">
+        <style>
+            .title {
+                color: red;
+                font-size: 22px;
+                font-weight: bold
+            }
+
+            .des {
+                color: #999;
+            }
+        </style>
+        <div class="title"></div>
+        <div class="des"></div>
+    </template>
+
+    <note-item class="note-item" title="冬奥会" , des="中国队加油! 祝贺运动员们获得好成绩......."></note-item>
+
+    <script>
+        class NoteItem extends HTMLElement {
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                const content = document.getElementById("tpl-note").content.cloneNode(true);
+
+                const shadow = this.attachShadow({ mode: "closed" })
+                shadow.append(content);
+
+                shadow.querySelector('.title').textContent = this.getAttribute("title");
+                shadow.querySelector('.des').textContent = this.getAttribute("des");
+            }
+        }
+        window.customElements.define("note-item", NoteItem);
+    </script>
+
+
+</body>
+
+</html>

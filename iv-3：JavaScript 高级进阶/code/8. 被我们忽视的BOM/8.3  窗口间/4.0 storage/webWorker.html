@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <button id="btnSend" type="button">发送消息</button>
+    </div>
+    <script>
+        var wk = new Worker("./wk.js");
+        // wk.start();
+    </script>
+    <script>
+        btnSend.addEventListener('click', function () {
+            localStorage.setItem('key', JSON.stringify({
+                key: "key",
+                data: Math.random()
+            }))
+        })
+
+        self.addEventListener("storage", function (ev) {
+            console.log("html: storage event", ev.newValue);
+        });
+    </script>
+
+</body>
+
+</html>

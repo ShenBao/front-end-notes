@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="display: flex">
+      <div style="flex: 0 0 200px">
+        <div>
+          <button id="btnImportNode">importNode container1</button>
+          <button id="btnAdoptNode">adoptNode container2</button>
+        </div>
+        <div id="container1"></div>
+      </div>
+      <div>
+        <div id="content1">
+          content1
+          <div>child1</div>
+          <div>child2</div>
+        </div>
+
+        <div id="content2">
+          content2
+          <div>child1</div>
+          <div>child2</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // importNode
+      btnImportNode.addEventListener("click", function () {
+        var node = document.importNode(content1,true);
+        container1.append(node);
+      });
+
+      // adoptNode
+      btnAdoptNode.addEventListener("click", function () {
+        var node = document.adoptNode(content2);
+      
+        container1.append(node);
+      });
+    </script>
+  </body>
+</html>

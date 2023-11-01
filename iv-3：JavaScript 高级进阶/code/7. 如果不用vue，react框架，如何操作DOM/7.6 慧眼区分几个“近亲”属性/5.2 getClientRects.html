@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .multi-client-rects {
+            display: inline-block;
+            width: 100px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="single-client-rects">
+        <span>Paragraph that spans single line</span>
+    </p>
+    <p class="multi-client-rects">
+        <span>Paragraph that spans multiple lines</span>
+    </p>
+
+    <div>
+        <button id="btnAddByBorder">添加边框(Border)</button>
+        <button id="btnAddByRect">添加边框(DOMRect)</button>
+    </div>
+    <script>
+
+        const $ = (selector) => document.querySelector(selector);
+
+        var elSingle = $(".single-client-rects span");
+        var elMulti = $(".multi-client-rects span");
+
+        console.log("elSingle length:", elSingle.getClientRects().length);
+        console.log("elMulti length:", elMulti.getClientRects().length);
+
+
+        console.log("elSingle ClientRects:", elSingle.getClientRects())
+        console.log("elMulti ClientRects:", elMulti.getClientRects())
+
+        btnAddByRect.addEventListener("click", function () {
+            addBorder(elMulti);
+        })
+
+        btnAddByBorder.addEventListener("click", function () {
+            elMulti.style.cssText = "border:solid 1px red;";
+        })
+
+        function addBorder(el) {
+            var rects = el.getClientRects();
+
+            var scrollEl = document.scrollingElement;
+            for (var i = 0; i != rects.length; i++) {
+                var rect = rects[i];
+                var elDiv = document.createElement('div');
+                elDiv.style.position = 'absolute';
+                elDiv.style.border = '1px solid red';
+                var scrollTop = scrollEl.scrollTop;
+                var scrollLeft = scrollEl.scrollLeft;
+                elDiv.style.margin = elDiv.style.padding = '0';
+                elDiv.style.top = (rect.top + scrollTop) + 'px';
+                elDiv.style.left = (rect.left + scrollLeft) + 'px';
+
+                // 减掉border的2px
+                elDiv.style.width = (rect.width - 2) + 'px';
+                elDiv.style.height = (rect.height - 2) + 'px';
+                document.body.appendChild(elDiv);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

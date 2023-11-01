@@ -1,0 +1,11 @@
+{
+  "name": "navigator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0. 获取userAgent.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

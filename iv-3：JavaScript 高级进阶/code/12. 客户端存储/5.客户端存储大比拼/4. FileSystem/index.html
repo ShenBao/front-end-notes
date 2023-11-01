@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            font-size: 28px;
+            ;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="saveFile">存储文件</button>
+    <script>
+        //1. 获取fileSystem 对象
+        window.requestFileSystem = window.requestFilsSystem || window.webkitRequestFileSystem;
+
+        saveFile.onclick = function () {
+            //2. 申请空间大小
+            window.requestFileSystem(
+                Window.TEMPORARY,
+                10 * 1024 * 1024,
+                (fs) => {
+                    //3. 创建文件
+                    fs.root.getFile(
+                        "test1.txt",
+                        { create: true, exclusive: false },
+                        (fileEntry) => {
+                            //打印创建好的文件访问URL
+                            console.log(fileEntry.toURL())
+                            //4. 创建一个写入对象
+                            fileEntry.createWriter((fileWriter) => {
+                                //注册书写成功监听
+                                fileWriter.onwriteend = function (e) {
+                                    console.log("书写成功");
+                                };
+                                fileWriter.onerror = function (e) {
+                                    console.log("书写失败 " + e.toString());
+                                };
+                                var blob = new Blob(
+                                    [
+                                        "测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的测试已下阿大纲的",
+                                    ],
+                                    { type: "text/plain" }
+                                );
+                                //5. 写入内容
+                                fileWriter.write(blob);
+                            });
+                        },
+                        (e) => {
+                            console.log("eee", e);
+                        }
+                    );
+                },
+                (err) => {
+                    console.log("file error");
+                }
+            );
+        };
+    </script>
+</body>
+
+</html>

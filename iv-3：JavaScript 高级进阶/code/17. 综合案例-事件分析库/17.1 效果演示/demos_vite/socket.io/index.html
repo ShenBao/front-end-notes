@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>socket.io示例</title>
+</head>
+
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- 需要根目录运行 npm run static2 -->
+    <script src="http://127.0.0.1:8080/dist/evm.js"></script>
+
+    <div>
+        Socket.IO的示例
+    </div>
+    <script>
+        var socket = io();
+
+        // 为什么是要这样呢？ 我们监听的是一个系列
+        // 可能多个库依赖 component-emitter
+        const eevm = new EVM.CEventsEVM(undefined, io.Socket.prototype.__proto__.constructor);
+        eevm.watch();
+
+        function onMessage(message) {
+            console.log('onMessage:', message);
+        }
+
+        socket.on('message', onMessage);
+        socket.on('message', onMessage);
+        socket.on('message', onMessage);
+
+        socket.on('message1', onMessage);
+
+        setInterval(async function () {
+            // console.log("-------");
+            const dItems = await eevm.getExtremelyItems();
+            console.log("高危疑似泄露或者重复添加:", dItems);
+
+            const data = eevm.statistics()
+                .then(res => console.log('统计信息-EventEmitter:', res));
+        }, 3000)
+
+
+
+    </script>
+</body>
+
+</html>

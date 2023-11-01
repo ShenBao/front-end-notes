@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set 并集 交集</title>
+</head>
+<body>
+    <p>Set 并集 交集</p>
+
+    <script>
+        const arr1 = [1, 3, 4, 6, 7]
+        const arr2 = [2, 5, 3, 6, 1]
+
+        // 交集
+        function getIntersection(arr1, arr2) {
+            const res = new Set()
+            const set2 = new Set(arr2)
+            for (let item of arr1) {
+                if (set2.has(item)) { // 注意，这里要用 Set has 方法，比数组的 includes 快很多
+                    res.add(item)
+                }
+            }
+            return Array.from(res)
+        }
+
+        // 并集
+        function getUnion(arr1, arr2) {
+            const res = new Set(arr1)
+            for (let item of arr2) {
+                res.add(item) // 利用 Set 自动去重的特性
+            }
+            return Array.from(res)
+        }
+
+        // 测试
+        console.log('交集', getIntersection(arr1, arr2))
+        console.log('并集', getUnion(arr1, arr2))
+    </script>
+</body>
+</html>

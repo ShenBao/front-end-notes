@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 撤销 重做</title>
+</head>
+<body>
+    <div>
+        <input id="input-text">
+        <button id="btn-undo">undo</button>
+        <button id="btn-redo">redo</button>
+    </div>
+
+    <script>
+        const inputText = document.getElementById('input-text')
+        const btnUndo = document.getElementById('btn-undo')
+        const btnRedo = document.getElementById('btn-redo')
+
+        const list = [inputText.value] // 初始化列表
+        let curIndex = list.length - 1 // 初始化 index
+
+        inputText.addEventListener('change', e => {
+            const text =  e.target.value
+            console.log('change', text)
+
+            list.length = curIndex + 1 // 截取掉 index 后面的部分（重要 ！！！），undo 会导致 index 减小
+            list.push(text)
+            curIndex++ // 重置 index ，因为已经 push 一个元素
+        })
+
+        btnUndo.addEventListener('click', () => {
+            if (curIndex <= 0) return
+            curIndex-- // index 减少
+            inputText.value = list[curIndex]
+        })
+
+        btnRedo.addEventListener('click', () => {
+            if (curIndex >= list.length - 1) return
+            curIndex++ // index 增加
+            inputText.value = list[curIndex]
+        })
+    </script>
+</body>
+</html>

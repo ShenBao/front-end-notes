@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyntaxError</title>
+    <style>
+        * {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button type="button" id="btnEx">可以捕获的</button>
+
+    <script>
+        btnEx.onclick = function () {
+            try {
+                new Function(`var  hhhh bbbb`);
+            } catch (e) {
+                console.log('e.message:', e.message);
+            }
+        }
+    </script>
+</body>

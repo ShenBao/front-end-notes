@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<style>
+    img {
+        height: 40px;
+        position: absolute;
+        top: 0;
+        left: 50vw;
+        transform: translate(-50%);
+    }
+
+    body {
+        background-color: black;
+        overflow: hidden;
+        height: 100vh;
+        cursor: pointer;
+    }
+
+    #start {
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        left: 200px;
+        bottom: 30px;
+    }
+</style>
+
+<body>
+    <img class="proto mover" src="./snow.png" style="transform:translateY(0px)" />
+    <button id="start">开始</button>
+    <script>
+        var proto = document.querySelector('.proto');
+        var bodySize = document.body.getBoundingClientRect();
+        var ballSize = proto.getBoundingClientRect();
+        var maxHeight = Math.floor(bodySize.height - ballSize.height);
+        var maxWidth = 97;
+        var domCount = 500;
+        var movers = [];
+        var  distance = 3;
+        var frame=null;
+
+        function init() {
+            for (var i = 0; i < domCount; i++) {
+                var m = proto.cloneNode();
+                var top = Math.floor(Math.random() * (maxHeight));
+                if (top === maxHeight) {
+                    m.classList.add('up');
+                } else {
+                    m.classList.add('down');
+                }
+                m.style.left = (i / (domCount / maxWidth)) + 'vw';
+                m.style.transform = `translateY(${top}px)`;
+                document.body.appendChild(m);
+            }
+            movers = document.querySelectorAll('.mover');
+        }
+
+        //创建500个节点
+        init();
+
+        function update() {
+            if (movers.length > 0) {
+                for (var i = 0; i < movers.length; i++) {
+                    var m = movers[i];
+                    var pos = parseInt(m.style.transform.slice(m.style.transform.indexOf('(') + 1, m.style.transform.indexOf('px')));
+                    m.classList.contains('down') ? pos += distance : pos -= distance;
+                    if (pos < 0) {
+                        pos = 0;
+                    }
+                    if (pos > maxHeight) {
+                        pos = maxHeight;
+                    }
+                    //   m.style.top = pos + 'px';
+                    m.style.transform = `translateY(${pos}px)`;
+                    if (pos === 0) {
+                        m.classList.remove('up');
+                        m.classList.add('down');
+                    }
+                    if (pos === maxHeight) {
+                        m.classList.remove('down');
+                        m.classList.add('up');
+                    }
+                }
+
+                frame = window.requestAnimationFrame(update);
+            }
+
+
+        
+        }
+        start.onclick = function () {
+            frame=window.requestAnimationFrame(update);
+        }
+
+
+    </script>
+</body>
+
+</html>

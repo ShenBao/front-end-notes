@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>清除浮动(3)使用伪元素</title>
+  <style>
+
+    .box-container {
+      width: 142px;
+      padding: 10px;
+      border: 1px solid red;
+    }
+
+    /* 对父元素添加伪元素 */
+    .box-container::after{
+      content: "";
+      display: block;
+      height: 0;
+      clear:both;
+    }
+
+    img {
+      width: 45px;
+      height: 45px;
+      float: left;
+      margin-right: 10px;
+    }
+
+    .right-box{
+      float: right;
+    }
+
+    .right-box-title {
+      font-size: 16px;
+      color: #1C1F21;
+    }
+
+    .right-box-content {
+      font-size: 12px;
+      color: #545C63;
+    }
+  </style>
+</head>
+<body>   
+  <div class="box-container">
+    <img src="./image/java.jpg" alt="javajpg">
+    <div class="right-box">
+      <div class="right-box-title">java工程师</div>
+      <div class="right-box-content">综合就业率第一</div>
+    </div>
+  </div>
+</body>
+</html>

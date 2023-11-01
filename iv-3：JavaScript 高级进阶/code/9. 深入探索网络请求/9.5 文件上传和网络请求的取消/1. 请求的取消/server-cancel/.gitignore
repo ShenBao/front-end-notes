@@ -1,0 +1,6 @@
+node_modules/
+coverage/
+dist/
+err.log
+out.log
+logs/bff/*

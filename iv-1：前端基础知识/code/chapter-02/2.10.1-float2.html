@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>清除浮动(2)添加新元素</title>
+  <style>
+    .box-container {
+      width: 142px;
+      padding: 10px;
+      border: 1px solid red;
+    }
+    img {
+      width: 45px;
+      height: 45px;
+      float: left;
+      margin-right: 10px;
+    }
+    .right-box{
+      float: right;
+    }
+
+    .right-box-title {
+      font-size: 16px;
+      color: #1C1F21;
+    }
+
+    .right-box-content {
+      font-size: 12px;
+      color: #545C63;
+    }
+    /* 清除浮动(1)添加新元素  */
+    .clear-element{
+      clear: both;
+    }
+  </style>
+</head>
+<body>   
+  <div class="box-container">
+    <img src="./image/java.jpg" alt="javajpg">
+    <div class="right-box">
+      <div class="right-box-title">java工程师</div>
+      <div class="right-box-content">综合就业率第一</div>
+    </div>
+    <!-- 添加一个空元素，利用css提供的clear:both清除浮动 -->
+    <div class="clear-element"></div>
+  </div>
+</body>
+</html>

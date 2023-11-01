@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./utils.js"></script>
+</head>
+
+<body>
+    cookie存储
+    <script>
+        // utf-8   a:一个字节， 人：三个字节
+        const charTxt = "a";
+        let count = (4 * 1024 - 2);
+        console.log(count);
+        let content = new Array(parseInt(count)).fill(charTxt).join("");
+        const key = "人"; // 人， -3
+        try {
+            document.cookie = `${key}=${content};`
+        } catch (err) {
+            console.log("err", err);
+        }
+        const contentSize = sizeofUtfBytes(content);
+        const keySize = sizeofUtfBytes(key);
+        console.log("contentSize size:", contentSize);
+        console.log("key size:", keySize);
+        console.log("total size:", contentSize + keySize);
+    </script>
+</body>
+
+</html>

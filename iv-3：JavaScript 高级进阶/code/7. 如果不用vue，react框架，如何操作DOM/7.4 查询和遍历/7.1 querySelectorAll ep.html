@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="outer">
+    <div class="select">
+      <div class="inner">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var select = document.querySelector('.select');
+    var inner = select.querySelectorAll('.outer .inner');
+    console.log("inner.length:", inner.length); // 1, not 0!
+
+    var select2 = document.querySelector('.select');
+    var inner2 = select.querySelectorAll(':scope .outer .inner');
+    console.log("inner2.length:", inner2.length); // 0
+  </script>
+</body>
+
+</html>

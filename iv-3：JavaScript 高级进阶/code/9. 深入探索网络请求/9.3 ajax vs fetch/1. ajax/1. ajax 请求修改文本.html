@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div>测试ajax 界面</div>
+        <button id="ajaxBtn">AjAX局部刷新</button>
+        <div class="ajax-change" id="responseDiv">change区域</div>
+        <script>
+   
+            function test() {
+                //1. 创建实例对象
+                var xhrObj = new XMLHttpRequest();
+                
+                //注册readystatechange回调监听
+                xhrObj.onreadystatechange = function () {
+                    console.log("xhrObj.readyState==",xhrObj.readyState);
+                    console.log("xhrObj.status==",xhrObj.status);
+                    //readyState==4 && status=200 代表请求成功
+                    if (xhrObj.readyState == 4 && xhrObj.status == 200) {
+                        //局部刷新文本
+                        document.getElementById("responseDiv").innerHTML = xhrObj.responseText;
+                    }
+                };
+
+                //请求错误回调
+                xhrObj.onerror = function () {
+                    console.log("-------onerror-------:")
+                };
+
+                //请求成功完成回调
+                xhrObj.onload = function () {
+                    console.log("-------onload-------:",xhrObj.responseText)
+                };
+
+                //请求开始回调
+                xhrObj.onloadstart = function () {
+                    console.log("-------onloadstart-------")
+                };
+
+                //请求完成回调，不论请求成功与否
+                xhrObj.onloadend = function () {
+                    console.log("-------onloadend-------")
+                };
+
+
+                //设置请求地址,true 异步请求，false:同步请求，
+                xhrObj.open("post", "http://127.0.0.1:3000/xhr", true);
+                //设置请求携带header
+                xhrObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                //发送请求数据
+                xhrObj.send("xhr=1");
+            }
+
+            document.getElementById("ajaxBtn").addEventListener("click", function () {
+                test();
+            });
+        </script>
+    </body>
+</html>

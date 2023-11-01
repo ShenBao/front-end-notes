@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memory change</title>
+</head>
+<body>
+    <p>
+        memory change
+        <button id="btn1">start</button>
+    </p>
+
+    <script>
+        const arr = []
+        for (let i = 0; i < 10 * 10000; i++) {
+            arr.push(i)
+        }
+
+        function bind() {
+            // 模拟一个比较大的数据
+            const obj = {
+                str: JSON.stringify(arr) // 简单的拷贝
+            }
+
+            window.addEventListener('resize', () => {
+                console.log(obj)
+            })
+        }
+
+        let n = 0
+        function start() {
+            setTimeout(() => {
+                bind()
+                n++
+
+                // 执行 50 次
+                if (n < 50) {
+                    start()
+                } else {
+                    alert('done')
+                }
+            }, 200)
+        }
+
+        document.getElementById('btn1').addEventListener('click', () => {
+            start()
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<template>
+    <div>商品清单</div>
+    <div id="product-list">
+        <div>
+            <a data-id="10" class="product-item c-link">香蕉</a>
+        </div>
+        <div>
+            <a data-id="11" class="product-item c-link">苹果</a>
+        </div>
+        <div>
+            <a data-id="12" class="product-item c-link">香蕉</a>
+        </div>
+    </div>
+
+</template>
+
+<script>
+    let container = this.querySelector("#product-list");
+
+    console.log("this:", this)
+    // 演示代码触发更新历史
+    // 事件代理
+    container.addEventListener("click", function (ev) {
+        console.log("item clicked")
+        if (ev.target.classList.contains("product-item")) {
+            const id = +ev.target.dataset.id
+            history.pushState({
+                id
+            }, "", `/detail/${id}`); 
+
+        }
+    })
+</script>
+
+<style>
+    .product-item {
+        cursor: pointer;
+        color: blue;
+    }
+</style>

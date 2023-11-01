@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        font-size: 28px;
+        ;
+    }
+
+    .warp {
+        position: absolute;
+        width: 100px;
+        height: 300px;
+        border: 1px solid #F60093;
+        overflow: hidden;
+    }
+
+    .progress-in {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: red;
+        animation: 3s linear 0s progress forwards;
+        transform: translateY(100%);
+        animation-play-state: paused;
+    }
+
+    @keyframes progress {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0%);
+        }
+    }
+
+    #start {
+        position: absolute;
+        width: 100px;
+        left: 200px;
+    }
+</style>
+
+<body>
+    <div class="warp">
+        <div class="progress-in">
+
+        </div>
+    </div>
+    <button id="start">开始</button>
+    <script>
+        const progressIn = document.querySelector(".progress-in");
+        start.onclick = function () {
+            // progressIn.style.animationPlayState = `running`;
+            const state = progressIn.style.animationPlayState;
+            progressIn.style.animationPlayState = state == `running` ? "paused" : "running";
+        }
+
+        progressIn.addEventListener("webkitAnimationEnd", (ele) => {
+            window.alert(`动画结束`);
+        }, true);
+    </script>
+</body>
+
+</html>

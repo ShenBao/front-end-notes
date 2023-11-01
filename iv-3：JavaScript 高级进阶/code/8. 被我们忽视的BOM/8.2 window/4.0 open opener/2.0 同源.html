@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size:28px
+        }
+
+        button {
+            font-size: 28px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>父窗口</div>
+
+    <button id="btnOpen">打开子窗口</button>
+    <button id="btnInvoke">调用子窗口方法</button>
+
+    <script>
+        let winRef;
+        btnOpen.addEventListener("click", function () {
+            let strWindowFeatures = `
+                    menubar=yes,
+                    location=yes,
+                    resizable=yes,
+                    scrollbars=yes,
+                    status=no,
+                    left=100px,
+                    top=100px,
+                `;
+
+                winRef = window.open("./ifr.html", "慕课网", strWindowFeatures);
+        })
+
+        function parentMethod() {
+            alert("父窗口方法执行调用")
+        }
+
+        btnInvoke.addEventListener("click", function () {
+            winRef && winRef.childMethod()
+        })
+    </script>
+</body>
+
+</html>

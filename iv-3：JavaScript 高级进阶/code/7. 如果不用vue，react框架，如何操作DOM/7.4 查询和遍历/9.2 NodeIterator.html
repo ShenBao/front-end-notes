@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="outer" id="outer">
+        <!-- 测试-->
+        <ul class="list list-1">
+            <li name="li-item" class="item item2 item3">list-one</li>
+            <li class="item">list-two</li>
+            <li class="item">list-three</li>
+        </ul>
+    </div>
+    <div class="outer2" id="outer"></div>
+    <div id="foo\bar">ccc</div>
+
+    <script>
+        const iterator = document.createNodeIterator(
+            document.getElementById("outer"),
+            NodeFilter.SHOW_ELEMENT,
+            {
+                acceptNode(node) {
+                    return node.tagName === 'LI' ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+                }
+            }
+        );
+        var currentNode;
+        while (currentNode = iterator.nextNode()) {
+            console.log(currentNode.innerText)
+        }
+
+    </script>
+</body>
+
+</html>

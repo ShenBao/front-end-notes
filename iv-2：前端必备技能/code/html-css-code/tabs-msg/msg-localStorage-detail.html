@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+</head>
+<body>
+    <p>localStorage message - detail page</p>
+
+    <button id="btn1">修改标题</button>
+
+    <script>
+        const btn1 = document.getElementById('btn1')
+        btn1.addEventListener('click', () => {
+            const newInfo = {
+                id: 100,
+                name: '标题' + Date.now()
+            }
+            localStorage.setItem('changeInfo', JSON.stringify(newInfo))
+        })
+
+        // localStorage 跨域不共享
+    </script>
+</body>
+</html>

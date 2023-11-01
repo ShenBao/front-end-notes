@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="video" style="height: 800px;width: 800px;" autoplay></video>
+    <button id="start">开始共享屏幕</button>
+    <button id="stop">停止共享屏幕</button>
+
+    <script>
+        const mediaOptions = {
+            video: {
+                cursor: "always"
+            },
+            audio: false
+        };
+
+        let videoElem = document.getElementById("video");
+
+        document.getElementById("start").addEventListener('click', function () {
+            startShareScreen();
+        });
+        
+        document.getElementById("stop").addEventListener('click', function () {
+            stopShareScreen();
+        });
+
+        async function startShareScreen() {
+            try {
+                videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(mediaOptions);
+            } catch (err) {
+                console.error("Error: " + err);
+            }
+        };
+
+        function stopShareScreen(evt) {
+            let tracks = videoElem.srcObject.getTracks();
+            tracks.forEach(track => track.stop());
+            videoElem.srcObject = null;
+        };
+    </script>
+</body>
+
+</html>

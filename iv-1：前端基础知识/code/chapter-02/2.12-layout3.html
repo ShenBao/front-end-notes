@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS实现三栏布局-table布局</title>
+  <style type="text/css">
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .box {
+      width: 100%; 
+      display: table;
+      height: 100px;
+    }
+
+    div {
+      display: table-cell;
+    }
+
+    .left {
+        width: 100px;
+        background: red;
+    }
+
+    .center {
+      background: green;
+    }
+
+    .right {
+        width: 100px;
+        background: blue;
+    }
+  
+	</style>
+</head>
+<body>
+  <div class="box">
+    <div class="left">left</div>
+    <div class="center">center</div>
+    <div class="right">right</div>    
+  </div>
+</body>
+</html>
+

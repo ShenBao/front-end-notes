@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script src="../dist/index.js"></script>
+
+    <script>
+        // const requestAnimationFrameGenerator = function (cb) {
+
+        //     let ticket;
+        //     function execute() {
+        //         ticket = requestAnimationFrame(cb);
+        //     }
+
+        //     return {
+        //         execute,
+        //         cancel: function () {
+        //             cancelAnimationFrame(ticket);
+        //         }
+        //     }
+        // }
+
+        // const nextFactory = new NextFactory(requestAnimationFrameGenerator);
+
+        const nextFactory = createRequestAnimationFrameGenerator();
+
+        let context = {
+            val: 0
+        };
+
+        let count = 0;
+
+        let lastTime = Date.now();
+
+        nextFactory.start(function (next, ...args) {
+
+            count++;
+            const now = Date.now();
+
+
+            console.log("time:", Date.now());
+            console.log("costt time", now - lastTime);
+            lastTime = now;
+            // console.log("this:", this);
+            // console.log("args:", ...args);
+            // console.log(" ");
+            // context.val = count;
+
+            console.log("count", count);
+
+            next(context, "param1-" + count, "param2-" + count);
+
+            // if (count > 10) {
+            //     nextFactory.cancel();
+            // }
+
+
+        }, context, "param1", "param2")
+
+
+    </script>
+
+</body>
+
+</html>

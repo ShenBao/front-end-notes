@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn" type="button">点我</button>
+
+  <script type="module">
+    import EVM from "./etevm.mjs";
+
+    const evm = new EVM({
+      isInWhiteList(target) {
+        return target === document.body || target.id
+      }
+    });
+
+    function clickFn(e) {
+      console.log(this === e.target);
+    }
+
+
+    evm.watch();
+    document.getElementById("btn").addEventListener("click", clickFn);
+    document.getElementById("btn").addEventListener("click", clickFn);
+    // document.getElementById("btn").addEventListener("click", clickFn, true);
+    // document.getElementById("btn").addEventListener("click", clickFn, true);
+
+    window.evm = evm;
+
+
+    setTimeout(async function () {
+      // console.log("-------");
+      const data = await evm.getExtremelyItems();
+      console.log("statistics:", data);
+    }, 3000)
+
+    function onResize() {
+      console.log("resize")
+     }
+
+    // document.body.addEventListener("resize", onResize);
+
+    // document.body.addEventListener("resize", onResize);
+
+    // setTimeout(function () {
+    //   window.removeEventListener("resize", onResize);
+    // }, 5000)
+  </script>
+</body>
+
+</html>

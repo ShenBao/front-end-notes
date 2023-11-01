@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <my-item-s></my-item-s>
+    <div class="container">My item</div>
+    <div class="container2">My item</div>
+    <template id="tpl-my-item">
+        <div class="container">
+            My Item
+        </div>
+    </template>
+
+    <script>
+        class MyItemShadow extends HTMLElement {
+            constructor() {
+                super();
+            }
+            connectedCallback() {
+                const content = document.getElementById("tpl-my-item").content.cloneNode(true);
+
+                const shadow = this.attachShadow({ mode: "open" });
+
+                shadow.append(content);
+
+                const linkElem = document.createElement('link');
+                linkElem.setAttribute('rel', 'stylesheet');
+                linkElem.setAttribute('href', '4.css');
+                shadow.appendChild(linkElem);
+            }
+        }
+
+        window.customElements.define("my-item-s", MyItemShadow);
+    </script>
+
+
+</body>
+
+</html>

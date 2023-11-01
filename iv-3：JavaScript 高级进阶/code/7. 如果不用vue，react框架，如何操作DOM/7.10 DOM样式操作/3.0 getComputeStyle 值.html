@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="div-test" class="div">
+        文本
+    </div>
+    <hr>
+    <div>
+        样式的值
+        <pre>
+            .div {
+                font-size: 1.6rem;
+                transform:rotate(2deg);
+            }
+        </pre>
+    </div>
+    <hr>
+    <div>
+        getComputedStyle的值:
+        <pre id="divGc"></pre>
+    </div>
+    <style>
+        .div {
+            font-size: 1.6rem;
+            transform:rotate(2deg);
+        }
+    </style>
+
+    <script>
+        const divEl = document.getElementById("div-test");
+        const styleDeclaration = window.getComputedStyle(divEl);
+        const fontSize = styleDeclaration.fontSize;
+        const transform = styleDeclaration.transform;
+
+        divGc.textContent = `
+            fontSize: ${fontSize}
+            transform: ${transform}
+        `
+    </script>
+</body>
+
+</html>

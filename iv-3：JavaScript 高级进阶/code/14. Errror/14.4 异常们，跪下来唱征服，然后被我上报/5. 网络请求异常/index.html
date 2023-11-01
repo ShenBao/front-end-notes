@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="ajaxBtn">网络请求</button>
+    <script>
+         window.onerror = function (message, url, line, column, error) {
+                console.log('window.onerror 捕获到错误:',message, "==line:", line,"==column:", column, "==error:",error);
+        }
+
+        window.addEventListener("error", function(e){
+            console.log("window.addEventListener:",e,"==e.error:",e.error);
+
+        },true);
+
+        function test() {
+                var xhrObj = new XMLHttpRequest();
+                xhrObj.onreadystatechange = function () {
+                    console.log("xhrObj.status==",xhrObj.status);
+                    if (xhrObj.readyState == 4 && xhrObj.status == 200) {
+                        console.log("成功");
+                    }
+                };
+
+                xhrObj.onerror = function (e) {
+                    console.log("-------onerror-------:",e)
+                };
+
+                xhrObj.open("post", "http://127.0.0.1:3000/xhr", true);
+
+                xhrObj.send("xhr=1");
+            }
+
+            ajaxBtn.onclick=()=>{
+                test();
+            }
+    </script>
+</body>
+</html>

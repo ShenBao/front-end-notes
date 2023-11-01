@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="elementNode">elementNodeText</div>
+    <div id="textNode">textNodeText</div>
+    <div id="attrNode" test="1">attrNodeText</div>
+
+
+    <script>
+        console.log("document.nodeValue:", document.nodeName, "=nodeType=", document.nodeType, "=nodeValue=", document.nodeValue);
+        const text = document.getElementById("elementNode");
+        console.log("elementNode:", text.nodeName, "=nodeType=", text.nodeType, "=nodeValue=", text.nodeValue);
+
+        const textNode = document.getElementById("textNode");
+        console.log("textNode:", textNode.childNodes[0].nodeName, "=nodeType=", textNode.childNodes[0].nodeType, "=nodeValue=", textNode.childNodes[0].nodeValue);
+
+
+        const attrNode = document.getElementById("attrNode");
+        const attrNode1 = attrNode.getAttributeNode("test");
+        console.log("attrNode:", attrNode1.nodeName, "=nodeType=", attrNode1.nodeType, "=nodeValue=", attrNode1.nodeValue);
+
+    </script>
+</body>
+
+</html>

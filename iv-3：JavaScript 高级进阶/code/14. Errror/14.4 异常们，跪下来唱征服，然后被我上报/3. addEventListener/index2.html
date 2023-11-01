@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>script error 解决</div>
+
+    <script>
+        window.onerror = function (message, url, line, column, error) {
+            console.log('window.onerror 捕获到错误:', message, "==line:", line, "==column:", column, "==error:", error);
+        }
+
+        window.addEventListener("error", function (event) {
+            console.log("window.addEventListener:", event, "==e.error:", event.error);
+            if (event.target && (event.target.src || event.target.href)) {
+                //静态资源
+                console.log({
+                    type: "error", //resource
+                    errorType: "resourceError",
+                    filename: event.target.src || event.target.href, //加载失败的资源
+                    tagName: event.target.tagName, //标签名
+                })
+            }
+        }, true); ////由于网络请求不会冒泡，必须在捕获阶段处理
+
+
+    </script>
+
+    <img src="http://127.0.0.1:3000/test.png" />
+    <script src="http://127.0.0.1:3000/test2.js" />
+</body>
+
+</html>
